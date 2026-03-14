@@ -166,55 +166,45 @@ $hero_images = [
     </section>
 
     <!-- SERVICES SECTION -->
-    <section class="services" id="services">
-        <div class="container services-container">
+    <section class="services-section" id="services">
+        <div class="container">
             <div class="services-heading">
                 <h2>Our Solutions</h2>
             </div>
-            <div class="services-cards">
-                <div class="service-card fade-left">
-                    <div class="service-media">
-                        <video autoplay muted loop playsinline>
-                            <source src="assets/video/Solar Power Solutions.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="service-content">
-                        <h3>Civil & Foundation Works</h3>
-                        <p>MMS pile foundation works, pile cap construction, ICR foundations, IDT foundations with gravel filling, LT panel foundations with HDGI canopy, BOT/UPS DB/auxiliary panel foundations, porta cabin, main gate, and bus duct foundations.</p>
-                    </div>
+            <div class="service-card fade-left">
+                <div class="service-image">
+                    <img src="assets/images/services/civil.png" alt="Civil & Foundation Works">
                 </div>
-                <div class="service-card fade-left">
-                    <div class="service-media">
-                        <video autoplay muted loop playsinline>
-                            <source src="assets/video/Customized Energy Projects.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="service-content">
-                        <h3>Mechanical Works</h3>
-                        <p>MMS erection, inverter stand erection, solar module mounting & alignment with precision engineering and quality standards.</p>
-                    </div>
+                <div class="service-content">
+                    <h3>Civil & Foundation Works</h3>
+                    <p>MMS pile foundation works, pile cap construction, ICR foundations, IDT foundations with gravel filling, LT panel foundations with HDGI canopy, BOT/UPS DB/auxiliary panel foundations, porta cabin, main gate, and bus duct foundations.</p>
                 </div>
-                <div class="service-card fade-left">
-                    <div class="service-media">
-                        <video autoplay muted loop playsinline>
-                            <source src="assets/video/Installation & Maintenance.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="service-content">
-                        <h3>Electrical Works</h3>
-                        <p>DC Works: Module interconnection & string formation, DC cable laying & termination, DC testing & commissioning. AC Works: Inverter installation, AC cable laying & termination, AC testing & commissioning.</p>
-                    </div>
+            </div>
+            <div class="service-card fade-left">
+                <div class="service-image">
+                    <img src="assets/images/services/mechanical.png" alt="Mechanical Works">
                 </div>
-                <div class="service-card fade-left">
-                    <div class="service-media">
-                        <video autoplay muted loop playsinline>
-                            <source src="assets/video/Energy Consultancy.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="service-content">
-                        <h3>Earthing, Lightning & SCADA</h3>
-                        <p>Equipment earthing, lightning arrester installation, SCADA installation, communication cable laying, and monitoring integration for complete system safety and control.</p>
-                    </div>
+                <div class="service-content">
+                    <h3>Mechanical Works</h3>
+                    <p>MMS erection, inverter stand erection, solar module mounting & alignment with precision engineering and quality standards.</p>
+                </div>
+            </div>
+            <div class="service-card fade-left">
+                <div class="service-image">
+                    <img src="assets/images/services/electrical.png" alt="Electrical Works">
+                </div>
+                <div class="service-content">
+                    <h3>Electrical Works</h3>
+                    <p>DC Works: Module interconnection & string formation, DC cable laying & termination, DC testing & commissioning. AC Works: Inverter installation, AC cable laying & termination, AC testing & commissioning.</p>
+                </div>
+            </div>
+            <div class="service-card fade-left">
+                <div class="service-image">
+                    <img src="assets/images/services/scada.png" alt="Earthing, Lightning & SCADA">
+                </div>
+                <div class="service-content">
+                    <h3>Earthing, Lightning & SCADA</h3>
+                    <p>Equipment earthing, lightning arrester installation, SCADA installation, communication cable laying, and monitoring integration for complete system safety and control.</p>
                 </div>
             </div>
         </div>
