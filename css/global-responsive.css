@@ -1,0 +1,469 @@
+/* ===================================
+   BK GREEN ENERGY - GLOBAL RESPONSIVE CSS
+   Load this FIRST after bootstrap
+   =================================== */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-green: #90cf4d;
+    --secondary-green: #19a84a;
+    --dark-green: #0f7c3a;
+    --white: #ffffff;
+    --dark: #1a1a1a;
+    --light-bg: #f8f9fa;
+    --container-max: 1200px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* ===== CONTAINER SYSTEM ===== */
+.container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 16px;
+    }
+}
+
+/* ===== TYPOGRAPHY ===== */
+h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: clamp(1.75rem, 4vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+}
+
+h3 {
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+}
+
+p {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+/* ===== NAVBAR - CONSISTENT ACROSS ALL PAGES ===== */
+.custom-navbar,
+.navbar {
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 50rem;
+    width: 97%;
+    margin: 10px auto;
+    padding: 0.8rem 1rem;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.navbar-brand,
+.brand-text {
+    font-size: 22px !important;
+    font-weight: 900 !important;
+    color: #000 !important;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.navbar-brand:hover,
+.brand-text:hover {
+    color: var(--dark-green) !important;
+}
+
+.custom-navbar .nav-link {
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    color: #000 !important;
+    margin-left: 18px;
+    padding: 8px 16px !important;
+    transition: 0.3s ease;
+}
+
+.custom-navbar .nav-link:hover {
+    color: #fff !important;
+}
+
+.btn-nav {
+    padding: 8px 18px !important;
+    border-radius: 30px;
+    color: var(--dark-green) !important;
+    font-weight: 700 !important;
+    font-size: 18px !important;
+}
+
+.btn-nav:hover {
+    color: #fff !important;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler::after {
+    content: "☰";
+    font-size: 24px;
+    color: var(--dark-green);
+}
+
+/* ===== MOBILE NAVBAR ===== */
+@media (max-width: 768px) {
+    .custom-navbar,
+    .navbar {
+        width: 92%;
+        padding: 12px 16px;
+        border-radius: 40px;
+        position: relative;
+    }
+
+    .custom-navbar .container,
+    .navbar .container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .navbar-brand,
+    .brand-text {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 18px !important;
+        margin: 0;
+    }
+
+    .navbar-toggler {
+        position: absolute;
+        right: 0;
+        margin: 0;
+    }
+
+    .navbar-collapse {
+        width: 100%;
+        margin-top: 12px;
+    }
+
+    .custom-navbar .nav-link {
+        font-size: 16px !important;
+        padding: 10px 15px !important;
+        margin-left: 0;
+    }
+
+    .btn-nav {
+        font-size: 16px !important;
+    }
+}
+
+/* ===== GRID SYSTEM ===== */
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+@media (max-width: 968px) {
+    .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+}
+
+@media (max-width: 640px) {
+    .grid-3,
+    .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+/* ===== CAREERS GRID (3 top, 2 centered) ===== */
+.roles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.role-card:nth-child(4) {
+    grid-column: 1 / 2;
+}
+
+.role-card:nth-child(5) {
+    grid-column: 2 / 3;
+}
+
+@media (max-width: 968px) {
+    .roles-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+    
+    .role-card:nth-child(4),
+    .role-card:nth-child(5) {
+        grid-column: auto;
+    }
+}
+
+@media (max-width: 640px) {
+    .roles-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+/* ===== FOOTER - CONSISTENT LAYOUT ===== */
+footer {
+    background: #000;
+    color: #e2e8f0;
+    padding: 60px 40px 30px;
+}
+
+.footer-container {
+    max-width: var(--container-max);
+    margin: auto;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 20px;
+}
+
+.footer-logo img {
+    height: 70px;
+    width: 70px;
+    object-fit: contain;
+    background: #fff;
+    padding: 8px;
+    border-radius: 50%;
+}
+
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    font-size: 16px;
+}
+
+.footer-contact a {
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-contact a:hover {
+    color: var(--primary-green);
+}
+
+.footer-columns {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.footer-links {
+    text-align: left;
+}
+
+.footer-address {
+    text-align: right;
+    margin-left: auto;
+}
+
+.footer-title {
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.footer-link {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-link:hover {
+    color: var(--primary-green);
+    padding-left: 5px;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 13px;
+    color: #94a3b8;
+}
+
+.footer-social {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-social a {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    transition: 0.3s;
+}
+
+.footer-social a:hover {
+    background: var(--dark-green);
+    transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+    .footer-top {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .footer-contact {
+        align-items: center;
+    }
+
+    .footer-columns {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-address {
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+
+/* ===== PREVENT HORIZONTAL OVERFLOW ===== */
+body,
+html,
+section,
+.container {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* ===== CARD STYLES ===== */
+.card,
+.service-card,
+.why-card,
+.role-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.card:hover,
+.service-card:hover,
+.why-card:hover,
+.role-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(15, 124, 58, 0.15);
+}
+
+/* ===== SECTION SPACING ===== */
+section {
+    padding: 80px 20px;
+}
+
+@media (max-width: 768px) {
+    section {
+        padding: 60px 16px;
+    }
+}
+
+/* ===== ANIMATIONS ===== */
+.fade-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+}
+
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s ease;
+}
+
+.fade-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.fade-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.8s ease;
+}
+
+.fade-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}

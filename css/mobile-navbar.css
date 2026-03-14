@@ -1,0 +1,160 @@
+/* ===================================
+   UNIFIED MOBILE NAVBAR - ALL PAGES
+   =================================== */
+
+/* Desktop navbar - keep existing styles */
+@media (min-width: 769px) {
+    .custom-navbar {
+        background-color: rgba(255, 255, 255, 0.4);
+        border-radius: 50rem;
+        width: 97%;
+        margin: 10px auto;
+        padding: 1.2rem 1rem;
+        min-height: 100px;
+    }
+    
+    .navbar-brand {
+        font-size: 32px !important;
+        font-weight: 900 !important;
+        color: #000000 !important;
+    }
+    
+    .nav-link {
+        font-size: 20px !important;
+        font-weight: 700 !important;
+        color: #000000 !important;
+        padding: 12px 20px !important;
+        transition: 0.3s ease;
+    }
+    
+    .nav-link:hover {
+        color: #ffffff !important;
+    }
+    
+    .btn-nav {
+        padding: 12px 10px !important;
+        border-radius: 30px;
+        color: #0f7c3a !important;
+        font-weight: 900 !important;
+    }
+    
+    .btn-nav:hover {
+        color: #fff !important;
+    }
+    
+    .navbar-toggler {
+        display: none;
+    }
+}
+
+/* ===================================
+   MOBILE NAVBAR - UNIFIED STYLE
+   =================================== */
+@media (max-width: 768px) {
+    
+    /* Green pill navbar */
+    .custom-navbar {
+        background: #8BC34A !important;
+        border-radius: 28px !important;
+        padding: 14px 16px !important;
+        width: 92% !important;
+        margin: 10px auto !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        min-height: auto !important;
+    }
+    
+    .navbar > .container {
+        padding: 0 !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+    }
+    
+    /* Brand text - white, left aligned */
+    .navbar-brand {
+        font-size: 18px !important;
+        font-weight: 700 !important;
+        color: #ffffff !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    /* Hamburger toggler - white, right aligned */
+    .navbar-toggler {
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        outline: none !important;
+    }
+    
+    .navbar-toggler:focus {
+        box-shadow: none !important;
+        outline: none !important;
+    }
+    
+    /* Custom hamburger icon - white color */
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+        width: 28px !important;
+        height: 28px !important;
+    }
+    
+    /* Centered dropdown menu */
+    .navbar-collapse {
+        position: absolute !important;
+        top: 70px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 88% !important;
+        max-width: 320px !important;
+        background: #ffffff !important;
+        border-radius: 20px !important;
+        padding: 16px !important;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+        z-index: 1000 !important;
+        margin: 0 !important;
+    }
+    
+    /* Vertical menu links */
+    .navbar-nav {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 8px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    .nav-item {
+        margin: 0 !important;
+    }
+    
+    .nav-link {
+        color: #333 !important;
+        font-size: 15px !important;
+        font-weight: 600 !important;
+        padding: 12px !important;
+        text-align: center !important;
+        border-radius: 8px !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .nav-link:hover {
+        background: #f0f0f0 !important;
+        color: #0f7c3a !important;
+    }
+    
+    /* Contact button styling */
+    .btn-nav {
+        background: #8BC34A !important;
+        color: #ffffff !important;
+        font-weight: 700 !important;
+        margin-top: 4px !important;
+    }
+    
+    .btn-nav:hover {
+        background: #7cb342 !important;
+        color: #ffffff !important;
+    }
+}

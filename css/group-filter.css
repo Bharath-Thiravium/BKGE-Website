@@ -1,0 +1,146 @@
+/* ===================================
+   GROUP-BASED PROJECT FILTER
+   =================================== */
+
+.project-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 60px 0 40px;
+    flex-wrap: wrap;
+}
+
+.project-btn {
+    padding: 12px 30px;
+    border: 2px solid #90cf4d;
+    background: #fff;
+    color: #90cf4d;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.project-btn:hover {
+    background: #e8f5e9;
+    transform: translateY(-2px);
+}
+
+.project-btn.active {
+    background: #90cf4d;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(144, 207, 77, 0.3);
+}
+
+.project-section {
+    padding: 60px 20px;
+    background: #f8f9fa;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    display: none;
+    margin-bottom: 30px;
+}
+
+.project-section:last-of-type {
+    margin-bottom: 0;
+}
+
+.project-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #0f7c3a;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+.project-section h3 {
+    font-size: 2rem;
+    color: #0f7c3a;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.projects-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.project-item-card {
+    background: #fff;
+    border: 2px solid #e8f5e9;
+    border-left: 4px solid #90cf4d;
+    border-radius: 8px;
+    padding: 25px 30px;
+    transition: all 0.3s ease;
+}
+
+.project-item-card:hover {
+    background: #f8fdf9;
+    border-color: #90cf4d;
+    transform: translateX(10px);
+    box-shadow: 0 5px 15px rgba(15, 124, 58, 0.1);
+}
+
+.project-item-card h4 {
+    font-size: 1.3rem;
+    color: #1a1a1a;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.project-item-card .capacity {
+    color: #90cf4d;
+    font-weight: 700;
+}
+
+.project-item-card p {
+    color: #666;
+    font-size: 1rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.project-item-card i {
+    color: #90cf4d;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .project-buttons {
+        margin: 40px 0 30px;
+    }
+    
+    .project-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .project-section {
+        padding: 40px 15px;
+        margin-bottom: 20px;
+    }
+    
+    .project-section h2 {
+        font-size: 2rem;
+    }
+    
+    .project-section h3 {
+        font-size: 1.6rem;
+    }
+    
+    .project-item-card {
+        padding: 20px;
+    }
+    
+    .project-item-card:hover {
+        transform: translateX(5px);
+    }
+}

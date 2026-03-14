@@ -1,0 +1,120 @@
+/* ===================================
+   CATEGORY FILTER SECTIONS
+   =================================== */
+
+.category-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 60px 0 40px;
+    flex-wrap: wrap;
+}
+
+.category-btn {
+    padding: 12px 30px;
+    border: 2px solid #90cf4d;
+    background: #fff;
+    color: #90cf4d;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.category-btn:hover,
+.category-btn.active {
+    background: #90cf4d;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(144, 207, 77, 0.3);
+}
+
+.category-section {
+    padding: 60px 20px;
+    background: #f8f9fa;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    display: none;
+}
+
+.category-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #0f7c3a;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+.projects-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.project-card-item {
+    background: #fff;
+    border: 2px solid #e8f5e9;
+    border-left: 4px solid #90cf4d;
+    border-radius: 8px;
+    padding: 25px 30px;
+    transition: all 0.3s ease;
+}
+
+.project-card-item:hover {
+    background: #f8fdf9;
+    border-color: #90cf4d;
+    transform: translateX(10px);
+    box-shadow: 0 5px 15px rgba(15, 124, 58, 0.1);
+}
+
+.project-card-item h3 {
+    font-size: 1.3rem;
+    color: #1a1a1a;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.project-card-item p {
+    color: #666;
+    font-size: 1rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.project-card-item i {
+    color: #90cf4d;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .category-buttons {
+        margin: 40px 0 30px;
+    }
+    
+    .category-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .category-section {
+        padding: 40px 15px;
+    }
+    
+    .category-section h2 {
+        font-size: 2rem;
+    }
+    
+    .project-card-item {
+        padding: 20px;
+    }
+    
+    .project-card-item:hover {
+        transform: translateX(5px);
+    }
+}

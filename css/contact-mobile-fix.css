@@ -1,0 +1,86 @@
+/* ===================================
+   CONTACT PAGE MOBILE RESPONSIVE FIX
+   =================================== */
+
+/* Office cards grid - responsive */
+.office-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+/* Tablet - 2 columns */
+@media (max-width: 992px) {
+    .office-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+}
+
+/* Mobile - 1 column (stack) */
+@media (max-width: 640px) {
+    .office-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .office-card {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* Why reach out cards - responsive */
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+/* Tablet - 2 columns */
+@media (max-width: 992px) {
+    .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+}
+
+/* Mobile - 1 column (stack) */
+@media (max-width: 640px) {
+    .why-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .why-card {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* Form container - responsive */
+.form-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+}
+
+/* Mobile - stack form and illustration */
+@media (max-width: 768px) {
+    .form-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .form-illustration {
+        order: 2;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    
+    .form-wrapper {
+        order: 1;
+    }
+}

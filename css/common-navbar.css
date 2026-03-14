@@ -1,0 +1,288 @@
+/* ===================================
+   UNIFIED RESPONSIVE NAVBAR - ALL PAGES
+   BK Green Energy
+   =================================== */
+
+/* ===== HERO SECTION SPACING (ALL PAGES) ===== */
+.hero-section,
+.hero,
+.intro-section,
+.hero-intro,
+.hero-banner {
+    padding-top: 140px;
+}
+
+/* ===== DESKTOP NAVBAR ===== */
+@media (min-width: 769px) {
+    .custom-navbar {
+        background-color: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(10px);
+        border-radius: 50rem;
+        width: 97%;
+        max-width: 1400px;
+        margin: 10px auto;
+        padding: 1.2rem 1.5rem;
+        min-height: 100px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .navbar-brand {
+        font-size: 32px !important;
+        font-weight: 900 !important;
+        color: #000000 !important;
+    }
+    
+    .nav-link {
+        font-size: 20px !important;
+        font-weight: 700 !important;
+        color: #000000 !important;
+        padding: 12px 20px !important;
+        margin-left: 8px !important;
+        border-radius: 25px !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .nav-link:hover {
+        background: rgba(255, 255, 255, 0.3) !important;
+        color: #000000 !important;
+    }
+    
+    .btn-nav {
+        padding: 12px 24px !important;
+        border-radius: 30px !important;
+        background: #0f7c3a !important;
+        color: #ffffff !important;
+        font-weight: 900 !important;
+        font-size: 20px !important;
+        border: none !important;
+    }
+    
+    .btn-nav:hover {
+        background: #19a84a !important;
+        color: #ffffff !important;
+        transform: translateY(-2px);
+    }
+    
+    .navbar-toggler {
+        display: none;
+    }
+}
+
+/* ===== MOBILE NAVBAR ===== */
+@media (max-width: 768px) {
+    
+    /* Push hero content below navbar on mobile */
+    .hero-section,
+    .hero,
+    .intro-section,
+    .hero-intro,
+    .hero-banner {
+        padding-top: 100px !important;
+        margin-top: 0 !important;
+    }
+    
+    /* Center hero content on mobile */
+    .hero-content-wrapper,
+    .intro-content,
+    .hero-content {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 30px !important;
+    }
+    
+    /* Logo positioning on mobile */
+    .hero-logo-block,
+    .intro-logo-block {
+        order: 1 !important;
+        margin: 20px auto !important;
+        display: block !important;
+    }
+    
+    /* Text content after logo */
+    .hero-text-block,
+    .intro-text,
+    .hero-content {
+        order: 2 !important;
+    }
+    
+    /* Green pill navbar */
+    .custom-navbar {
+        background: #8BC34A !important;
+        border-radius: 28px !important;
+        padding: 14px 18px !important;
+        width: 92% !important;
+        max-width: 500px !important;
+        margin: 10px auto !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        min-height: auto !important;
+    }
+    
+    .navbar > .container {
+        padding: 0 !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    /* Brand text - white, left aligned */
+    .navbar-brand {
+        font-size: 18px !important;
+        font-weight: 700 !important;
+        color: #ffffff !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    /* Hamburger toggler - white, right aligned */
+    .navbar-toggler {
+        border: none !important;
+        padding: 4px !important;
+        margin: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        outline: none !important;
+    }
+    
+    .navbar-toggler:focus {
+        box-shadow: none !important;
+        outline: none !important;
+    }
+    
+    /* White hamburger icon */
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+        width: 28px !important;
+        height: 28px !important;
+    }
+    
+    /* LEFT-ALIGNED dropdown menu */
+    .navbar-collapse {
+        position: absolute !important;
+        top: 65px !important;
+        left: 4% !important;
+        width: 92% !important;
+        max-width: 500px !important;
+        background: #ffffff !important;
+        border-radius: 20px !important;
+        padding: 16px !important;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2) !important;
+        z-index: 1000 !important;
+        margin: 0 !important;
+    }
+    
+    /* Vertical menu links - LEFT ALIGNED */
+    .navbar-nav {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 6px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        align-items: stretch !important;
+    }
+    
+    .nav-item {
+        margin: 0 !important;
+        width: 100% !important;
+    }
+    
+    .nav-link {
+        color: #333 !important;
+        font-size: 16px !important;
+        font-weight: 600 !important;
+        padding: 14px 16px !important;
+        text-align: left !important;
+        border-radius: 10px !important;
+        transition: all 0.3s ease !important;
+        display: block !important;
+        width: 100% !important;
+        min-height: 44px !important;
+    }
+    
+    .nav-link:hover,
+    .nav-link:active {
+        background: #f0f0f0 !important;
+        color: #0f7c3a !important;
+    }
+    
+    /* Contact button styling */
+    .btn-nav {
+        background: #8BC34A !important;
+        color: #ffffff !important;
+        font-weight: 700 !important;
+        margin-top: 8px !important;
+        text-align: center !important;
+    }
+    
+    .btn-nav:hover {
+        background: #7cb342 !important;
+        color: #ffffff !important;
+    }
+}
+
+/* ===== LOGO WHITE BACKGROUND (ALL PAGES) ===== */
+.hero-logo-block,
+.intro-logo-block,
+.hero-big-logo-wrapper {
+    background: #ffffff !important;
+    padding: 20px !important;
+    border-radius: 15px !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2) !important;
+    display: inline-block !important;
+}
+
+.hero-big-logo,
+.intro-big-logo {
+    display: block !important;
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+/* Desktop logo size */
+@media (min-width: 769px) {
+    .hero-big-logo,
+    .intro-big-logo {
+        height: 200px !important;
+        width: auto !important;
+    }
+}
+
+/* Mobile logo size */
+@media (max-width: 768px) {
+    .hero-logo-block,
+    .intro-logo-block {
+        padding: 15px !important;
+        margin: 0 auto 20px !important;
+    }
+    
+    .hero-big-logo,
+    .intro-big-logo {
+        height: 140px !important;
+        width: auto !important;
+    }
+}
+
+/* ===== PREVENT BODY SCROLL WHEN MENU OPEN ===== */
+body.menu-open {
+    overflow: hidden !important;
+}
+
+/* ===== OVERLAY FOR MOBILE MENU ===== */
+.navbar-backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+@media (max-width: 768px) {
+    .navbar-collapse.show ~ .navbar-backdrop,
+    .navbar-collapse.collapsing ~ .navbar-backdrop {
+        display: block;
+    }
+}

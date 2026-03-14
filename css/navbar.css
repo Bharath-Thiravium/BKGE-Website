@@ -1,0 +1,134 @@
+/* =============================
+   BK GREEN ENERGY - BIG NAVBAR
+   ============================= */
+
+.bk-navbar {
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 98%;
+    max-width: 1500px;
+
+    background: rgba(144, 207, 77, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border-radius: 99px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+    
+    padding: 24px 48px;    /* ↑ bigger navbar */
+}
+
+/* Center container */
+.bk-navbar-container {
+    width: 0%;
+    max-width: 0px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* BRAND — Logo image */
+.bk-navbar-brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.bk-navbar-logo {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.bk-navbar-brand:hover {
+    transform: translateY(-2px);
+}
+
+/* MENU LINKS BIG AND SPACED */
+.bk-navbar-menu {
+    display: flex;
+    align-items: center;
+    gap: 26px;              /* ↑ spacing between links */
+}
+
+.bk-navbar-link {
+    font-size: 22px;        /* ↑ bigger text */
+    font-weight: 800;
+    color: #000;
+    padding: 14px 24px;     /* ↑ more padding for each link */
+    border-radius: 999px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.bk-navbar-link:hover,
+.bk-navbar-link.active {
+    background: rgba(255, 255, 255, 0.35);
+    color: #000;
+}
+
+/* CONTACT BUTTON BIG */
+.bk-navbar-contact {
+    font-size: 22px;
+    font-weight: 900;
+    background: #1b5e20;
+    color: #fff !important;
+    padding: 14px 28px;
+    border-radius: 999px;
+}
+
+.bk-navbar-contact:hover {
+    background: #0d3d13;
+    transform: translateY(-2px);
+}
+
+/* Hamburger mobile toggle */
+.bk-navbar-toggle span {
+    width: 34px;
+    height: 4px;
+    background: #000;
+}
+
+/* RESPONSIVE ADJUSTMENTS */
+@media (max-width: 992px) {
+    .bk-navbar {
+        padding: 20px 28px;
+    }
+    .bk-navbar-brand {
+        font-size: 32px;
+        padding: 6px 16px;
+        border-radius: 28px;
+    }
+    .bk-navbar-link,
+    .bk-navbar-contact {
+        font-size: 20px;
+        padding: 12px 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .bk-navbar {
+        padding: 18px 22px;
+    }
+    .bk-navbar-brand {
+        font-size: 28px;
+        padding: 6px 14px;
+        border-radius: 26px;
+    }
+    .bk-navbar-link,
+    .bk-navbar-contact {
+        font-size: 18px;
+        padding: 10px 16px;
+    }
+}
+
+/* Prevent content hidden under navbar */
+body {
+    padding-top: 160px;
+}
+
