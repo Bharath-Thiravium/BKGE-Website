@@ -326,19 +326,19 @@ $solar_projects = [
         <h2 class="fade-up">Our Impact So Far</h2>
         <div class="stats-grid">
             <div class="stat-card fade-up" data-filter="all">
-                <div class="stat-number">11</div>
+                <div class="stat-number" data-target="11">0</div>
                 <div class="stat-label">Projects Completed</div>
             </div>
             <div class="stat-card fade-up" data-filter="commercial">
-                <div class="stat-number">2</div>
+                <div class="stat-number" data-target="2">0</div>
                 <div class="stat-label">Commercial Solutions</div>
             </div>
             <div class="stat-card fade-up" data-filter="industrial">
-                <div class="stat-number">4</div>
+                <div class="stat-number" data-target="4">0</div>
                 <div class="stat-label">Industrial Deployments</div>
             </div>
             <div class="stat-card fade-up" data-filter="utility">
-                <div class="stat-number">5</div>
+                <div class="stat-number" data-target="5">0</div>
                 <div class="stat-label">Hybrid / Utility</div>
             </div>
         </div>
@@ -436,6 +436,7 @@ $solar_projects = [
     <?php include 'includes/footer.php'; ?>
 
     <script src="js/no-flash.js"></script>
+    <script src="js/stat-counter.js"></script>
     <script src="js/projects.js"></script>
     <script src="js/projects-gallery.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>

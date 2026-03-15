@@ -1,0 +1,42 @@
+/* ===================================
+   SPACING FIX - HERO TO NEXT SECTION
+   =================================== */
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+section {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.hero {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.hero + section,
+.hero + .about {
+    margin-top: 0 !important;
+}
+
+.about {
+    margin-top: 0 !important;
+}
+
+/* Remove any transform that might cause spacing issues */
+.hero,
+.hero * {
+    transform: none !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero {
+        min-height: auto;
+        padding-top: 80px;
+        padding-bottom: 0;
+    }
+}

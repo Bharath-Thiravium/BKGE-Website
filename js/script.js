@@ -27,12 +27,15 @@ const slides = document.querySelectorAll(".hero-slider .slide");
 let index = 0;
 
 function changeSlide(){
+    if (slides.length === 0) return;
     slides[index].classList.remove("active");
     index = (index + 1) % slides.length;
     slides[index].classList.add("active");
 }
 
-setInterval(changeSlide, 4000); // change every 4 seconds
+if (slides.length > 0) {
+    setInterval(changeSlide, 4000);
+}
 
 
 // Observe all animated elements

@@ -283,10 +283,6 @@ body {
     line-height: 1;
 }
 
-.stat-number::after {
-    content: '+';
-}
-
 .stat-label {
     font-size: 1.2rem;
     font-weight: 600;

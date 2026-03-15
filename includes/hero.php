@@ -19,9 +19,9 @@
     <!-- Content -->
     <div class="hero-content">
         
-        <!-- LEFT: Logo -->
-        <div class="hero-logo-block">
-            <img src="assets/images/Logo.png" alt="BK Green Energy">
+        <!-- LEFT: Logo Block -->
+        <div class="hero-logo-block fade-up">
+            <img src="assets/images/Logo.png" alt="BK Green Energy Logo" class="hero-big-logo">
         </div>
         
         <!-- RIGHT: Text Content -->

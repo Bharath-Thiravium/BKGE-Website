@@ -1,29 +1,43 @@
 <?php
+// Start session for CSRF token
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Generate CSRF token if not exists
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
 // Form submission handler
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $name = trim($_POST['name'] ?? '');
-    $email = trim($_POST['email'] ?? '');
-    $message = trim($_POST['message'] ?? '');
+    // Verify CSRF token
+    if (empty($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        $errors = ["Security token validation failed. Please try again."];
+    } else {
+        $name = trim($_POST['name'] ?? '');
+        $email = trim($_POST['email'] ?? '');
+        $message = trim($_POST['message'] ?? '');
 
-    $errors = [];
+        $errors = [];
 
-    // Validate name
-    if (empty($name) || !preg_match("/^[A-Za-z ]{2,50}$/", $name)) {
-        $errors[] = "Invalid name";
-    }
+        // Validate name
+        if (empty($name) || !preg_match("/^[A-Za-z ]{2,50}$/", $name)) {
+            $errors[] = "Invalid name";
+        }
 
-    // Validate email
-    if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors[] = "Invalid email";
-    }
+        // Validate email
+        if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errors[] = "Invalid email";
+        }
 
-    // Validate message
-    if (empty($message) || strlen($message) < 5 || strlen($message) > 1000) {
-        $errors[] = "Message must be between 5-1000 characters";
-    }
+        // Validate message
+        if (empty($message) || strlen($message) < 5 || strlen($message) > 1000) {
+            $errors[] = "Message must be between 5-1000 characters";
+        }
 
-    // Send email if no errors
-    if (empty($errors)) {
+        // Send email if no errors
+        if (empty($errors)) {
         $to = "info@bkgreenenergy.com";
         $subject = "New Consultation Request from " . htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
         
@@ -40,6 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $success = true;
         } else {
             $errors[] = "Failed to send message. Please try again.";
+        }
         }
     }
 }
@@ -62,6 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/hero.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/spacing-fix.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/no-flash.css">
 </head>
@@ -141,25 +157,7 @@ $hero_images = [
                     <p>Our execution capabilities cover civil works, mechanical works, electrical works, installation & commissioning across Tamil Nadu, Karnataka, Maharashtra, and Andhra Pradesh.</p>
                 </div>
                 <div class="about-image fade-up">
-                    <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="solarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#0f7c3a;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#19a84a;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <circle cx="200" cy="80" r="40" fill="#FFD700" class="sun-pulse" />
-                        <rect x="80" y="140" width="60" height="80" fill="url(#solarGrad)" rx="5" />
-                        <rect x="150" y="140" width="60" height="80" fill="url(#solarGrad)" rx="5" />
-                        <rect x="220" y="140" width="60" height="80" fill="url(#solarGrad)" rx="5" />
-                        <rect x="290" y="140" width="60" height="80" fill="url(#solarGrad)" rx="5" />
-                        <line x1="110" y1="160" x2="130" y2="180" stroke="#fff" stroke-width="2" />
-                        <line x1="180" y1="160" x2="200" y2="180" stroke="#fff" stroke-width="2" />
-                        <line x1="250" y1="160" x2="270" y2="180" stroke="#fff" stroke-width="2" />
-                        <line x1="320" y1="160" x2="340" y2="180" stroke="#fff" stroke-width="2" />
-                        <rect x="50" y="220" width="300" height="10" fill="#333" />
-                        <path d="M 50 230 L 20 280 L 380 280 L 350 230 Z" fill="#0f7c3a" opacity="0.3" />
-                    </svg>
+                    <img src="assets/images/services/index.png" alt="Earthing, Lightning & SCADA">
                 </div>
             </div>
         </div>
@@ -224,11 +222,11 @@ $hero_images = [
                 <?php endif; ?>
 
                 <form method="POST" action="#consultation" class="consultation-form">
+                    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token'] ?? ''; ?>">
                     <input type="text" name="name" placeholder="Your Name" required pattern="[A-Za-z ]{2,50}"
                         title="Name should contain only letters and spaces (2-50 characters)">
                     <input type="email" name="email" placeholder="Your Email" required maxlength="100"
                         autocomplete="email" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email'], ENT_QUOTES, 'UTF-8') : ''; ?>">
-
                     <textarea name="message" placeholder="Tell us about your energy needs..." rows="5"
                         required maxlength="1000"><?php echo isset($_POST['message']) ? htmlspecialchars($_POST['message'], ENT_QUOTES, 'UTF-8') : ''; ?></textarea>
                     <button type="submit" class="btn btn-primary">Submit Request</button>
@@ -240,6 +238,7 @@ $hero_images = [
     <?php include 'includes/footer.php'; ?>
 
     <script src="js/no-flash.js"></script>
+    <script src="js/image-animations.js"></script>
     <script src="js/script.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
 

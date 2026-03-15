@@ -95,34 +95,60 @@
                 </div>
                 <div class="vision-text fade-up">
                     <h2>Our Vision</h2>
-                    <p>Our vision is to become one of South India’s most trusted and leading solar energy solution providers, expanding our footprint across Tamil Nadu, Karnataka, Maharashtra, and Andhra Pradesh. We aspire to drive the clean energy transition by helping industries and commercial establishments shift towards sustainable power generation.</p>
+                    <p>Our vision is to become one of South India's most trusted and leading solar energy solution providers, expanding our footprint across Tamil Nadu, Karnataka, Maharashtra, and Andhra Pradesh. We aspire to drive the clean energy transition by helping industries and commercial establishments shift towards sustainable power generation.</p>
 
-                     <p> BK Green Energy envisions a future where renewable energy is the primary source of power for businesses, reducing carbon emissions and promoting environmental responsibility. By continuously improving our technology, service standards, and operational excellence, we aim to create a greener, energy-secure, and economically sustainable tomorrow for future generations..</p>
+                     <p>BK Green Energy envisions a future where renewable energy is the primary source of power for businesses, reducing carbon emissions and promoting environmental responsibility. By continuously improving our technology, service standards, and operational excellence, we aim to create a greener, energy-secure, and economically sustainable tomorrow for future generations.</p>
                 </div>
             </div>
         </div>
     </section>
 
-     <!-- VISION SECTION -->
-    <section class="vision-section">
+     <!-- MISSION SECTION -->
+    <section class="mission-section">
         <div class="container">
-            <div class="vision-content">
-                <div class="vision-image fade-up">
+            <div class="mission-content">
+                <div class="mission-image fade-up">
                     <div class="icon-circle">
-                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="50" cy="50" r="35" fill="none" stroke="#0f7c3a" stroke-width="2" />
-                            <path d="M 50 20 L 55 40 L 75 40 L 60 52 L 65 72 L 50 60 L 35 72 L 40 52 L 25 40 L 45 40 Z"
-                                fill="#0f7c3a" />
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="mission-icon-svg">
+                            <defs>
+                                <style>
+                                    @keyframes rotatePulse {
+                                        0% { transform: rotate(0deg); opacity: 0.8; }
+                                        50% { opacity: 1; }
+                                        100% { transform: rotate(360deg); opacity: 0.8; }
+                                    }
+                                    @keyframes scaleFloat {
+                                        0%, 100% { transform: scale(1); }
+                                        50% { transform: scale(1.1); }
+                                    }
+                                    .mission-outer-circle {
+                                        animation: rotatePulse 8s linear infinite;
+                                        transform-origin: 50px 50px;
+                                    }
+                                    .mission-inner-icon {
+                                        animation: scaleFloat 3s ease-in-out infinite;
+                                        transform-origin: 50px 50px;
+                                    }
+                                </style>
+                            </defs>
+                            <!-- Outer rotating circle -->
+                            <circle class="mission-outer-circle" cx="50" cy="50" r="40" fill="none" stroke="#90cf4d" stroke-width="1.5" opacity="0.5" />
+                            <!-- Inner pulsing icon group -->
+                            <g class="mission-inner-icon">
+                                <!-- Target/Goal circles -->
+                                <circle cx="50" cy="50" r="28" fill="none" stroke="#0f7c3a" stroke-width="2" />
+                                <circle cx="50" cy="50" r="18" fill="none" stroke="#0f7c3a" stroke-width="2" />
+                                <circle cx="50" cy="50" r="8" fill="#0f7c3a" />
+                                <!-- Arrow pointing up (direction/progress) -->
+                                <path d="M 50 35 L 50 55 M 45 50 L 50 55 L 55 50" stroke="#90cf4d" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+                            </g>
                         </svg>
                     </div>
-                    <div class="accent-line"></div>
                 </div>
-                <div class="vision-text fade-up">
+                <div class="mission-text fade-up">
                     <h2>Our Mission</h2>
-                    <p>To BK Green Energy, our mission is to accelerate the adoption of solar energy by delivering innovative, reliable, and high-performance solar installation solutions tailored for industrial and commercial sectors. Since our establishment in 2020 in Madurai, Tamil Nadu, we have been committed to empowering businesses with sustainable energy alternatives that reduce operational costs and environmental impact</p>
-
-                     <p> We strive to provide end-to-end solar solutions — from consultation and system design to installation and maintenance — ensuring maximum efficiency, durability, and return on investment for our clients. Through advanced technology, skilled expertise, and strong ethical values, we aim to build long-term partnerships while contributing to India’s renewable energy growth..</p>
-                </div></p>
+                    <p>To BK Green Energy, our mission is to accelerate the adoption of solar energy by delivering innovative, reliable, and high-performance solar installation solutions tailored for industrial and commercial sectors. Since our establishment in 2020 in Madurai, Tamil Nadu, we have been committed to empowering businesses with sustainable energy alternatives that reduce operational costs and environmental impact.</p>
+                    <p>We strive to provide end-to-end solar solutions — from consultation and system design to installation and maintenance — ensuring maximum efficiency, durability, and return on investment for our clients. Through advanced technology, skilled expertise, and strong ethical values, we aim to build long-term partnerships while contributing to India's renewable energy growth.</p>
                 </div>
             </div>
         </div>

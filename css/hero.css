@@ -54,7 +54,6 @@
     z-index: 2;
     display: flex;
     align-items: center;
-    gap: 60px;
     max-width: 1200px;
     width: 100%;
     padding: 40px 20px;
@@ -63,36 +62,33 @@
 
 /* LEFT: Logo Block */
 .hero-logo-block {
-    flex: 0 0 auto;
+    flex-shrink: 0;
     animation: fadeInLeft 1s ease-in-out;
-    background: #ffffff;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    transition: all 0.4s ease;
 }
 
-.hero-logo-block:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
-}
-
-.hero-logo-block img {
-    height: 200px;
+.hero-big-logo {
     width: auto;
-    display: block;
-    filter: none;
-    transition: transform 0.4s ease;
+    height: 220px;
+    filter: drop-shadow(0 8px 20px rgba(144, 207, 77, 0.5));
+    animation: fadeInRight 1s ease;
 }
 
-.hero-logo-block:hover img {
-    transform: scale(1.05);
+/* White background behind logo */
+.hero-logo-block {
+    background: #ffffff;
+    padding: 8px 15px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* RIGHT: Text Block */
 .hero-text-block {
     flex: 1;
-    text-align: right;
+    text-align: left;
+    max-width: 720px;
 }
 
 .hero-text-block h1 {
@@ -137,6 +133,17 @@
     }
 }
 
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -162,11 +169,11 @@
 
     .hero-logo-block {
         order: 1;
-        margin: 0 auto;
+        text-align: center;
     }
 
-    .hero-logo-block img {
-        height: 160px;
+    .hero-big-logo {
+        height: 180px;
     }
 
     .hero-text-block {
@@ -204,11 +211,11 @@
 
     .hero-logo-block {
         order: 1;
-        margin: 20px auto 0;
+        margin: 0 auto 20px;
     }
 
-    .hero-logo-block img {
-        height: 140px;
+    .hero-big-logo {
+        height: 120px;
     }
 
     .hero-text-block {

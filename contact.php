@@ -1,35 +1,49 @@
 <?php
+// Start session for CSRF token
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Generate CSRF token if not exists
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
 // Form submission handler
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $name = trim($_POST['name'] ?? '');
-    $email = trim($_POST['email'] ?? '');
-    $phone = trim($_POST['phone'] ?? '');
-    $message = trim($_POST['message'] ?? '');
+    // Verify CSRF token
+    if (empty($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        $errors = ["Security token validation failed. Please try again."];
+    } else {
+        $name = trim($_POST['name'] ?? '');
+        $email = trim($_POST['email'] ?? '');
+        $phone = trim($_POST['phone'] ?? '');
+        $message = trim($_POST['message'] ?? '');
 
-    $errors = [];
+        $errors = [];
 
-    // Validate name
-    if (empty($name) || !preg_match("/^[A-Za-z ]{2,50}$/", $name)) {
-        $errors[] = "Invalid name";
-    }
+        // Validate name
+        if (empty($name) || !preg_match("/^[A-Za-z ]{2,50}$/", $name)) {
+            $errors[] = "Invalid name";
+        }
 
-    // Validate email
-    if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors[] = "Invalid email";
-    }
+        // Validate email
+        if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errors[] = "Invalid email";
+        }
 
-    // Validate phone (Indian format)
-    if (empty($phone) || !preg_match("/^[6-9][0-9]{9}$/", $phone)) {
-        $errors[] = "Invalid phone number";
-    }
+        // Validate phone (Indian format)
+        if (empty($phone) || !preg_match("/^[6-9][0-9]{9}$/", $phone)) {
+            $errors[] = "Invalid phone number";
+        }
 
-    // Validate message
-    if (empty($message) || strlen($message) < 5 || strlen($message) > 1000) {
-        $errors[] = "Message must be between 5-1000 characters";
-    }
+        // Validate message
+        if (empty($message) || strlen($message) < 5 || strlen($message) > 1000) {
+            $errors[] = "Message must be between 5-1000 characters";
+        }
 
-    // Send email if no errors
-    if (empty($errors)) {
+        // Send email if no errors
+        if (empty($errors)) {
         $to = "info@bkgreenenergy.com";
         $subject = "New Contact Request from " . htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
 
@@ -48,8 +62,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $errors[] = "Failed to send message. Please try again.";
         }
+        }
     }
-    exit;   // ⭐⭐⭐ THIS IS THE MAGIC LINE ⭐⭐⭐
 }
 ?>
 <!DOCTYPE html>
@@ -166,8 +180,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <p>Thank you! We'll contact you soon.</p>
                         </div>
                     <?php endif; ?>
+                    <?php if (!empty($errors)): ?>
+                        <div class="error-message" style="background: #f8d7da; color: #721c24; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #f5c6cb;">
+                            <?php foreach ($errors as $error): ?>
+                                <p style="margin: 5px 0;"><?php echo htmlspecialchars($error); ?></p>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
 
                     <form method="POST" action="#contact-form" id="contact-form" class="contact-form">
+                        <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token'] ?? ''; ?>">
                         <div class="form-group">
                             <input type="text" name="name" id="name" required maxlength="50" pattern="[A-Za-z ]{2,50}"
                                 value="<?php echo isset($_POST['name']) ? htmlspecialchars($_POST['name'], ENT_QUOTES, 'UTF-8') : ''; ?>">

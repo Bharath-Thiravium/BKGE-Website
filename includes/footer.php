@@ -64,13 +64,13 @@
         <div class="footer-bottom">
             <p>Copyright © 2025 BK Green Energy. All rights reserved.</p>
             <div class="social-icons">
-                <a href="https://www.instagram.com/bkgreenenergy/" target="_blank" aria-label="Instagram">
+                <a href="https://www.instagram.com/bkgreenenergy/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                     <img src="assets/images/Instagram.png" alt="Instagram">
                 </a>
-                <a href="https://www.linkedin.com/in/bk-green-energy-ba51793b1/" target="_blank" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/in/bk-green-energy-ba51793b1/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                     <img src="assets/images/LinkedIN.png" alt="LinkedIn">
                 </a>
-                <a href="https://wa.me/917539944358" target="_blank" aria-label="WhatsApp">
+                <a href="https://wa.me/917539944358" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
                     <img src="assets/images/WhatsApp.png" alt="WhatsApp">
                 </a>
             </div>
