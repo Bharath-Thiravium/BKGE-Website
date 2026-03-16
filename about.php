@@ -148,7 +148,7 @@
                 <div class="mission-text fade-up">
                     <h2>Our Mission</h2>
                     <p>To BK Green Energy, our mission is to accelerate the adoption of solar energy by delivering innovative, reliable, and high-performance solar installation solutions tailored for industrial and commercial sectors. Since our establishment in 2020 in Madurai, Tamil Nadu, we have been committed to empowering businesses with sustainable energy alternatives that reduce operational costs and environmental impact.</p>
-                    <p>We strive to provide end-to-end solar solutions — from consultation and system design to installation and maintenance — ensuring maximum efficiency, durability, and return on investment for our clients. Through advanced technology, skilled expertise, and strong ethical values, we aim to build long-term partnerships while contributing to India's renewable energy growth.</p>
+                    <p>We strive to provide end-to-end solar solutions  from consultation and system design to installation and maintenance  ensuring maximum efficiency, durability, and return on investment for our clients. Through advanced technology, skilled expertise, and strong ethical values, we aim to build long-term partnerships while contributing to India's renewable energy growth.</p>
                 </div>
             </div>
         </div>
