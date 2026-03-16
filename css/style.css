@@ -430,7 +430,7 @@ body {
 .services-section {
     width: 100%;
     padding: 100px 20px;
-    background: #f9f9f9;
+    background: #90cf4d;
 }
 
 .services-heading {
@@ -440,7 +440,7 @@ body {
 
 .services-heading h2 {
     font-size: 2.8rem;
-    color: var(--primary-green);
+    color: #ffffff;
     font-weight: 700;
 }
 
@@ -487,6 +487,7 @@ body {
     flex-direction: column;
     justify-content: center;
     min-height: 220px;
+    color: #8cc63f;
 }
 
 .service-content h3 {
