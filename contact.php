@@ -84,7 +84,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="css/contact.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/no-flash.css">
-    <link rel="stylesheet" href="css/responsive-master.css">
 </head>
 
 <body class="contact-page">

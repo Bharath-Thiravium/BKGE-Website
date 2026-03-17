@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="css/services.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/no-flash.css">
-    <link rel="stylesheet" href="css/responsive-master.css">
     
 </head>
 
