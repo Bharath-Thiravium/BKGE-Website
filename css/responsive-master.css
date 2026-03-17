@@ -1,0 +1,989 @@
+/* ===================================
+   RESPONSIVE MASTER FIX - ALL DEVICES
+   =================================== */
+
+/* ===== MOBILE-FIRST BASE STYLES ===== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ===================================
+   NAVBAR - RESPONSIVE FIX
+   =================================== */
+
+.custom-navbar {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.custom-navbar .container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.brand-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 0 1 auto;
+    min-width: 0;
+}
+
+.navbar-collapse {
+    width: 100%;
+    flex-grow: 0;
+}
+
+.navbar-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.nav-item {
+    width: 100%;
+}
+
+.nav-link {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    text-align: left;
+}
+
+/* ===================================
+   HERO SECTION - RESPONSIVE FIX
+   =================================== */
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+}
+
+.hero-slider,
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-slider .slide {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    max-width: 100%;
+    padding: 2rem 1rem;
+    gap: 2rem;
+}
+
+.hero-logo-block {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-big-logo {
+    width: auto;
+    height: 120px;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.hero-text-block {
+    flex: 1;
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+}
+
+.hero-text-block h1 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.hero-text-block p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    align-items: stretch;
+}
+
+.btn {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    text-align: center;
+    display: inline-block;
+}
+
+/* ===================================
+   ABOUT SECTION - RESPONSIVE FIX
+   =================================== */
+
+.about,
+.about-content {
+    width: 100%;
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+
+.about-text {
+    width: 100%;
+    text-align: center;
+}
+
+.about-text h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.about-text p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.about-image {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.about-image img,
+.about-image svg {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+/* ===================================
+   SERVICES SECTION - RESPONSIVE FIX
+   =================================== */
+
+.services-section {
+    width: 100%;
+    padding: 3rem 1rem;
+    overflow-x: hidden;
+}
+
+.services-heading {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.services-heading h2 {
+    font-size: 1.75rem;
+}
+
+.service-card {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    text-align: center;
+    align-items: center;
+}
+
+.service-image {
+    width: 100%;
+    max-width: 100%;
+    flex: 0 0 auto;
+}
+
+.service-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    border-radius: 0.75rem;
+}
+
+.service-content {
+    width: 100%;
+    text-align: center;
+}
+
+.service-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.service-content p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* ===================================
+   CONSULTATION SECTION - RESPONSIVE FIX
+   =================================== */
+
+.consultation {
+    width: 100%;
+    padding: 3rem 1rem;
+}
+
+.consultation-content {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+}
+
+.consultation h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+.consultation p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.consultation-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.consultation-form input,
+.consultation-form textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+}
+
+.consultation-form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.consultation-form button {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+}
+
+/* ===================================
+   FOOTER - RESPONSIVE FIX
+   =================================== */
+
+footer {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.footer-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 1rem;
+}
+
+.footer-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+}
+
+.footer-columns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+    width: 100%;
+}
+
+.footer-links,
+.footer-address {
+    text-align: center;
+    margin-left: 0;
+}
+
+.footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* ===================================
+   INTRO SECTION (ABOUT PAGE) - RESPONSIVE FIX
+   =================================== */
+
+.intro-section {
+    width: 100%;
+    padding: 6rem 1rem 4rem;
+    overflow-x: hidden;
+}
+
+.intro-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+    width: 100%;
+}
+
+.intro-text {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+}
+
+.intro-text h1 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+.intro-text p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.intro-logo-block {
+    width: 100%;
+    max-width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.intro-big-logo {
+    width: auto;
+    height: 120px;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+/* ===================================
+   VISION & MISSION SECTIONS - RESPONSIVE FIX
+   =================================== */
+
+.vision-section,
+.mission-section {
+    width: 100%;
+    padding: 3rem 1rem;
+    overflow-x: hidden;
+}
+
+.vision-content,
+.mission-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+    width: 100%;
+    max-width: 100%;
+    padding: 2rem 1rem;
+}
+
+.vision-image,
+.mission-image {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-circle {
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+}
+
+.icon-circle svg {
+    width: 100%;
+    height: 100%;
+}
+
+.vision-text,
+.mission-text {
+    width: 100%;
+    text-align: center;
+}
+
+.vision-text h2,
+.mission-text h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.vision-text p,
+.mission-text p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+/* ===================================
+   TIMELINE SECTION - RESPONSIVE FIX
+   =================================== */
+
+.journey-section {
+    width: 100%;
+    padding: 3rem 1rem;
+    overflow-x: hidden;
+}
+
+.journey-section h2 {
+    font-size: 1.75rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+}
+
+.timeline::before {
+    display: none;
+}
+
+.timeline-item {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+}
+
+.timeline-dot {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 1rem;
+}
+
+.timeline-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-content p {
+    font-size: 0.95rem;
+}
+
+/* ===================================
+   TABLET RESPONSIVE (768px+)
+   =================================== */
+
+@media (min-width: 768px) {
+    .brand-text {
+        font-size: 1.5rem;
+    }
+
+    .navbar-nav {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .nav-item {
+        width: auto;
+    }
+
+    .nav-link {
+        width: auto;
+        text-align: center;
+        padding: 0.5rem 1rem;
+    }
+
+    .hero-content {
+        flex-direction: row;
+        text-align: left;
+        gap: 3rem;
+        padding: 2.5rem;
+    }
+
+    .hero-logo-block {
+        flex: 0 0 auto;
+        max-width: 250px;
+    }
+
+    .hero-big-logo {
+        height: 180px;
+    }
+
+    .hero-text-block {
+        flex: 1;
+        text-align: left;
+    }
+
+    .hero-text-block h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-text-block p {
+        font-size: 1.1rem;
+    }
+
+    .hero-buttons {
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        width: auto;
+    }
+
+    .about-content {
+        flex-direction: row;
+        gap: 3rem;
+        align-items: flex-start;
+    }
+
+    .about-text {
+        flex: 0 0 35%;
+        text-align: left;
+    }
+
+    .about-text h2 {
+        font-size: 2.5rem;
+        text-align: left;
+    }
+
+    .about-text p {
+        font-size: 1.1rem;
+        text-align: left;
+    }
+
+    .about-image {
+        flex: 0 0 65%;
+    }
+
+    .service-card {
+        flex-direction: row;
+        text-align: left;
+        align-items: center;
+        gap: 2rem;
+        padding: 2rem;
+    }
+
+    .service-image {
+        flex: 0 0 300px;
+        max-width: 300px;
+    }
+
+    .service-content {
+        flex: 1;
+        text-align: left;
+    }
+
+    .service-content h3 {
+        font-size: 1.8rem;
+    }
+
+    .service-content p {
+        font-size: 1.05rem;
+    }
+
+    .consultation-content {
+        max-width: 600px;
+    }
+
+    .consultation h2 {
+        font-size: 2.2rem;
+    }
+
+    .consultation p {
+        font-size: 1.05rem;
+    }
+
+    .footer-top {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+    }
+
+    .footer-contact {
+        flex-direction: column;
+        align-items: flex-end;
+        text-align: right;
+    }
+
+    .footer-columns {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .footer-address {
+        text-align: right;
+        margin-left: auto;
+    }
+
+    .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+    }
+
+    .intro-content {
+        flex-direction: row;
+        text-align: left;
+        gap: 3rem;
+        align-items: center;
+    }
+
+    .intro-text {
+        flex: 1;
+        text-align: left;
+    }
+
+    .intro-text h1 {
+        font-size: 2.5rem;
+        text-align: left;
+    }
+
+    .intro-text p {
+        font-size: 1.1rem;
+        text-align: left;
+    }
+
+    .intro-logo-block {
+        flex: 0 0 auto;
+        max-width: 250px;
+    }
+
+    .intro-big-logo {
+        height: 180px;
+    }
+
+    .vision-content,
+    .mission-content {
+        flex-direction: row;
+        text-align: left;
+        align-items: center;
+        gap: 3rem;
+        padding: 3rem;
+    }
+
+    .vision-image,
+    .mission-image {
+        flex: 0 0 auto;
+        justify-content: flex-start;
+    }
+
+    .icon-circle {
+        width: 150px;
+        height: 150px;
+    }
+
+    .vision-text,
+    .mission-text {
+        flex: 1;
+        text-align: left;
+    }
+
+    .vision-text h2,
+    .mission-text h2 {
+        font-size: 2.2rem;
+        text-align: left;
+    }
+
+    .vision-text p,
+    .mission-text p {
+        font-size: 1.1rem;
+        text-align: left;
+    }
+
+    .timeline {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .timeline::before {
+        display: block;
+    }
+
+    .timeline-item {
+        max-width: none;
+        flex: 1;
+    }
+}
+
+/* ===================================
+   DESKTOP RESPONSIVE (1024px+)
+   =================================== */
+
+@media (min-width: 1024px) {
+    .brand-text {
+        font-size: 1.75rem;
+    }
+
+    .hero-content {
+        gap: 4rem;
+        padding: 3rem;
+    }
+
+    .hero-logo-block {
+        max-width: 300px;
+    }
+
+    .hero-big-logo {
+        height: 220px;
+    }
+
+    .hero-text-block h1 {
+        font-size: 3.5rem;
+    }
+
+    .hero-text-block p {
+        font-size: 1.3rem;
+    }
+
+    .about-content {
+        gap: 4rem;
+    }
+
+    .about-text h2 {
+        font-size: 3rem;
+    }
+
+    .about-text p {
+        font-size: 1.2rem;
+    }
+
+    .service-card {
+        gap: 3rem;
+        padding: 2.5rem;
+    }
+
+    .service-image {
+        flex: 0 0 320px;
+        max-width: 320px;
+    }
+
+    .service-content h3 {
+        font-size: 2rem;
+    }
+
+    .service-content p {
+        font-size: 1.1rem;
+    }
+
+    .consultation-content {
+        max-width: 700px;
+    }
+
+    .consultation h2 {
+        font-size: 2.8rem;
+    }
+
+    .intro-content {
+        gap: 4rem;
+    }
+
+    .intro-text h1 {
+        font-size: 3rem;
+    }
+
+    .intro-text p {
+        font-size: 1.2rem;
+    }
+
+    .intro-logo-block {
+        max-width: 300px;
+    }
+
+    .intro-big-logo {
+        height: 220px;
+    }
+
+    .vision-content,
+    .mission-content {
+        gap: 4rem;
+        padding: 4rem;
+    }
+
+    .icon-circle {
+        width: 180px;
+        height: 180px;
+    }
+
+    .vision-text h2,
+    .mission-text h2 {
+        font-size: 2.5rem;
+    }
+
+    .vision-text p,
+    .mission-text p {
+        font-size: 1.2rem;
+    }
+}
+
+/* ===================================
+   LARGE DESKTOP (1200px+)
+   =================================== */
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    .hero-content {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .about-content {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .service-card {
+        max-width: 1150px;
+        margin: 0 auto 2rem;
+    }
+
+    .consultation-content {
+        max-width: 800px;
+    }
+
+    .vision-content,
+    .mission-content {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}
+
+/* ===================================
+   ACCESSIBILITY & PERFORMANCE
+   =================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Prevent horizontal scroll */
+html, body {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+/* Ensure all containers respect viewport */
+.container,
+.hero-content,
+.about-content,
+.service-card,
+.consultation-content,
+.footer-container,
+.intro-content,
+.vision-content,
+.mission-content {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}

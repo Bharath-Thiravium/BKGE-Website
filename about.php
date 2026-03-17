@@ -16,14 +16,12 @@
     <link rel="stylesheet" href="css/about.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/no-flash.css">
-    <link rel="stylesheet" href="css/alignment-fix-only.css">
+    <link rel="stylesheet" href="css/responsive-master.css">
 </head>
 
 <body class="about-page">
     <nav class="navbar navbar-expand-lg fixed-top navbar-light custom-navbar">
         <div class="container">
-            
-         
             <a href="index.php" class="brand-text">BK Green Energy</a>
             <!-- Mobile Toggle -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">

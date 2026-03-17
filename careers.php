@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="css/careers.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/no-flash.css">
-    <link rel="stylesheet" href="css/alignment-fix-only.css">
 </head>
 
 <body>
