@@ -9,6 +9,8 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    width: 100%;
+    max-width: 100%;
 }
 
 /* Background Image/Slider */
@@ -58,6 +60,8 @@
     width: 100%;
     padding: 40px 20px;
     color: #fff;
+    box-sizing: border-box;
+    margin: 0 auto;
 }
 
 /* LEFT: Logo Block */
@@ -200,6 +204,8 @@
     .hero {
         padding-top: 100px;
         min-height: auto;
+        width: 100%;
+        max-width: 100%;
     }
 
     .hero-content {
@@ -207,6 +213,9 @@
         text-align: center;
         gap: 30px;
         padding-top: 20px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }
 
     .hero-logo-block {

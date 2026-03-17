@@ -19,12 +19,17 @@ body {
     padding: 50px 0 20px;
     font-family: 'Poppins', sans-serif;
     margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 .footer-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 40px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* ===================================
