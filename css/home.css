@@ -305,3 +305,12 @@
 .service-card.fade-up:nth-child(2) { transition-delay: 0.12s; }
 .service-card.fade-up:nth-child(3) { transition-delay: 0.24s; }
 .service-card.fade-up:nth-child(4) { transition-delay: 0.36s; }
+
+/* ── MOBILE ACCORDION: hide inactive cards when one is open ── */
+@media (max-width: 767px) {
+    .service-card { cursor: pointer; }
+
+    .services-section:has(.service-card.sc-active) .service-card:not(.sc-active) {
+        display: none;
+    }
+}

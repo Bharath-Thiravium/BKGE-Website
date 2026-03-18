@@ -205,7 +205,7 @@
 .tab-item {
     display: flex;
     align-items: center;
-    gap: 1.25rem;
+    gap: 5.25rem;
     padding: 1.5625rem;
     background: var(--gray-light);
     border-radius: 0.75rem;
@@ -517,16 +517,7 @@
         min-height: auto;
     }
 
-    .content-panel {
-        position: relative;
-        opacity: 1;
-        visibility: visible;
-        transform: none;
-        padding: 1.125rem;
-        border-radius: 0.875rem;
-        cursor: pointer;
-    }
-
+   
     .content-panel .content-image,
     .content-panel p { display: none; }
 

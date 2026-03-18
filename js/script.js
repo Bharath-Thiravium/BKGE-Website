@@ -16,4 +16,23 @@ document.addEventListener('DOMContentLoaded', function () {
     if (slides.length > 0) {
         setInterval(changeSlide, 4000);
     }
+
+    // Mobile accordion for service cards
+    var serviceCards = document.querySelectorAll('.service-card');
+
+    serviceCards.forEach(function (card) {
+        card.addEventListener('click', function () {
+            if (window.innerWidth >= 768) return;
+
+            var isActive = card.classList.contains('sc-active');
+
+            // Close any open card
+            serviceCards.forEach(function (c) { c.classList.remove('sc-active'); });
+
+            // Toggle clicked card
+            if (!isActive) {
+                card.classList.add('sc-active');
+            }
+        });
+    });
 });

@@ -181,8 +181,7 @@
                 </div>
             </div>
         </div>
-    </section>
-    
+    </section>    
     <!-- OUR IMPACT SO FAR -->
     <!-- PROJECT IMPACT STATS -->
    <?php
