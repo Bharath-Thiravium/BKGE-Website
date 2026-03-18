@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes, maximum-scale=5">
     <meta name="description"
         content="BK Green Energy - Smart renewable energy solutions for homes and businesses. Solar power, energy consultancy, and sustainable solutions.">
     <meta name="keywords"
@@ -75,11 +75,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link href="assets/images/Logo.png" rel="shortcut icon" type="image/x-icon">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/hero.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/spacing-fix.css">
-    <link rel="stylesheet" href="css/cross-browser-mobile-fix.css">
-    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/no-flash.css">
 </head>
 
@@ -108,7 +105,8 @@ $hero_images = [
             </a> -->
             <a href="index.php" class="brand-text">BK Green Energy</a>
             <!-- Mobile Toggle -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
 
             <!-- Links -->
@@ -158,7 +156,7 @@ $hero_images = [
                     <p>Our execution capabilities cover civil works, mechanical works, electrical works, installation & commissioning across Tamil Nadu, Karnataka, Maharashtra, and Andhra Pradesh.</p>
                 </div>
                 <div class="about-image fade-up">
-                    <img src="assets/images/services/index.png" alt="Earthing, Lightning & SCADA">
+                    <img src="assets/images/services/index.png" alt="Earthing, Lightning & SCADA" id="globe-img" class="globe-img">
                 </div>
             </div>
         </div>
@@ -167,10 +165,10 @@ $hero_images = [
     <!-- SERVICES SECTION -->
     <section class="services-section" id="services">
         <div class="container">
-            <div class="services-heading">
+            <div class="services-heading reveal">
                 <h2>Our Solutions</h2>
             </div>
-            <div class="service-card fade-left">
+            <div class="service-card fade-up">
                 <div class="service-image">
                     <img src="assets/images/services/civil.png" alt="Civil & Foundation Works">
                 </div>
@@ -179,7 +177,7 @@ $hero_images = [
                     <p>MMS pile foundation works, pile cap construction, ICR foundations, IDT foundations with gravel filling, LT panel foundations with HDGI canopy, BOT/UPS DB/auxiliary panel foundations, porta cabin, main gate, and bus duct foundations.</p>
                 </div>
             </div>
-            <div class="service-card fade-left">
+            <div class="service-card fade-up">
                 <div class="service-image">
                     <img src="assets/images/services/mechanical.png" alt="Mechanical Works">
                 </div>
@@ -188,7 +186,7 @@ $hero_images = [
                     <p>MMS erection, inverter stand erection, solar module mounting & alignment with precision engineering and quality standards.</p>
                 </div>
             </div>
-            <div class="service-card fade-left">
+            <div class="service-card fade-up">
                 <div class="service-image">
                     <img src="assets/images/services/electrical.png" alt="Electrical Works">
                 </div>
@@ -197,7 +195,7 @@ $hero_images = [
                     <p>DC Works: Module interconnection & string formation, DC cable laying & termination, DC testing & commissioning. AC Works: Inverter installation, AC cable laying & termination, AC testing & commissioning.</p>
                 </div>
             </div>
-            <div class="service-card fade-left">
+            <div class="service-card fade-up">
                 <div class="service-image">
                     <img src="assets/images/services/scada.png" alt="Earthing, Lightning & SCADA">
                 </div>
@@ -238,10 +236,11 @@ $hero_images = [
 
     <?php include 'includes/footer.php'; ?>
 
+    <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/no-flash.js"></script>
+    <script src="js/animate.js"></script>
     <script src="js/image-animations.js"></script>
     <script src="js/script.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
 
 
 </body>

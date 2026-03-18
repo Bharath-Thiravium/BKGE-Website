@@ -25,7 +25,7 @@
         </div>
         
         <!-- RIGHT: Text Content -->
-        <div class="hero-text-block">
+        <div class="hero-text-block fade-in-up">
             <h1><?php echo $hero_title; ?></h1>
             
             <?php if (isset($hero_subtitle)): ?>

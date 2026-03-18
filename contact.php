@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes, maximum-scale=5">
     <meta name="description"
         content="Contact BK Green Energy - Get in touch for solar solutions, renewable energy consultations, and expert guidance on sustainable power systems.">
     <meta name="keywords"
@@ -81,9 +81,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link href="assets/images/Logo.png" rel="shortcut icon" type="image/x-icon">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/contact.css">
-    <link rel="stylesheet" href="css/cross-browser-mobile-fix.css">
-    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/contact-page.css">
     <link rel="stylesheet" href="css/no-flash.css">
 </head>
 
@@ -97,7 +96,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </a> -->
 
             <!-- Mobile Toggle -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
 
             <!-- Links -->
@@ -135,21 +135,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </nav>
 
     <!-- HERO INTRO SECTION -->
+    <!-- HERO INTRO SECTION -->
     <section class="hero-intro">
-        <div class="hero-bg-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-            <div class="shape shape-3"></div>
-        </div>
+        <div class="hero-overlay"></div>
         <div class="container">
             <div class="hero-content-wrapper">
-                <div class="hero-logo-block fade-in">
+                <div class="hero-logo-block fade-in-up">
                     <img src="assets/images/Logo.png" alt="BK Green Energy Logo" class="hero-big-logo">
                 </div>
-                <div class="hero-content fade-in">
+                <div class="hero-content fade-in-up">
                     <h1>Let's Power a Greener Future Together</h1>
-                    <p>Have questions about solar solutions? Planning to switch to renewable energy for your home or
-                        business? Our team is here to guide you every step of the way.</p>
+                    <p class="hero-tagline">💬 We're Here to Help</p>
+                    <p class="hero-body">Have questions about solar solutions? Planning to switch to renewable energy for your home or business? Our team is here to guide you every step of the way.</p>
+                    <p class="hero-bottom">Fill out the form below and we'll get back to you shortly.</p>
                 </div>
             </div>
             <div class="scroll-indicator">
@@ -344,9 +342,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <?php include 'includes/footer.php'; ?>
 
-    <script src="js/no-flash.js"></script>
-    <script src="js/contact.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/no-flash.js"></script>
+    <script src="js/animate.js"></script>
+    <script src="js/contact.js"></script>
 
 </body>
 

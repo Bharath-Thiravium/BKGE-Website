@@ -1,60 +1,30 @@
-// BK Green Energy - About Page JavaScript
+// BK Green Energy — about.js
+// Observer + navbar scroll handled by animate.js
 
-// Intersection Observer for scroll animations
-const observerOptions = {
-    threshold: 0.15,
-    rootMargin: '0px 0px -50px 0px'
-};
+document.addEventListener('DOMContentLoaded', function () {
+    // Timeline stagger
+    var timelineItems = document.querySelectorAll('.timeline-item');
+    if (timelineItems.length) {
+        var tlObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry, i) {
+                if (entry.isIntersecting) {
+                    setTimeout(function () {
+                        entry.target.classList.add('visible');
+                    }, i * 100);
+                    tlObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+        timelineItems.forEach(function (item) { tlObserver.observe(item); });
+    }
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+    // Parallax bg-decoration (desktop only — skip on mobile for performance)
+    if (window.innerWidth > 767) {
+        var bgDecoration = document.querySelector('.bg-decoration');
+        if (bgDecoration) {
+            window.addEventListener('scroll', function () {
+                bgDecoration.style.transform = 'translateY(' + (window.pageYOffset * 0.3) + 'px)';
+            }, { passive: true });
         }
-    });
-}, observerOptions);
-
-// Navbar scroll effect
-window.addEventListener("scroll", function () {
-    let navbar = document.querySelector(".custom-navbar");
-    if (window.scrollY > 60) {
-        navbar.classList.add("navbar-scrolled");
-    } else {
-        navbar.classList.remove("navbar-scrolled");
     }
 });
-
-
-// Initialize animations on page load
-document.addEventListener('DOMContentLoaded', () => {
-    // Observe all animated elements
-    const animatedElements = document.querySelectorAll('.fade-up, .slide-right');
-    animatedElements.forEach(el => observer.observe(el));
-
-    // Parallax effect for intro section
-    const introSection = document.querySelector('.intro-section');
-    if (introSection) {
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const bgDecoration = document.querySelector('.bg-decoration');
-            if (bgDecoration) {
-                bgDecoration.style.transform = `translateY(${scrolled * 0.3}px)`;
-            }
-        });
-    }
-
-    // Timeline animation on scroll
-    const timelineItems = document.querySelectorAll('.timeline-item');
-    const timelineObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-            if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.classList.add('visible');
-                }, index * 100);
-            }
-        });
-    }, { threshold: 0.2 });
-
-    timelineItems.forEach(item => timelineObserver.observe(item));
-});
-    

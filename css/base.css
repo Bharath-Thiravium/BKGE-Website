@@ -1,0 +1,1087 @@
+/* ============================================================
+   BK GREEN ENERGY — BASE.CSS
+   Shared foundation for ALL pages.
+   Mobile-first. Zoom-stable. Device-independent.
+   ============================================================ */
+
+/* ── 1. RESET & BOX-SIZING ─────────────────────────────── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ── 2. ROOT SCALE ─────────────────────────────────────── */
+:root {
+    --green:        #90cf4d;
+    --green-dark:   #0f7c3a;
+    --green-mid:    #54b435;
+    --black:        #000000;
+    --white:        #ffffff;
+    --gray-light:   #f8f9fa;
+    --text:         #333333;
+    --text-muted:   #555555;
+
+    /* spacing scale */
+    --sp-xs:  0.5rem;
+    --sp-sm:  1rem;
+    --sp-md:  1.5rem;
+    --sp-lg:  2.5rem;
+    --sp-xl:  4rem;
+    --sp-2xl: 6rem;
+
+    /* container */
+    --container-max: 1200px;
+    --container-pad: 1.25rem;
+}
+
+/* ── 3. HTML / BODY ────────────────────────────────────── */
+html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--white);
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    max-width: 100vw;
+}
+
+/* ── 4. PREVENT HORIZONTAL OVERFLOW ───────────────────── */
+/*
+   CRITICAL: Do NOT use overflow-x: hidden on section/main/article/aside.
+   On mobile browsers, overflow-x: hidden on a block element creates a new
+   scroll container. The Intersection Observer (root: null = viewport) then
+   measures intersection against the viewport but the browser clips the
+   element's coordinate space — animated children with translateY/translateX
+   are seen as outside the viewport and .visible is never added.
+   Use overflow: clip instead — it prevents scrollbars without creating a
+   scroll container, so the IO keeps measuring against the real viewport.
+*/
+section,
+main,
+article,
+aside,
+header,
+footer {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: clip;
+}
+
+/* nav must NOT have overflow hidden — it clips the mobile dropdown */
+nav {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* ── 5. CONTAINER ──────────────────────────────────────── */
+.container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--container-pad);
+    box-sizing: border-box;
+}
+
+/* ── 6. IMAGES & MEDIA ─────────────────────────────────── */
+img,
+video,
+svg,
+iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ── 7. NAVBAR ─────────────────────────────────────────── */
+/* Reference: projects.php / projects.css — do not change */
+.custom-navbar {
+    position: fixed;
+    top: 0.625rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1050;
+    width: calc(100% - 1.25rem);
+    max-width: 97%;
+    min-height: 6.25rem;          /* 100px — matches Projects page */
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 50rem;
+    box-sizing: border-box;
+    overflow: visible;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+}
+
+/* brand — 26px matches Projects page */
+.brand-text,
+.navbar-brand {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--black);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 0 1 auto;
+    min-width: 0;
+    transition: color 0.3s ease;
+    line-height: 1.2;
+}
+
+.brand-text:hover,
+.navbar-brand:hover { color: var(--green-dark); }
+
+/* nav links */
+.navbar-collapse { flex-grow: 0; }
+
+.navbar-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    gap: 25px;
+}
+
+.custom-navbar .nav-item {
+    display: flex;
+    align-items: center;
+}
+
+/* nav-link — 20px / 700 / 12px 20px matches Projects page */
+.custom-navbar .nav-link {
+    color: var(--black);
+    font-weight: 700;
+    font-size: 20px;
+    padding: 12px 20px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+}
+
+.custom-navbar .nav-link:hover { color: var(--white); }
+
+/* spacing between nav items — 3px matches Projects page */
+.custom-navbar .nav-item + .nav-item { margin-left: 3px; }
+
+/* contact button — 20px / 12px 10px / 900 matches Projects page */
+.btn-nav {
+    font-size: 20px;
+    padding: 12px 10px;
+    font-weight: 900;
+    border-radius: 30px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    color: var(--green-dark);
+}
+
+.btn-nav:hover { color: var(--white); }
+
+/* toggler — hidden on desktop, shown on mobile */
+.navbar-toggler {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    margin-left: auto;
+    flex-shrink: 0;
+    display: none;
+}
+
+/* toggler icon — Bootstrap native icon, styled green */
+.navbar-toggler-icon {
+    display: block;
+    width: 1.5em;
+    height: 1.5em;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%230f7c3a' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+.navbar-toggler:focus { outline: none; box-shadow: none; }
+
+/* scrolled state */
+.navbar-scrolled {
+    background: var(--green) !important;
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-scrolled .nav-link,
+.navbar-scrolled .brand-text { color: var(--black); }
+
+/* focus / tap */
+.custom-navbar .nav-link:focus,
+.btn-nav:focus { outline: none; box-shadow: none; }
+
+.custom-navbar .nav-link:focus-visible,
+.btn-nav:focus-visible {
+    outline: 2px solid rgba(144, 207, 77, 0.6);
+    outline-offset: 2px;
+}
+
+.custom-navbar .nav-link,
+.btn-nav,
+a { -webkit-tap-highlight-color: transparent; }
+
+/* ── 8. HERO (shared base) ─────────────────────────────── */
+.hero,
+.hero-section,
+.hero-banner,
+.hero-intro {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero { min-height: 100vh; }
+
+.hero-section,
+.hero-banner,
+.hero-intro { min-height: 85vh; }
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.hero-slider {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.hero-slider .slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out, transform 6s ease;
+    transform: scale(1.08);
+}
+
+.hero-slider .slide.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* hero content wrapper */
+.hero-content,
+.hero-content-wrapper {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 3.75rem;
+    max-width: var(--container-max);
+    width: 100%;
+    padding: 2.5rem var(--container-pad);
+    color: var(--white);
+    box-sizing: border-box;
+    margin: 0 auto;
+    min-width: 0;
+}
+
+/* logo block */
+.hero-logo-block,
+.intro-logo-block {
+    flex: 0 0 auto;
+    background: var(--white);
+    padding: 1.125rem;
+    border-radius: 1rem;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-big-logo,
+.intro-big-logo {
+    height: 9rem;       /* canonical desktop size — all pages */
+    width: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* text block */
+.hero-text-block,
+.hero-content-text,
+.intro-text,
+.hero-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.hero-text-block h1,
+.hero-content h1,
+.intro-text h1 {
+    font-size: clamp(1.75rem, 4vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hero-text-block p,
+.hero-content p,
+.intro-text p {
+    font-size: clamp(0.9375rem, 1.5vw, 1.3rem);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+}
+
+/* hero buttons */
+.hero-buttons {
+    display: flex;
+    gap: 0.9375rem;
+    flex-wrap: wrap;
+}
+
+/* ── 9. BUTTONS ────────────────────────────────────────── */
+.btn {
+    display: inline-block;
+    padding: 0.875rem 1.875rem;
+    text-decoration: none;
+    border-radius: 3.125rem;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    line-height: 1.4;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--green-mid), var(--green));
+    color: var(--white);
+    box-shadow: 0 4px 15px rgba(84, 180, 53, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 6px 25px rgba(84, 180, 53, 0.5);
+}
+
+/* ── 10. FOOTER ────────────────────────────────────────── */
+.footer {
+    background: var(--black);
+    color: #e2e8f0;
+    padding: 3.125rem 0 1.25rem;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.footer-container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 2.5rem;
+    box-sizing: border-box;
+}
+
+/* 4-column grid */
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.9fr 1.3fr 1fr;
+    gap: 3.125rem;
+    align-items: start;
+}
+
+/* logo column */
+.footer-logo-wrapper {
+    background: var(--white);
+    padding: 1.25rem;
+    border-radius: 0.9375rem;
+    display: inline-block;
+    box-shadow: 0 8px 25px rgba(144, 207, 77, 0.2);
+    width: fit-content;
+}
+
+.footer-logo {
+    width: auto;
+    height: 7.5rem;
+    display: block;
+}
+
+/* column headings */
+.footer-col h4 {
+    color: var(--green);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.0625rem;
+}
+
+/* links */
+.footer-col a {
+    display: block;
+    color: #d1d5db;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    transition: all 0.3s ease;
+    line-height: 1.6;
+}
+
+.footer-col a:hover {
+    color: var(--green);
+    padding-left: 0.3125rem;
+}
+
+/* office address */
+.office-address { display: block; width: 100%; margin-bottom: 1.25rem; }
+
+.office-address a {
+    color: #d1d5db;
+    text-decoration: none;
+    font-size: 1rem;
+    line-height: 1.9;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.office-address a:hover { color: var(--green); }
+
+/* contact details */
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
+}
+
+.footer-contact a,
+.footer-contact p {
+    color: #d1d5db;
+    text-decoration: none;
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    width: 100%;
+}
+
+.footer-contact a:hover { color: var(--green); }
+
+.footer-contact i {
+    width: 1.25rem;
+    min-width: 1.25rem;
+    margin-right: 0.625rem;
+    color: var(--green);
+    font-size: 0.875rem;
+    flex-shrink: 0;
+}
+
+.gst-text { margin: 0; font-size: 0.9375rem; }
+
+/* subscribe */
+.subscribe-text {
+    color: #d1d5db;
+    font-size: 0.9375rem;
+    margin-bottom: 0.9375rem;
+    line-height: 1.6;
+}
+
+.subscribe-form { margin-top: 0.625rem; margin-bottom: 1.25rem; }
+
+.subscribe-input-wrapper {
+    display: flex;
+    background: #1a1a1a;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    border: 2px solid #333;
+    transition: border-color 0.3s ease;
+}
+
+.subscribe-input-wrapper:focus-within { border-color: var(--green); }
+
+.subscribe-input-wrapper input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 0.875rem 1.125rem;
+    color: var(--white);
+    font-size: 0.9375rem;
+    outline: none;
+    min-width: 0;
+}
+
+.subscribe-input-wrapper input::placeholder { color: #666; }
+
+.subscribe-input-wrapper button {
+    background: var(--green);
+    border: none;
+    padding: 0 1.5rem;
+    color: var(--black);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.subscribe-input-wrapper button:hover { background: #a8db6a; }
+
+.subscribe-input-wrapper button i { font-size: 1.125rem; }
+
+.footer-extra-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+}
+
+.footer-extra-info p {
+    color: #d1d5db;
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.footer-extra-info i {
+    width: 1.25rem;
+    min-width: 1.25rem;
+    margin-right: 0.625rem;
+    color: var(--green);
+    font-size: 0.875rem;
+    flex-shrink: 0;
+}
+
+/* divider */
+.footer-divider {
+    height: 1px;
+    background: #333;
+    margin: 1.875rem 0 0.9375rem;
+    width: 100%;
+}
+
+/* bottom row */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+    min-width: 0;
+}
+
+.footer-bottom p {
+    color: #9ca3af;
+    font-size: 0.9375rem;
+    margin: 0;
+}
+
+/* social icons */
+.social-icons {
+    display: flex;
+    gap: 1.125rem;
+    align-items: center;
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.8125rem;
+    height: 2.8125rem;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    background: #1a1a1a;
+    flex-shrink: 0;
+}
+
+.social-icons a:hover {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 12px var(--green));
+}
+
+.social-icons img {
+    width: 2.8125rem;
+    height: 2.8125rem;
+    object-fit: cover;
+    display: block;
+}
+
+/* ── 11. SCROLL ANIMATIONS ─────────────────────────────── */
+
+/* Base state — all animated elements start hidden */
+.fade-up,
+.fade-left,
+.fade-right,
+.fade-in,
+.fade-in-up {
+    opacity: 0;
+    will-change: opacity, transform;
+}
+
+/* fade-up */
+.fade-up {
+    transform: translateY(2.5rem);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* fade-left */
+.fade-left {
+    transform: translateX(-2.5rem);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-left.visible { opacity: 1; transform: translateX(0); }
+
+/* fade-right */
+.fade-right {
+    transform: translateX(2.5rem);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-right.visible { opacity: 1; transform: translateX(0); }
+
+/* fade-in — pure opacity, no movement */
+.fade-in {
+    transform: none;
+    transition: opacity 0.7s ease;
+}
+.fade-in.visible { opacity: 1; }
+
+/* fade-in-up — shorter travel, used in hero content */
+.fade-in-up {
+    transform: translateY(1.5rem);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-in-up.visible { opacity: 1; transform: translateY(0); }
+
+/* stagger delays — apply to nth children automatically */
+.fade-up:nth-child(2),
+.fade-in-up:nth-child(2) { transition-delay: 0.1s; }
+.fade-up:nth-child(3),
+.fade-in-up:nth-child(3) { transition-delay: 0.2s; }
+.fade-up:nth-child(4),
+.fade-in-up:nth-child(4) { transition-delay: 0.3s; }
+.fade-up:nth-child(5),
+.fade-in-up:nth-child(5) { transition-delay: 0.4s; }
+.fade-up:nth-child(6),
+.fade-in-up:nth-child(6) { transition-delay: 0.5s; }
+.fade-up:nth-child(6),
+.fade-in-up:nth-child(6) { transition-delay: 0.5s; }
+
+/* card hover lift — applied globally to any card-like element */
+.why-card,
+.role-card,
+.benefit-card,
+.capability-card,
+.office-card,
+.team-card,
+.service-card,
+.project-card,
+.stat-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.why-card:hover,
+.role-card:hover,
+.benefit-card:hover,
+.capability-card:hover,
+.office-card:hover,
+.team-card:hover,
+.service-card:hover,
+.project-card:hover,
+.stat-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(15, 124, 58, 0.15);
+}
+
+/* mobile navbar collapse smooth transition */
+.navbar-collapse {
+    transition: height 0.3s ease, opacity 0.3s ease;
+}
+
+/* image reveal — used on section images */
+.img-reveal {
+    opacity: 0;
+    transform: scale(0.97);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.img-reveal.visible { opacity: 1; transform: scale(1); }
+
+/* reveal — generic scroll-reveal (matches requirement) */
+.reveal {
+    opacity: 0;
+    transform: translateY(2.5rem);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    will-change: opacity, transform;
+}
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+/* slide-up — shorter travel, faster */
+.slide-up {
+    opacity: 0;
+    transform: translateY(1.5rem);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    will-change: opacity, transform;
+}
+.slide-up.visible { opacity: 1; transform: translateY(0); }
+
+/* zoom-in — scale reveal */
+.zoom-in {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    will-change: opacity, transform;
+}
+.zoom-in.visible { opacity: 1; transform: scale(1); }
+
+/* ── 12. KEYFRAMES ─────────────────────────────────────── */
+@keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(2.5rem); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(1.875rem); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-3.125rem); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(3.125rem); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-1.25rem); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50%       { transform: scale(1.1); opacity: 0.8; }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(-0.625rem); }
+}
+
+/* ── 13. BREAKPOINTS ───────────────────────────────────── */
+
+/* ── Large desktop: 1920px+ ── */
+@media (min-width: 1920px) {
+    :root { --container-max: 1600px; }
+
+    .hero-big-logo,
+    .intro-big-logo { height: 10rem; }
+
+    .hero-text-block h1,
+    .hero-content h1,
+    .intro-text h1 { font-size: 4rem; }
+}
+
+/* ── Wide desktop: 1440px–1919px ── */
+@media (min-width: 1440px) and (max-width: 1919px) {
+    :root { --container-max: 1360px; }
+}
+
+/* ── Standard desktop: 1200px–1439px ── */
+/* default styles apply */
+
+/* ── Small laptop: 1024px–1199px ── */
+@media (max-width: 1199px) {
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem;
+    }
+
+    .footer-brand { grid-column: 1 / -1; }
+}
+
+/* ── Tablet: 768px–1023px ── */
+@media (max-width: 1023px) {
+    .hero-content,
+    .hero-content-wrapper {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+        padding-top: 7rem;
+    }
+
+    .hero-logo-block { margin: 0 auto; }
+
+    .hero-text-block,
+    .hero-content-text,
+    .intro-text { text-align: center; }
+
+    .hero-buttons { justify-content: center; }
+
+    .hero-big-logo,
+    .intro-big-logo { height: 8rem; }
+}
+
+/* ── Mobile: 320px–767px ── */
+@media (max-width: 767px) {
+    /*
+       Re-declare BOTH opacity and transform for animated classes.
+       Without opacity here, the base opacity:0 rule can win over the
+       mobile transform override in some Android browsers, leaving
+       elements invisible even after .visible is added.
+    */
+    .fade-up {
+        opacity: 0;
+        transform: translateY(1.25rem);
+    }
+    .fade-left {
+        opacity: 0;
+        transform: translateX(-1.25rem);
+    }
+    .fade-right {
+        opacity: 0;
+        transform: translateX(1.25rem);
+    }
+    .fade-in-up {
+        opacity: 0;
+        transform: translateY(1.25rem);
+    }
+    /* visible state — explicit override for mobile */
+    .fade-up.visible,
+    .fade-in-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .fade-left.visible {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    .fade-right.visible {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    /* navbar */
+    .custom-navbar {
+        width: calc(100% - 1rem);
+        max-width: 96%;
+        padding: 0.875rem 1rem;
+        min-height: 3.75rem;
+        overflow: visible;
+        border-radius: 2rem;
+    }
+
+    .brand-text,
+    .navbar-brand {
+        font-size: 20px;
+        font-weight: 800;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+    }
+
+    .custom-navbar .container { position: relative; }
+
+    .navbar-toggler { display: block; }
+
+    .navbar-toggler-icon {
+        width: 1.25em;
+        height: 1.25em;
+    }
+
+    .navbar-collapse {
+        position: absolute;
+        top: calc(100% + 0.5rem);
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        border-radius: 1.25rem;
+        padding: 1rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        z-index: 1049;
+        overflow: visible;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.25rem;
+    }
+
+    .custom-navbar .nav-item + .nav-item { margin-left: 0; }
+
+    .custom-navbar .nav-link {
+        width: 100%;
+        padding: 14px 16px;
+        font-size: 16px;
+        border-radius: 0.625rem;
+        color: var(--text);
+        letter-spacing: 0;
+    }
+
+    .custom-navbar .nav-link:hover {
+        background: #f0f0f0;
+        color: var(--green-dark);
+    }
+
+    .btn-nav {
+        background: var(--green);
+        color: var(--white) !important;
+        text-align: center;
+        margin-top: 0.5rem;
+        font-size: 16px;
+        padding: 14px 16px;
+        font-weight: 700;
+    }
+
+    /* hero */
+    .hero { padding-top: 5rem; min-height: auto; }
+
+    .hero-section,
+    .hero-banner,
+    .hero-intro { padding-top: 5rem; min-height: 75vh; }
+
+    .hero-content,
+    .hero-content-wrapper {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+        padding: 1.5rem var(--container-pad);
+    }
+
+    .hero-big-logo,
+    .intro-big-logo { height: 7rem; }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    .btn { width: 100%; text-align: center; }
+
+    /* footer */
+    .footer-container { padding: 0 1.25rem; }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 1.875rem;
+    }
+
+    .footer-brand { grid-column: auto; }
+
+    .footer-logo { height: 6.25rem; }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .social-icons { justify-content: center; }
+}
+
+/* ── Small mobile: 320px–479px ── */
+@media (max-width: 479px) {
+    :root { --container-pad: 1rem; }
+
+    .custom-navbar {
+        width: calc(100% - 0.75rem);
+        max-width: 94%;
+        padding: 0.9rem 0.80rem;
+        min-height: 3rem;
+    }
+
+    .brand-text,
+    .navbar-brand { font-size: 1.0625rem; }
+
+    .hero-big-logo,
+    .intro-big-logo { height: 6rem; }
+
+    .footer-logo { height: 5rem; }
+
+    .social-icons a { width: 2.5rem; height: 2.5rem; }
+    .social-icons img { width: 2.5rem; height: 2.5rem; }
+}
+
+/* ── 14. ACCESSIBILITY ─────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    /* immediately reveal all animated elements */
+    .fade-up,
+    .fade-left,
+    .fade-right,
+    .fade-in,
+    .fade-in-up,
+    .img-reveal,
+    .reveal,
+    .slide-up,
+    .zoom-in {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}

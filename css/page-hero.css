@@ -1,0 +1,229 @@
+/* ===================================
+   UNIFIED HERO SYSTEM
+   Projects / Services / Contact pages
+   =================================== */
+
+/* ── Outer section ── */
+.page-hero {
+    position: relative;
+    width: 100%;
+    min-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding-top: 110px;
+    padding-bottom: 70px;
+    box-sizing: border-box;
+}
+
+/* ── Background image (set inline or per-page override) ── */
+.page-hero-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+/* ── Dark overlay ── */
+.page-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.52);
+    z-index: 1;
+}
+
+/* ── Inner content sits above overlay ── */
+.page-hero-inner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+}
+
+/* ── Three-column row: logo | heading | paragraph ── */
+.page-hero-row {
+    display: grid;
+    grid-template-columns: 200px 1fr 1fr;
+    align-items: center;
+    gap: 48px;
+    width: 100%;
+}
+
+/* ── LEFT: Logo card ── */
+.page-hero-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 18px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22),
+                0 0 20px rgba(144, 207, 77, 0.3);
+    width: 200px;
+    height: 200px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.page-hero-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* ── CENTER: Heading block ── */
+.page-hero-heading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 16px;
+    border-right: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.page-hero-heading h1 {
+    font-size: 3.2rem;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.15;
+    margin: 0;
+    text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.45);
+}
+
+/* ── RIGHT: Paragraph block ── */
+.page-hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 16px;
+}
+
+.page-hero-text p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.92);
+    line-height: 1.75;
+    margin: 0;
+    font-weight: 400;
+}
+
+/* ── BOTTOM: Arrow ── */
+.page-hero-arrow {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    width: 38px;
+    height: 38px;
+    animation: hero-bounce 2s ease-in-out infinite;
+    cursor: pointer;
+}
+
+.page-hero-arrow svg {
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes hero-bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(-10px); }
+}
+
+/* ===================================
+   TABLET  (≤ 968px)
+   =================================== */
+@media (max-width: 968px) {
+    .page-hero {
+        min-height: 75vh;
+        padding-top: 120px;
+        padding-bottom: 80px;
+    }
+
+    .page-hero-row {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        text-align: center;
+    }
+
+    .page-hero-logo {
+        width: 160px;
+        height: 160px;
+        margin: 0 auto;
+    }
+
+    .page-hero-heading {
+        padding-right: 0;
+        border-right: none;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        padding-bottom: 20px;
+        align-items: center;
+    }
+
+    .page-hero-heading h1 {
+        font-size: 2.4rem;
+        text-align: center;
+    }
+
+    .page-hero-text {
+        padding-left: 0;
+        align-items: center;
+    }
+
+    .page-hero-text p {
+        font-size: 1rem;
+        text-align: center;
+        max-width: 560px;
+    }
+}
+
+/* ===================================
+   MOBILE  (≤ 640px)
+   =================================== */
+@media (max-width: 640px) {
+    .page-hero {
+        min-height: auto;
+        padding-top: 110px;
+        padding-bottom: 70px;
+    }
+
+    .page-hero-inner {
+        padding: 0 18px;
+    }
+
+    .page-hero-row {
+        gap: 22px;
+    }
+
+    .page-hero-logo {
+        width: 130px;
+        height: 130px;
+        padding: 14px;
+        border-radius: 14px;
+    }
+
+    .page-hero-heading h1 {
+        font-size: 1.9rem;
+    }
+
+    .page-hero-text p {
+        font-size: 0.95rem;
+        line-height: 1.65;
+    }
+
+    .page-hero-arrow {
+        width: 32px;
+        height: 32px;
+        bottom: 20px;
+    }
+}

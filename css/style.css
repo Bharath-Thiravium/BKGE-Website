@@ -1646,23 +1646,48 @@ img {
 /* About section image animations */
 .about-image img,
 .about-image svg {
-    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-                opacity 0.6s ease, 
-                box-shadow 0.4s ease;
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+    will-change: transform;
 }
 
 .about-image.visible img,
 .about-image.visible svg {
     opacity: 1;
     transform: translateY(0);
+    animation: eco-float 7s ease-in-out infinite;
+    animation-delay: 0.8s;
+    animation-fill-mode: both;
 }
 
 .about-image:hover img,
 .about-image:hover svg {
-    transform: scale(1.04);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    animation-play-state: paused;
+}
+
+/* ── Globe tap / click interaction ─────────────────────── */
+.globe-img {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+.globe-img.globe-tap {
+    animation: globe-pop 0.42s cubic-bezier(0.36, 0.07, 0.19, 0.97) forwards;
+}
+
+@keyframes globe-pop {
+    0%   { transform: scale(1);    }
+    18%  { transform: scale(0.93); }
+    52%  { transform: scale(1.06); }
+    76%  { transform: scale(0.98); }
+    100% { transform: scale(1);    }
+}
+
+@keyframes eco-float {
+    0%, 100% { transform: translateY(0)    scale(1);    }
+    50%       { transform: translateY(-8px) scale(1.02); }
 }
 
 /* Service card images */
@@ -1790,6 +1815,7 @@ img {
         transition: none;
     }
 
+    .globe-img.globe-tap { animation: none; }
     .image-reveal {
         opacity: 1;
         transform: none;
@@ -1805,18 +1831,20 @@ img {
         opacity: 1;
         transform: none;
         transition: none;
+        animation: none;
     }
 
     .about-image.visible img,
     .about-image.visible svg {
         opacity: 1;
         transform: none;
+        animation: none;
     }
 
     .about-image:hover img,
     .about-image:hover svg {
         transform: none;
-        box-shadow: none;
+        filter: none;
     }
 
     .service-image img {
@@ -1865,15 +1893,13 @@ img {
 /* Mobile optimization for animations */
 @media (max-width: 768px) {
     img {
-        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-                    opacity 0.5s ease, 
-                    box-shadow 0.3s ease;
+        transition: opacity 0.5s ease;
     }
 
     .about-image:hover img,
     .about-image:hover svg {
-        transform: scale(1.02);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        animation-play-state: paused;
+        filter: none;
     }
 
     .service-card:hover .service-image img {

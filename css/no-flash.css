@@ -1,7 +1,7 @@
-/* Anti-FOUC (Flash of Unstyled Content) Fix */
+/* Anti-FOUC fix — body hidden until JS adds .loaded class */
 body {
     opacity: 0;
-    transition: opacity 0.2s ease-in;
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body.loaded {

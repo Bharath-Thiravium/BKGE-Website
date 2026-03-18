@@ -1,0 +1,420 @@
+/* ============================================================
+   BK GREEN ENERGY — CAREERS-PAGE.CSS
+   Page-specific styles for careers.php only.
+   Base styles (navbar, footer, hero, reset) are in base.css.
+   ============================================================ */
+
+/* ── HERO SECTION ──────────────────────────────────────── */
+.hero-section {
+    background-image: url("../assets/images/Carrers.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 85vh;
+    padding-top: 7rem;          /* clear fixed navbar */
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* two-column: logo left, text right — same pattern as projects/services */
+.hero-content-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    justify-content: flex-start;
+}
+
+/* logo card — inherits size from base.css to match Projects page */
+
+/* text column — all content in one left-aligned block */
+.hero-section .hero-content {
+    flex: 1;
+    min-width: 0;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.hero-section .hero-content h1 {
+    font-size: clamp(1.6rem, 3vw, 2.75rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin: 0;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.55);
+}
+
+/* tagline pill — visually distinct from body text */
+.hero-section .hero-content .hero-tagline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+    font-weight: 600;
+    color: var(--white);
+    background: rgba(15, 124, 58, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 0.35rem 0.9rem;
+    border-radius: 2rem;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    width: fit-content;
+    margin: 0;
+    text-shadow: none;
+}
+
+/* body paragraphs */
+.hero-section .hero-content .hero-body {
+    font-size: clamp(0.9rem, 1.3vw, 1.05rem);
+    line-height: 1.8;
+    margin: 0;
+    max-width: 38rem;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.45);
+}
+
+/* bottom line */
+.hero-section .hero-content .hero-bottom {
+    font-size: clamp(0.875rem, 1.2vw, 1rem);
+    font-weight: 600;
+    color: var(--green);
+    margin: 0;
+    text-shadow: none;
+    letter-spacing: 0.02em;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 1.875rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2.5rem;
+    height: 2.5rem;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.scroll-indicator svg { width: 100%; height: 100%; }
+
+/* ── WHY WORK WITH US ──────────────────────────────────── */
+.why-section {
+    padding: var(--sp-2xl) var(--container-pad);
+    background: var(--white);
+}
+
+.why-section h2 {
+    text-align: center;
+    font-size: clamp(1.75rem, 3vw, 2.8rem);
+    color: var(--green);
+    margin-bottom: 3.75rem;
+    font-weight: 700;
+}
+
+.why-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.875rem;
+}
+
+.why-grid .why-card {
+    flex: 0 0 calc(33.333% - 1.25rem);
+    max-width: calc(33.333% - 1.25rem);
+}
+
+.why-card {
+    background: var(--gray-light);
+    padding: 2.5rem 1.875rem;
+    border-radius: 0.9375rem;
+    text-align: center;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.why-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(15, 124, 58, 0.2);
+}
+
+.card-icon {
+    width: 5rem;
+    height: 5rem;
+    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+}
+
+.card-icon svg { width: 2.8125rem; height: 2.8125rem; }
+
+.why-card h3 { font-size: 1.4rem; color: var(--green); margin-bottom: 0.9375rem; font-weight: 600; }
+.why-card p  { font-size: 1rem; color: #666; line-height: 1.6; }
+
+/* ── CULTURE SECTION ───────────────────────────────────── */
+.culture-section {
+    position: relative;
+    padding: var(--sp-2xl) var(--container-pad);
+    background: var(--green);
+    overflow: hidden;
+}
+
+.culture-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.75rem;
+    align-items: center;
+    max-width: var(--container-max);
+    margin: 0 auto;
+}
+
+.culture-text h2 {
+    font-size: clamp(1.75rem, 3vw, 2.8rem);
+    color: var(--white);
+    margin-bottom: 1.5625rem;
+    font-weight: 700;
+}
+
+.culture-text p {
+    font-size: clamp(1rem, 1.3vw, 1.2rem);
+    line-height: 1.8;
+    color: var(--white);
+}
+
+.culture-illustration svg {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 10px 30px rgba(15, 124, 58, 0.2));
+}
+
+.bg-decoration {
+    position: absolute;
+    top: -9.375rem;
+    right: -9.375rem;
+    width: 31.25rem;
+    height: 31.25rem;
+    background: radial-gradient(circle, rgba(15, 124, 58, 0.1), transparent);
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ── LOOKING FOR SECTION ───────────────────────────────── */
+.looking-section {
+    padding: var(--sp-2xl) var(--container-pad);
+    background: var(--white);
+}
+
+.looking-section h2 {
+    text-align: center;
+    font-size: clamp(1.75rem, 3vw, 2.8rem);
+    color: var(--green);
+    margin-bottom: 1.25rem;
+    font-weight: 700;
+}
+
+.section-intro {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 3.125rem;
+}
+
+.roles-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.875rem;
+    max-width: 62.5rem;
+    margin: 0 auto 3.125rem;
+}
+
+.roles-grid .role-card {
+    flex: 0 0 calc(33.333% - 1.25rem);
+    max-width: calc(33.333% - 1.25rem);
+}
+
+.role-card {
+    background: var(--white);
+    padding: 2.1875rem 1.5625rem;
+    border-radius: 0.75rem;
+    text-align: center;
+    border: 2px solid #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.role-card:hover {
+    border-color: var(--green);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(15, 124, 58, 0.15);
+}
+
+.role-icon {
+    width: 4.375rem;
+    height: 4.375rem;
+    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+}
+
+.role-icon svg { width: 2.5rem; height: 2.5rem; }
+
+.role-card h3 { font-size: 1.2rem; color: var(--green); font-weight: 600; line-height: 1.4; }
+
+.closing-text {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    max-width: 50rem;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+/* ── APPLY SECTION ─────────────────────────────────────── */
+.apply-section {
+    position: relative;
+    padding: var(--sp-2xl) var(--container-pad);
+    background: var(--green);
+    color: var(--white);
+    text-align: center;
+    overflow: hidden;
+}
+
+.apply-content h2 {
+    font-size: clamp(1.75rem, 3vw, 3rem);
+    margin-bottom: 1.25rem;
+    font-weight: 700;
+}
+
+.apply-content p {
+    font-size: clamp(1rem, 1.5vw, 1.3rem);
+    margin-bottom: 0.9375rem;
+}
+
+.email-link {
+    display: inline-block;
+    font-size: clamp(1.125rem, 2vw, 2rem);
+    color: var(--white);
+    text-decoration: none;
+    padding: 1.25rem 3.125rem;
+    border: 3px solid var(--white);
+    border-radius: 3.125rem;
+    margin: 1.25rem 0;
+    transition: all 0.4s ease;
+    font-weight: 600;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.email-link:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+}
+
+.tagline {
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
+    margin-top: 1.875rem;
+    font-weight: 600;
+}
+
+.glow-effect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 37.5rem;
+    height: 37.5rem;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+    border-radius: 50%;
+    animation: glow-pulse 4s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes glow-pulse {
+    0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+    50%       { opacity: 0.5; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+/* ── RESPONSIVE ────────────────────────────────────────── */
+@media (max-width: 1023px) {
+    .culture-content {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .culture-illustration { display: none; }
+
+    .roles-grid .role-card,
+    .why-grid .why-card {
+        flex: 0 0 calc(50% - 0.9375rem);
+        max-width: calc(50% - 0.9375rem);
+    }
+
+    /* tablet hero */
+    .hero-section { padding-top: 8rem; }
+    .hero-content-wrapper { gap: 2rem; }
+}
+
+@media (max-width: 767px) {
+    /* stack vertically on mobile */
+    .hero-section {
+        padding-top: 6rem;
+        min-height: 75vh;
+    }
+
+    .hero-content-wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.25rem;
+    }
+
+    .hero-section .hero-logo-block {
+        flex: 0 0 auto;
+        width: auto;
+        height: auto;
+        padding: 0.875rem;
+    }
+
+    .hero-section .hero-content {
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-section .hero-content .hero-body { max-width: 100%; }
+
+    .why-section,
+    .culture-section,
+    .looking-section,
+    .apply-section { padding: 3.75rem var(--container-pad); }
+
+    .roles-grid .role-card,
+    .why-grid .why-card {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .email-link {
+        width: 100%;
+        padding: 1rem 1.25rem;
+        font-size: 1.125rem;
+    }
+}
+
+@media (max-width: 479px) {
+    .hero-section { padding-top: 5.5rem; }
+    .hero-section .hero-logo-block { padding: 0.75rem; }
+
+    .why-section,
+    .culture-section,
+    .looking-section,
+    .apply-section { padding: 2.5rem var(--container-pad); }
+}

@@ -61,4 +61,21 @@ document.addEventListener('DOMContentLoaded', function() {
     imageContainers.forEach(container => {
         imageObserver.observe(container);
     });
+
+    // ── Globe image tap / click interaction ──────────────────
+    const globeImg = document.getElementById('globe-img');
+    if (globeImg) {
+        const triggerPop = () => {
+            globeImg.classList.remove('globe-tap');
+            // Force reflow so re-adding the class restarts the animation
+            void globeImg.offsetWidth;
+            globeImg.classList.add('globe-tap');
+        };
+
+        const cleanUp = () => globeImg.classList.remove('globe-tap');
+
+        globeImg.addEventListener('mousedown',   triggerPop,  { passive: true });
+        globeImg.addEventListener('touchstart',  triggerPop,  { passive: true });
+        globeImg.addEventListener('animationend', cleanUp);
+    }
 });

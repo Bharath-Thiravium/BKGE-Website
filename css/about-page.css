@@ -1,0 +1,422 @@
+/* ============================================================
+   BK GREEN ENERGY — ABOUT-PAGE.CSS
+   Page-specific styles for about.php only.
+   Base styles (navbar, footer, hero, reset) are in base.css.
+   ============================================================ */
+
+/* ── INTRO HERO ────────────────────────────────────────── */
+.intro-section {
+    position: relative;
+    padding: 10.625rem var(--container-pad) 7.5rem;
+    background-image: url("../assets/images/About us.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.intro-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 0;
+}
+
+.intro-section .container {
+    position: relative;
+    z-index: 2;
+    color: var(--white);
+}
+
+.intro-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3.75rem;
+    min-width: 0;
+}
+
+.intro-text {
+    flex: 1;
+    max-width: 600px;
+    min-width: 0;
+}
+
+.intro-text h1 {
+    font-size: clamp(1.75rem, 3.5vw, 3rem);
+    color: var(--green);
+    margin-bottom: 1.5625rem;
+    font-weight: 700;
+}
+
+.intro-text p {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+    color: var(--white);
+}
+
+.intro-logo-block {
+    flex-shrink: 0;
+}
+
+.bg-decoration {
+    position: absolute;
+    top: -6.25rem;
+    right: -6.25rem;
+    width: 25rem;
+    height: 25rem;
+    background: radial-gradient(circle, rgba(15, 124, 58, 0.1), transparent);
+    border-radius: 50%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ── VISION SECTION ────────────────────────────────────── */
+.vision-section {
+    padding: var(--sp-2xl) var(--container-pad);
+    background: var(--green);
+}
+
+.vision-content {
+    display: flex;
+    gap: 3.75rem;
+    align-items: center;
+    background: var(--white);
+    padding: 3.125rem;
+    border-radius: 1.25rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    max-width: 1200px;
+    margin: 0 auto;
+    min-width: 0;
+}
+
+.vision-text { flex: 2; min-width: 0; }
+
+.vision-image {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.icon-circle {
+    width: 9.375rem;
+    height: 9.375rem;
+    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(15, 124, 58, 0.2);
+    animation: float 3s ease-in-out infinite;
+    padding: 1.875rem;
+}
+
+.icon-circle svg { width: 100%; height: 100%; }
+
+.accent-line {
+    width: 4px;
+    height: 5rem;
+    background: linear-gradient(to bottom, var(--green), transparent);
+    margin-top: 1.25rem;
+}
+
+.vision-text h2 {
+    font-size: clamp(1.75rem, 2.5vw, 2.5rem);
+    color: var(--green);
+    margin-bottom: 1.25rem;
+    font-weight: 700;
+}
+
+.vision-text p {
+    font-size: clamp(1rem, 1.3vw, 1.2rem);
+    line-height: 1.8;
+    color: #555;
+}
+
+/* ── MISSION SECTION ───────────────────────────────────── */
+.mission-section {
+    padding: var(--sp-2xl) var(--container-pad);
+    background: var(--green);
+}
+
+.mission-content {
+    display: flex;
+    gap: 3.75rem;
+    align-items: center;
+    background: var(--white);
+    padding: 3.125rem;
+    border-radius: 1.25rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    max-width: 1200px;
+    margin: 0 auto;
+    min-width: 0;
+}
+
+.mission-image {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 12.5rem;
+}
+
+.mission-image .icon-circle {
+    width: 9.375rem;
+    height: 9.375rem;
+    animation: float 3.5s ease-in-out infinite;
+}
+
+.mission-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+}
+
+.mission-text h2 {
+    font-size: clamp(1.75rem, 2.5vw, 2.5rem);
+    color: var(--green);
+    margin-bottom: 1.25rem;
+    font-weight: 700;
+}
+
+.mission-text p {
+    font-size: clamp(1rem, 1.3vw, 1.2rem);
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 0.9375rem;
+}
+
+.mission-text p:last-child { margin-bottom: 0; }
+
+/* ── JOURNEY SECTION ───────────────────────────────────── */
+.journey-section {
+    padding: var(--sp-2xl) var(--container-pad);
+    background: var(--white);
+}
+
+.journey-section h2 {
+    text-align: center;
+    font-size: clamp(1.75rem, 3vw, 2.8rem);
+    color: var(--green);
+    margin-bottom: 3.75rem;
+    font-weight: 700;
+}
+
+.timeline {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 62.5rem;
+    margin: 0 auto;
+    padding: 2.5rem 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 1.875rem;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(to right, var(--green), var(--green));
+    z-index: 0;
+}
+
+.timeline-item {
+    position: relative;
+    flex: 1;
+    text-align: center;
+    z-index: 1;
+}
+
+.timeline-dot {
+    width: 3.75rem;
+    height: 3.75rem;
+    background: var(--white);
+    border: 4px solid var(--green);
+    border-radius: 50%;
+    margin: 0 auto 1.25rem;
+    position: relative;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 15px rgba(15, 124, 58, 0.3);
+}
+
+.timeline-dot::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1.25rem;
+    height: 1.25rem;
+    background: var(--green);
+    border-radius: 50%;
+}
+
+.timeline-item:hover .timeline-dot {
+    transform: scale(1.2);
+    box-shadow: 0 6px 25px rgba(15, 124, 58, 0.5);
+}
+
+.timeline-content h3 {
+    font-size: 1.8rem;
+    color: var(--green);
+    margin-bottom: 0.625rem;
+    font-weight: 700;
+}
+
+.timeline-content p { font-size: 1.1rem; color: #666; }
+
+/* ── TEAM STRENGTH SECTION ─────────────────────────────── */
+.team-strength-section {
+    padding: var(--sp-2xl) var(--container-pad);
+    background: var(--green);
+}
+
+.team-title {
+    text-align: center;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 2.5rem;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1.125rem;
+    max-width: var(--container-max);
+    margin: 0 auto;
+}
+
+.team-card {
+    background: var(--gray-light);
+    border: 2px solid #e8f5e9;
+    border-radius: 0.875rem;
+    padding: 1.375rem 1rem;
+    text-align: center;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--green);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+.team-count {
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: var(--green);
+    line-height: 1;
+    margin-bottom: 0.625rem;
+}
+
+.team-role {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--black);
+}
+
+.team-total {
+    margin-top: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 1rem 1.25rem;
+    background: linear-gradient(135deg, #32530e, #2a490a);
+    border-radius: 0.875rem;
+    color: var(--white);
+    font-weight: 800;
+    max-width: 25rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.team-total-value { font-size: 1.1rem; }
+
+/* ── RESPONSIVE ────────────────────────────────────────── */
+@media (max-width: 1023px) {
+    .intro-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 2.5rem;
+    }
+
+    .intro-text { max-width: 100%; }
+
+    .intro-section { padding: 9.375rem var(--container-pad) 5.625rem; }
+
+    .vision-content,
+    .mission-content {
+        flex-direction: column;
+        gap: 1.875rem;
+        padding: 2.5rem 1.5rem;
+    }
+
+    .vision-image { order: -1; }
+
+    .mission-image { min-width: auto; }
+
+    .team-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 767px) {
+    .intro-section { padding: 7.5rem var(--container-pad) 3.75rem; }
+
+    .vision-section,
+    .mission-section,
+    .journey-section { padding: 3.75rem var(--container-pad); }
+
+    .vision-content,
+    .mission-content { padding: 2rem 1.25rem; }
+
+    .mission-text h2,
+    .vision-text h2 { text-align: center; }
+
+    .timeline {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.875rem;
+        padding: 1.25rem 0;
+    }
+
+    .timeline::before { display: none; }
+
+    .timeline-item {
+        text-align: left;
+        max-width: 25rem;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .timeline-dot { margin: 0; flex-shrink: 0; }
+
+    .team-strength-section { padding: 3.75rem var(--container-pad); }
+
+    .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 479px) {
+    .intro-section { padding: 6.25rem var(--container-pad) 2.5rem; }
+
+    .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+
+    .team-count { font-size: 2rem; }
+
+    .team-role { font-size: 0.9375rem; }
+}

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes, maximum-scale=5">
     <meta name="description"
         content="BK Green Energy Services - Comprehensive renewable energy solutions including solar power, customized projects, installation, and energy consultancy.">
     <meta name="keywords"
@@ -13,9 +13,8 @@
     <link href="assets/images/Logo.png" rel="shortcut icon" type="image/x-icon">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/projects.css">
-    <link rel="stylesheet" href="css/cross-browser-mobile-fix.css">
-    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/projects-page.css">
     <link rel="stylesheet" href="css/no-flash.css">
 
 </head>
@@ -31,7 +30,8 @@
             </a> -->
 
             <!-- Mobile Toggle -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
 
             <!-- Nav Links -->
@@ -63,7 +63,6 @@
 
     <!-- HERO SECTION -->
     <section class="hero-section">
-        <div class="hero-bg"></div>
         <div class="hero-overlay"></div>
         <div class="container">
             <div class="hero-content-wrapper">
@@ -72,7 +71,9 @@
                 </div>
                 <div class="hero-content fade-in-up">
                     <h1>Our Projects</h1>
-                    <p>Innovative Renewable Solutions Across Homes, Industries and Communities.</p>
+                    <p class="hero-tagline">🌱 Delivering Solar Excellence Across India</p>
+                    <p class="hero-body">Innovative renewable solutions delivered across homes, industries, and communities throughout Tamil Nadu, Karnataka, Maharashtra, and Andhra Pradesh.</p>
+                    <p class="hero-bottom">Explore our completed EPC projects below.</p>
                 </div>
             </div>
             <div class="scroll-indicator">
@@ -436,11 +437,12 @@ $solar_projects = [
 
     <?php include 'includes/footer.php'; ?>
 
+    <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/no-flash.js"></script>
+    <script src="js/animate.js"></script>
     <script src="js/stat-counter.js"></script>
     <script src="js/projects.js"></script>
     <script src="js/projects-gallery.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
     
 
 

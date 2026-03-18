@@ -1,58 +1,33 @@
-// BK Green Energy - Contact Page JavaScript
+// BK Green Energy — contact.js
+// Observer + navbar scroll handled by animate.js
 
-// Intersection Observer for scroll animations
-const observerOptions = {
-    threshold: 0.15,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+document.addEventListener('DOMContentLoaded', function () {
+    // Floating label: ensure placeholder is a space so CSS :placeholder-shown works
+    document.querySelectorAll('.form-group input, .form-group textarea').forEach(function (input) {
+        if (!input.getAttribute('placeholder')) {
+            input.setAttribute('placeholder', ' ');
         }
     });
-}, observerOptions);
-// Navbar scroll effect
-window.addEventListener("scroll", function () {
-    let navbar = document.querySelector(".custom-navbar");
-    if (window.scrollY > 60) {
-        navbar.classList.add("navbar-scrolled");
-    } else {
-        navbar.classList.remove("navbar-scrolled");
-    }
-});
 
-// Initialize on page load
-document.addEventListener('DOMContentLoaded', () => {
-    // Observe all animated elements
-    const animatedElements = document.querySelectorAll('.fade-up, .fade-left, .fade-right');
-    animatedElements.forEach(el => observer.observe(el));
-
-    // Parallax effect for hero shapes
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const shapes = document.querySelectorAll('.shape');
-        
-        shapes.forEach((shape, index) => {
-            const speed = 0.3 + (index * 0.1);
-            shape.style.transform = `translateY(${scrolled * speed}px)`;
-        });
-    });
-
-    // Form input placeholder handling
-    const formInputs = document.querySelectorAll('.form-group input, .form-group textarea');
-    formInputs.forEach(input => {
-        input.setAttribute('placeholder', ' ');
-    });
-
-    // Smooth scroll for scroll indicator
-    const scrollIndicator = document.querySelector('.scroll-indicator');
+    // Scroll indicator click
+    var scrollIndicator = document.querySelector('.scroll-indicator');
     if (scrollIndicator) {
-        scrollIndicator.addEventListener('click', () => {
-            document.querySelector('.contact-form-section').scrollIntoView({
-                behavior: 'smooth'
-            });
+        scrollIndicator.addEventListener('click', function () {
+            var target = document.querySelector('.contact-form-section');
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
         });
+    }
+
+    // Shape parallax (desktop only)
+    if (window.innerWidth > 767) {
+        var shapes = document.querySelectorAll('.shape');
+        if (shapes.length) {
+            window.addEventListener('scroll', function () {
+                var scrolled = window.pageYOffset;
+                shapes.forEach(function (shape, i) {
+                    shape.style.transform = 'translateY(' + (scrolled * (0.3 + i * 0.1)) + 'px)';
+                });
+            }, { passive: true });
+        }
     }
 });

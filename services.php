@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes, maximum-scale=5">
     <meta name="description"
         content="BK Green Energy Projects - Explore our innovative renewable energy solutions across homes, industries, and communities.">
     <meta name="keywords"
@@ -13,9 +13,8 @@
     <link href="assets/images/Logo.png" rel="shortcut icon" type="image/x-icon">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/services.css">
-    <link rel="stylesheet" href="css/cross-browser-mobile-fix.css">
-    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/services-page.css">
     <link rel="stylesheet" href="css/no-flash.css">
     
 </head>
@@ -31,7 +30,8 @@
             </a> -->
 
             <!-- Mobile Toggle -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
 
             <!-- Links -->
@@ -68,15 +68,9 @@
         </div>
     </nav>
     <!-- HERO BANNER -->
+    <!-- HERO BANNER -->
     <section class="hero-banner">
-        <div class="hero-bg"></div>
-        <div class="particles">
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-        </div>
+        <div class="hero-overlay"></div>
         <div class="container">
             <div class="hero-content-wrapper">
                 <div class="hero-logo-block fade-in-up">
@@ -84,7 +78,9 @@
                 </div>
                 <div class="hero-content fade-in-up">
                     <h1>Our Services</h1>
-                    <p>Comprehensive Renewable Energy Solutions Designed for Performance and Sustainability.</p>
+                    <p class="hero-tagline">⚡ End-to-End Solar EPC Solutions</p>
+                    <p class="hero-body">Comprehensive renewable energy solutions designed for performance and sustainability — covering civil, mechanical, electrical, installation and commissioning works.</p>
+                    <p class="hero-bottom">Serving Tamil Nadu, Karnataka, Maharashtra and Andhra Pradesh.</p>
                 </div>
             </div>
             <div class="scroll-arrow">
@@ -107,7 +103,7 @@
             </div>
 
             <div class="projects-grid">
-                <div class="project-card" data-category="residential">
+                <div class="project-card fade-up" data-category="residential">
                     <div class="project-image">
                         <img src="assets/images/Residential Solar Rooftop.avif" alt="Residential Solar Rooftop"
                             height="400" width="100%">
@@ -122,7 +118,7 @@
                     </div>
                 </div>
 
-                <div class="project-card" data-category="commercial">
+                <div class="project-card fade-up" data-category="commercial">
                     <div class="project-image">
                         <img src="assets/images/Commercial Solar Park.avif" alt="Commercial Solar Park" height="400"
                             width="100%">
@@ -137,7 +133,7 @@
                     </div>
                 </div>
 
-                <div class="project-card" data-category="industrial">
+                <div class="project-card fade-up" data-category="industrial">
                     <div class="project-image">
                         <img src="assets/images/Industrial Solar Farm.jpeg" alt="Industrial Solar Farm" height="400"
                             width="100%">
@@ -152,7 +148,7 @@
                     </div>
                 </div>
 
-                <div class="project-card" data-category="hybrid">
+                <div class="project-card fade-up" data-category="hybrid">
                     <div class="project-image">
                         <img src="assets/images/Hybrid System Integration.jpg" alt="Hybrid System Integration"
                             height="400" width="100%">
@@ -167,7 +163,7 @@
                     </div>
                 </div>
 
-                <div class="project-card" data-category="residential">
+                <div class="project-card fade-up" data-category="residential">
                     <div class="project-image">
                         <img src="assets/images/Smart Home Solar System.jpg" alt="Smart Home Solar System" height="400"
                             width="100%">
@@ -182,7 +178,7 @@
                     </div>
                 </div>
 
-                <div class="project-card" data-category="commercial">
+                <div class="project-card fade-up" data-category="commercial">
                     <div class="project-image">
                         <img src="assets/images/Office Complex Solar.jpg" alt="Office Complex Solar" height="400"
                             width="100%">
@@ -531,18 +527,12 @@ $solar_projects = [
             </div>
         </div>
     </section>
-    <!-- Mobile Toggle (FIXED) -->
-<button class="navbar-toggler" type="button"
-        data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-</button>
-
     <?php include 'includes/footer.php'; ?>
 
-    <script src="js/no-flash.js"></script>
-    <script src="js/services.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/no-flash.js"></script>
+    <script src="js/animate.js"></script>
+    <script src="js/services.js"></script>
     
 
 
