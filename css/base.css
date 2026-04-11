@@ -9,7 +9,7 @@
 *::before,
 *::after {
     box-sizing: border-box;
-    margin: 3;
+    margin: 0;
     padding: 0;
 }
 
@@ -113,7 +113,7 @@ iframe {
 .custom-navbar {
     position: fixed;
     top: 0.625rem;
-    left: 50%;
+    left: 2%;
     transform: translateX(-50%);
     z-index: 1050;
     width: calc(100% - 1.25rem);
@@ -931,13 +931,17 @@ a { -webkit-tap-highlight-color: transparent; }
     .navbar-brand {
         font-size: 20px;
         font-weight: 800;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        text-align: center;
+        position: static;
+        transform: none;
+        text-align: left;
+        flex: 1;
+        min-width: 0;
     }
 
-    .custom-navbar .container { position: relative; }
+    .custom-navbar .container {
+        position: relative;
+        justify-content: space-between;
+    }
 
     .navbar-toggler { display: block; }
 
@@ -1040,7 +1044,9 @@ a { -webkit-tap-highlight-color: transparent; }
 
 /* ── Small mobile: 320px–479px ── */
 @media (max-width: 479px) {
-    :root { --container-pad: 1rem; }
+    :root {
+        --container-pad: 1.125rem; /* 18px */
+    }
 
     .custom-navbar {
         width: calc(100% - 0.75rem);

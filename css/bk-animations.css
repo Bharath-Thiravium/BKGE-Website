@@ -1,0 +1,383 @@
+/* ================================================================
+   BK GREEN ENERGY — PREMIUM ANIMATION SYSTEM
+   Solartec-style: fade-up + delay system + hover effects
+   ================================================================ */
+
+/* ── KEYFRAMES ─────────────────────────────────────────── */
+@keyframes bkSlideDown {
+    from { opacity: 0; transform: translateY(-100%); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes bkKenBurns {
+    from { transform: scale(1.1); }
+    to   { transform: scale(1.2); }
+}
+@keyframes bkCardReveal {
+    from { opacity: 0; transform: translateY(18px) scale(0.96); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ── FADE-UP BASE STATE ────────────────────────────────── */
+/* All .fade-up elements start hidden */
+.fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Triggered by JS: .show (hero) or .visible (scroll reveal) */
+.fade-up.show,
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── DELAY SYSTEM ──────────────────────────────────────── */
+.delay-1 { transition-delay: 0.2s; }
+.delay-2 { transition-delay: 0.4s; }
+.delay-3 { transition-delay: 0.6s; }
+.delay-4 { transition-delay: 0.8s; }
+.delay-5 { transition-delay: 1.0s; }
+.delay-6 { transition-delay: 1.2s; }
+
+/* ── TOP BAR ───────────────────────────────────────────── */
+.home-topbar {
+    animation: bkSlideDown 0.5s 0s ease both;
+}
+
+/* ── NAVBAR ────────────────────────────────────────────── */
+.custom-navbar,
+.solartec-nav {
+    transform: translateY(-100px);
+    opacity: 0;
+    transition: transform 0.6s ease, opacity 0.6s ease,
+                background 0.3s ease, box-shadow 0.3s ease;
+}
+.custom-navbar.show,
+.solartec-nav.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* nav link underline grow */
+.custom-navbar .nav-link { position: relative; }
+.custom-navbar .nav-link::after {
+    content: ''; position: absolute; bottom: 2px; left: 50%;
+    width: 0; height: 2px; background: #0f7c3a; border-radius: 2px;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+.custom-navbar .nav-link:hover::after,
+.custom-navbar .nav-link.active::after { width: 55%; left: 22.5%; }
+
+/* scrolled state */
+.navbar-scrolled {
+    background: #7ac142 !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important;
+}
+
+/* ── HERO BACKGROUND ZOOM ──────────────────────────────── */
+.hero-slide {
+    overflow: hidden;
+}
+.hero-slide.active {
+    animation: bkKenBurns 8s ease-in-out infinite alternate;
+}
+
+/* ── HERO GLASS CARD HOVER ─────────────────────────────── */
+.bk-hero-card {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.bk-hero-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+/* ── BUTTONS ───────────────────────────────────────────── */
+.btn-hero,
+.btn-cta-white, .btn-cta-outline, .btn-primary-green,
+.job-apply-btn, .careers-submit-btn, .contact-submit-btn,
+.cta-btn, .svc-link, .dash-enquire-btn, .dash-gallery-btn {
+    transition: transform 0.3s ease, box-shadow 0.3s ease,
+                background 0.3s ease, color 0.3s ease;
+}
+.btn-hero:hover,
+.btn-cta-white:hover, .btn-cta-outline:hover,
+.btn-primary-green:hover, .job-apply-btn:hover,
+.careers-submit-btn:hover, .contact-submit-btn:hover {
+    transform: scale(1.05);
+}
+
+/* ── STAT CARDS ────────────────────────────────────────── */
+.stat-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.stat-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 45px rgba(15,42,20,0.18);
+}
+
+/* ── SERVICE CARDS STAGGER ─────────────────────────────── */
+.services-grid .service-box:nth-child(1) { transition-delay: 0.00s; }
+.services-grid .service-box:nth-child(2) { transition-delay: 0.10s; }
+.services-grid .service-box:nth-child(3) { transition-delay: 0.20s; }
+.services-grid .service-box:nth-child(4) { transition-delay: 0.30s; }
+.services-grid .service-box:nth-child(5) { transition-delay: 0.40s; }
+.services-grid .service-box:nth-child(6) { transition-delay: 0.50s; }
+
+.service-box {
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.service-box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 22px 55px rgba(15,42,20,0.2);
+}
+.service-box:hover .service-thumb img { transform: scale(1.07); }
+
+/* ── UNIVERSAL CARD HOVER ──────────────────────────────── */
+.svc-card, .job-card, .vm-card, .cap-card, .tl-card,
+.team-card, .info-card, .why-contact-card, .feature-card,
+.process-card, .proj-card {
+    transition: transform 0.32s ease, box-shadow 0.32s ease;
+}
+.svc-card:hover, .job-card:hover, .vm-card:hover, .cap-card:hover,
+.tl-card:hover, .team-card:hover, .info-card:hover,
+.why-contact-card:hover, .feature-card:hover,
+.process-card:hover, .proj-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 20px 50px rgba(15,42,20,0.16);
+}
+
+/* image zoom inside cards */
+.svc-card-img-wrap img, .proj-img-wrap img { transition: transform 0.55s ease; }
+.svc-card:hover .svc-card-img-wrap img,
+.proj-card:hover .proj-img-wrap img { transform: scale(1.06); }
+
+/* ── GRID STAGGER DELAYS ───────────────────────────────── */
+.svc-grid .svc-card.fade-up:nth-child(1),
+.features-grid .feature-card.fade-up:nth-child(1),
+.jobs-grid .job-card.fade-up:nth-child(1),
+.proj-grid .proj-card.fade-up:nth-child(1),
+.cap-grid .cap-card.fade-up:nth-child(1) { transition-delay: 0.00s; }
+
+.svc-grid .svc-card.fade-up:nth-child(2),
+.features-grid .feature-card.fade-up:nth-child(2),
+.jobs-grid .job-card.fade-up:nth-child(2),
+.proj-grid .proj-card.fade-up:nth-child(2),
+.cap-grid .cap-card.fade-up:nth-child(2) { transition-delay: 0.10s; }
+
+.svc-grid .svc-card.fade-up:nth-child(3),
+.features-grid .feature-card.fade-up:nth-child(3),
+.jobs-grid .job-card.fade-up:nth-child(3),
+.proj-grid .proj-card.fade-up:nth-child(3),
+.cap-grid .cap-card.fade-up:nth-child(3) { transition-delay: 0.20s; }
+
+.svc-grid .svc-card.fade-up:nth-child(4),
+.features-grid .feature-card.fade-up:nth-child(4),
+.jobs-grid .job-card.fade-up:nth-child(4),
+.proj-grid .proj-card.fade-up:nth-child(4),
+.cap-grid .cap-card.fade-up:nth-child(4) { transition-delay: 0.30s; }
+
+.svc-grid .svc-card.fade-up:nth-child(5),
+.jobs-grid .job-card.fade-up:nth-child(5),
+.proj-grid .proj-card.fade-up:nth-child(5) { transition-delay: 0.40s; }
+
+.svc-grid .svc-card.fade-up:nth-child(6),
+.jobs-grid .job-card.fade-up:nth-child(6),
+.proj-grid .proj-card.fade-up:nth-child(6) { transition-delay: 0.50s; }
+
+/* ── PAGE BANNER STAGGER ───────────────────────────────── */
+.banner-text h1 { transition-delay: 0.1s; }
+.banner-text p  { transition-delay: 0.25s; }
+.banner-text .banner-breadcrumb { transition-delay: 0.4s; }
+
+/* ── FILTER PILLS ──────────────────────────────────────── */
+.proj-filter-btn, .filter-pill {
+    transition: background 0.28s ease, color 0.28s ease,
+                box-shadow 0.28s ease, transform 0.28s ease;
+}
+.project-card-home {
+    transition: transform 0.35s ease, box-shadow 0.35s ease, opacity 0.3s ease;
+}
+.project-card-home.card-hiding {
+    opacity: 0; transform: scale(0.94); pointer-events: none;
+}
+.project-card-home.card-showing {
+    animation: bkCardReveal 0.4s ease both;
+}
+
+/* ── FORM FOCUS ────────────────────────────────────────── */
+.consultation-form input, .consultation-form textarea,
+.cform-group input, .cform-group textarea, .cform-group select {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+.consultation-form input:focus, .consultation-form textarea:focus,
+.cform-group input:focus, .cform-group textarea:focus, .cform-group select:focus {
+    border-color: #0f7c3a;
+    box-shadow: 0 0 0 4px rgba(15,124,58,0.12);
+    background: #fff;
+    outline: none;
+}
+
+/* ── FOOTER REVEAL ─────────────────────────────────────── */
+.footer .footer-col {
+    opacity: 0; transform: translateY(22px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.footer .footer-col.bk-visible { opacity: 1; transform: translateY(0); }
+.footer .footer-col:nth-child(1) { transition-delay: 0.00s; }
+.footer .footer-col:nth-child(2) { transition-delay: 0.10s; }
+.footer .footer-col:nth-child(3) { transition-delay: 0.20s; }
+.footer .footer-col:nth-child(4) { transition-delay: 0.30s; }
+
+/* ── IMAGE REVEAL BASE ─────────────────────────────────── */
+/* Containers: overflow hidden + matching radius so zoom stays clipped */
+.service-thumb,
+.about-image-wrap,
+.why-visual,
+.project-card-home {
+    overflow: hidden;
+}
+
+.about-image-wrap  { border-radius: 1.75rem; }
+.service-thumb     { border-radius: 1.4rem 1.4rem 0 0; }
+
+/* Images start hidden, slide up into view */
+.service-thumb img,
+.about-image-wrap img,
+.why-visual img {
+    opacity: 0;
+    transform: translateY(22px) scale(1.04);
+    transition: opacity 0.75s cubic-bezier(0.25,0.46,0.45,0.94),
+                transform 0.75s cubic-bezier(0.25,0.46,0.45,0.94);
+    will-change: opacity, transform;
+}
+
+.service-thumb.img-in img,
+.about-image-wrap.img-in img,
+.why-visual.img-in img {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Stagger service cards */
+.services-grid .service-box:nth-child(1) .service-thumb { transition-delay: 0.00s; }
+.services-grid .service-box:nth-child(2) .service-thumb { transition-delay: 0.10s; }
+.services-grid .service-box:nth-child(3) .service-thumb { transition-delay: 0.20s; }
+.services-grid .service-box:nth-child(4) .service-thumb { transition-delay: 0.30s; }
+.services-grid .service-box:nth-child(5) .service-thumb { transition-delay: 0.40s; }
+.services-grid .service-box:nth-child(6) .service-thumb { transition-delay: 0.50s; }
+
+/* Hover zoom — service & about */
+.service-box:hover .service-thumb img {
+    transform: scale(1.07);
+}
+
+.about-image-wrap:hover img {
+    transform: scale(1.04);
+}
+
+.why-visual:hover img {
+    transform: scale(1.04);
+}
+
+/* ── PROJECT CARD IMAGE REVEAL ─────────────────────────── */
+.project-card-home img {
+    opacity: 0;
+    transform: scale(1.08);
+    transition: opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),
+                transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
+    will-change: opacity, transform;
+}
+
+.project-card-home.img-in img {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Stagger project cards */
+.projects-grid-home .project-card-home:nth-child(1) { transition-delay: 0.00s; }
+.projects-grid-home .project-card-home:nth-child(2) { transition-delay: 0.12s; }
+.projects-grid-home .project-card-home:nth-child(3) { transition-delay: 0.24s; }
+
+/* Hover zoom already handled in home.css — keep in sync */
+.project-card-home:hover img { transform: scale(1.07); }
+
+/* ── PROJECT OVERLAY REVEAL ────────────────────────────── */
+.project-card-home .project-overlay {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.project-card-home:hover .project-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── HERO SLIDE KEN BURNS ──────────────────────────────── */
+@keyframes bkKenBurns {
+    from { transform: scale(1.08); }
+    to   { transform: scale(1.18); }
+}
+
+.hero-slide.active {
+    animation: bkKenBurns 9s ease-in-out infinite alternate;
+}
+
+/* ── NAV LOGO HOVER ────────────────────────────────────── */
+.nav-logo {
+    transition: transform 0.4s ease;
+}
+.brand-combo:hover .nav-logo {
+    transform: scale(1.08) rotate(-3deg);
+}
+
+/* ── FOOTER LOGO HOVER ─────────────────────────────────── */
+.footer-logo {
+    transition: transform 0.4s ease;
+}
+.footer-logo-wrapper:hover .footer-logo {
+    transform: scale(1.06);
+}
+
+/* ── SOCIAL ICON HOVER ─────────────────────────────────── */
+.social-icons a {
+    transition: transform 0.35s ease, filter 0.35s ease;
+}
+.social-icons a:hover {
+    transform: scale(1.18) translateY(-3px);
+    filter: drop-shadow(0 0 10px #7ac142);
+}
+
+/* ── BKN-NAV: ensure entrance state is never blocked by this file ── */
+.bkn-nav {
+    /* do not override — navbar-premium.css (loaded after) owns all bkn-nav rules */
+}
+
+/* ── REDUCED MOTION ────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    .fade-up { transition: none !important; opacity: 1 !important; transform: none !important; }
+    .home-topbar, .hero-slide.active { animation: none !important; }
+    .custom-navbar, .solartec-nav {
+        transform: none !important; opacity: 1 !important; transition: none !important;
+    }
+    .bkn-nav { transform: none !important; opacity: 1 !important; }
+    .footer .footer-col { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .project-card-home.card-showing { animation: none !important; opacity: 1; }
+
+    /* image reveals — show immediately */
+    .service-thumb img,
+    .about-image-wrap img,
+    .why-visual img,
+    .project-card-home img {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    .project-card-home .project-overlay {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    .nav-logo, .footer-logo, .social-icons a { transition: none !important; }
+}

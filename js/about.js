@@ -1,30 +1,37 @@
 // BK Green Energy — about.js
-// Observer + navbar scroll handled by animate.js
+(function () {
+    'use strict';
 
-document.addEventListener('DOMContentLoaded', function () {
-    // Timeline stagger
-    var timelineItems = document.querySelectorAll('.timeline-item');
-    if (timelineItems.length) {
-        var tlObserver = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry, i) {
-                if (entry.isIntersecting) {
-                    setTimeout(function () {
-                        entry.target.classList.add('visible');
-                    }, i * 100);
-                    tlObserver.unobserve(entry.target);
-                }
+    function animateCounter(el, target, duration) {
+        var start = 0;
+        var step = Math.max(1, Math.ceil(target / (duration / 16)));
+        var timer = setInterval(function () {
+            start += step;
+            if (start >= target) { start = target; clearInterval(timer); }
+            el.textContent = start;
+        }, 16);
+    }
+
+    function initCounters() {
+        var els = document.querySelectorAll('.stat-num, .team-count-num');
+        if (!els.length || !('IntersectionObserver' in window)) return;
+
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) return;
+                var el = entry.target;
+                var target = parseInt(el.getAttribute('data-target'), 10) || 0;
+                animateCounter(el, target, 1600);
+                io.unobserve(el);
             });
-        }, { threshold: 0.2 });
-        timelineItems.forEach(function (item) { tlObserver.observe(item); });
+        }, { threshold: 0.4 });
+
+        els.forEach(function (el) { io.observe(el); });
     }
 
-    // Parallax bg-decoration (desktop only — skip on mobile for performance)
-    if (window.innerWidth > 767) {
-        var bgDecoration = document.querySelector('.bg-decoration');
-        if (bgDecoration) {
-            window.addEventListener('scroll', function () {
-                bgDecoration.style.transform = 'translateY(' + (window.pageYOffset * 0.3) + 'px)';
-            }, { passive: true });
-        }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initCounters);
+    } else {
+        initCounters();
     }
-});
+})();

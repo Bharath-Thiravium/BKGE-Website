@@ -1,0 +1,575 @@
+/* ================================================================
+   BK GREEN ENERGY — ORG CHART + PREMIUM ABOUT ANIMATIONS
+   ================================================================ */
+
+/* ── PARTICLES CANVAS ──────────────────────────────────── */
+#bk-particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.45;
+}
+
+/* ── TEAM SECTION PREMIUM STAGGER ─────────────────────── */
+.team-grid .team-card {
+    opacity: 0;
+    transform: translateY(36px) scale(0.95);
+    transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1),
+                transform 0.6s cubic-bezier(0.22,1,0.36,1),
+                box-shadow 0.32s ease,
+                border-color 0.32s ease;
+}
+.team-grid .team-card.tc-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+.team-grid .team-card:nth-child(1) { transition-delay: 0.05s; }
+.team-grid .team-card:nth-child(2) { transition-delay: 0.15s; }
+.team-grid .team-card:nth-child(3) { transition-delay: 0.25s; }
+.team-grid .team-card:nth-child(4) { transition-delay: 0.35s; }
+.team-grid .team-card:nth-child(5) { transition-delay: 0.45s; }
+
+.team-card:hover {
+    transform: translateY(-10px) scale(1.03) !important;
+    box-shadow: 0 22px 55px rgba(15,124,58,0.28) !important;
+    border-top-color: #19a84a !important;
+}
+.team-card:hover .team-icon {
+    background: linear-gradient(135deg, #0f7c3a, #19a84a) !important;
+}
+.team-card:hover .team-icon i { color: #fff !important; }
+
+/* ── ORG CHART SECTION ─────────────────────────────────── */
+.org-section {
+    padding: 5rem 0 6rem;
+    background: linear-gradient(160deg, #f0faf3 0%, #e8f5e9 50%, #f3f9f0 100%);
+    background-size: 200% 200%;
+    animation: bkGradShift 12s ease infinite;
+    position: relative;
+    /* CRITICAL: must NOT be hidden — clips left/right nodes */
+    overflow: visible;
+}
+.org-section::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 480px; height: 480px;
+    background: radial-gradient(circle, rgba(15,124,58,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+.org-section::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -80px;
+    width: 360px; height: 360px;
+    background: radial-gradient(circle, rgba(25,168,74,0.07) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+/* ── ORG CHART WRAPPER ─────────────────────────────────── */
+#org-chart-wrap {
+    /* FIX 1: overflow-x scroll so wide charts never get clipped */
+    overflow-x: auto;
+    /* FIX 2: overflow-y must be visible — NOT hidden — so toggle
+       buttons and tooltips that sit outside the card bounds show */
+    overflow-y: visible;
+    /* FIX 3: generous padding so edge cards are never flush */
+    padding: 2.5rem 4rem 4rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #0f7c3a #e8f5e9;
+    box-sizing: border-box;
+    width: 100%;
+    /* FIX 4: centre the tree when it fits the viewport */
+    display: flex;
+    justify-content: center;
+}
+#org-chart-wrap::-webkit-scrollbar { height: 6px; }
+#org-chart-wrap::-webkit-scrollbar-track { background: #e8f5e9; border-radius: 3px; }
+#org-chart-wrap::-webkit-scrollbar-thumb { background: #0f7c3a; border-radius: 3px; }
+
+/* ── ORG TREE ──────────────────────────────────────────── */
+.org-tree {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    /* FIX 5: min-width ensures the tree never collapses narrower
+       than its widest level, preventing card overlap */
+    min-width: max-content;
+    position: relative;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    /* FIX 6: padding so the root card's toggle button is never clipped */
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
+}
+
+/* ── LEVEL ROW ─────────────────────────────────────────── */
+.org-level {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /* FIX 7: increased gap — 24px gives breathing room between cards */
+    gap: 24px;
+    position: relative;
+    /* FIX 8: width auto so it grows with content, not constrained */
+    width: auto;
+    margin-bottom: 0;
+    box-sizing: border-box;
+}
+
+/* ── ORG NODE WRAP ─────────────────────────────────────── */
+.org-node-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    /* FIX 9: flex-shrink:0 prevents any column from being squeezed */
+    flex-shrink: 0;
+    /* FIX 10: padding-bottom so the toggle button (bottom:-12px)
+       is never clipped by a parent overflow:hidden */
+    padding-bottom: 16px;
+}
+
+/* ── ORG NODE CARD ─────────────────────────────────────── */
+.org-node {
+    background: #fff;
+    border: 2px solid #c8e6c9;
+    border-radius: 14px;
+    padding: 0.9rem 1.1rem 1rem;
+    /* FIX 11: wider cards — 160px fits all role labels without wrapping */
+    width: 160px;
+    box-sizing: border-box;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+    transition: transform 0.28s cubic-bezier(0.22,1,0.36,1),
+                box-shadow 0.28s ease,
+                border-color 0.28s ease,
+                background 0.28s ease;
+    box-shadow: 0 4px 16px rgba(15,42,20,0.08);
+    user-select: none;
+    z-index: 2;
+    /* FIX 12: overflow visible so tooltip and toggle are never clipped */
+    overflow: visible;
+}
+.org-node:hover {
+    transform: translateY(-5px) scale(1.04);
+    box-shadow: 0 14px 36px rgba(15,124,58,0.25);
+    border-color: #0f7c3a;
+    background: linear-gradient(135deg, #f0faf3, #fff);
+}
+
+/* Root node */
+.org-node.org-root {
+    background: linear-gradient(135deg, #0f7c3a, #19a84a);
+    border-color: #0f7c3a;
+    color: #fff;
+    width: 180px;
+    padding: 1.1rem 1.4rem 1.2rem;
+    border-radius: 18px;
+    box-shadow: 0 8px 28px rgba(15,124,58,0.38);
+}
+.org-node.org-root:hover {
+    transform: translateY(-6px) scale(1.05);
+    box-shadow: 0 18px 45px rgba(15,124,58,0.48);
+    background: linear-gradient(135deg, #0a6030, #0f7c3a);
+}
+
+/* Mid-level node */
+.org-node.org-mid {
+    background: linear-gradient(135deg, #e8f5e9, #fff);
+    border-color: #81c784;
+}
+.org-node.org-mid:hover { border-color: #0f7c3a; }
+
+/* ── NODE CONTENT ──────────────────────────────────────── */
+.org-node-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.4rem;
+    display: block;
+    line-height: 1;
+}
+.org-node-title {
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: #102913;
+    line-height: 1.3;
+    display: block;
+    /* FIX 13: allow wrapping so long titles don't overflow the card */
+    word-break: break-word;
+    white-space: normal;
+}
+.org-node.org-root .org-node-title  { color: #fff; font-size: 0.92rem; }
+.org-node.org-root .org-node-icon   { font-size: 1.7rem; }
+.org-node.org-root .org-node-names  {
+    color: rgba(255,255,255,0.82);
+    border-top-color: rgba(255,255,255,0.25);
+}
+
+/* ── NODE NAMES ────────────────────────────────────────── */
+.org-node-names {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: #4a7c5a;
+    line-height: 1.45;
+    margin-top: 0.45rem;
+    padding-top: 0.45rem;
+    border-top: 1px dashed #c8e6c9;
+    /* FIX 14: break-word so long names wrap inside the card */
+    word-break: break-word;
+    white-space: normal;
+}
+
+/* ── TOGGLE BUTTON ─────────────────────────────────────── */
+.org-toggle {
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 24px;
+    background: #0f7c3a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    /* FIX 15: high z-index so toggle is never hidden behind sibling cards */
+    z-index: 20;
+    transition: background 0.2s ease, transform 0.3s ease;
+    box-shadow: 0 2px 8px rgba(15,124,58,0.4);
+}
+.org-toggle:hover { background: #19a84a; }
+.org-toggle svg {
+    width: 10px;
+    height: 10px;
+    fill: #fff;
+    transition: transform 0.3s ease;
+}
+.org-toggle.collapsed svg { transform: rotate(180deg); }
+
+/* ── CHILDREN CONTAINER ────────────────────────────────── */
+.org-children {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* FIX 16: THE MAIN FIX — overflow must be visible so child cards
+       that are wider than the parent node are never clipped.
+       Collapse animation uses max-height + opacity instead. */
+    overflow: visible;
+    transition: max-height 0.5s cubic-bezier(0.22,1,0.36,1),
+                opacity 0.4s ease;
+    max-height: 4000px;
+    opacity: 1;
+    /* FIX 17: width auto so it grows to fit all children */
+    width: auto;
+    min-width: 100%;
+}
+.org-children.collapsed {
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+    /* FIX 18: clip only when collapsed so nothing bleeds through */
+    overflow: hidden;
+}
+
+/* ── VERTICAL CONNECTOR ────────────────────────────────── */
+.org-v-line {
+    width: 2px;
+    height: 32px;
+    background: linear-gradient(180deg, #0f7c3a, #81c784);
+    opacity: 0.6;
+    flex-shrink: 0;
+    /* FIX 19: ensure v-line is not clipped by node-wrap padding */
+    position: relative;
+    z-index: 1;
+}
+
+/* ── HORIZONTAL CONNECTOR BAR ──────────────────────────── */
+.org-h-bar {
+    /* FIX 20: align-self stretch + width 100% so bar spans full
+       child row width, not just the parent card width */
+    align-self: stretch;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #0f7c3a, transparent);
+    opacity: 0.5;
+    margin-bottom: 0;
+    box-sizing: border-box;
+}
+
+/* ── TOOLTIP ───────────────────────────────────────────── */
+.org-tooltip {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    background: #102913;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.4rem 0.85rem;
+    border-radius: 8px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    /* FIX 21: z-index above all cards */
+    z-index: 100;
+}
+.org-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%; left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: #102913;
+}
+.org-node:hover .org-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ── POPUP MODAL ───────────────────────────────────────── */
+#org-popup {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: rgba(6, 24, 11, 0.65);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.28s ease, visibility 0.28s ease;
+}
+#org-popup.org-popup-open {
+    opacity: 1;
+    visibility: visible;
+}
+#org-popup-card {
+    position: relative;
+    background: #fff;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 480px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 28px 70px rgba(6, 24, 11, 0.35);
+    overflow: hidden;
+    transform: scale(0.88) translateY(20px);
+    transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+#org-popup.org-popup-open #org-popup-card {
+    transform: scale(1) translateY(0);
+}
+#org-popup-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.2rem 1.4rem;
+    background: linear-gradient(135deg, #0b5e2c, #0f7c3a, #19a84a);
+    flex-shrink: 0;
+}
+#org-popup-header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    min-width: 0;
+    flex: 1;
+}
+#org-popup-icon  { font-size: 2rem; line-height: 1; flex-shrink: 0; }
+#org-popup-role  {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.72);
+    margin-bottom: 0.12rem;
+}
+#org-popup-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #fff;
+    margin: 0;
+    line-height: 1.25;
+}
+#org-popup-close {
+    flex-shrink: 0;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.35);
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: background 0.2s, border-color 0.2s, transform 0.25s;
+}
+#org-popup-close:hover,
+#org-popup-close:focus-visible {
+    background: rgba(255,255,255,0.28);
+    border-color: rgba(255,255,255,0.7);
+    transform: rotate(90deg);
+    outline: none;
+}
+#org-popup-body {
+    padding: 1.4rem 1.5rem 1.6rem;
+    overflow-y: auto;
+    flex: 1;
+    scrollbar-width: thin;
+    scrollbar-color: #0f7c3a #e8f5e9;
+}
+#org-popup-body::-webkit-scrollbar { width: 4px; }
+#org-popup-body::-webkit-scrollbar-thumb { background: #0f7c3a; border-radius: 2px; }
+#org-popup-desc {
+    color: #4a6358;
+    font-size: 0.93rem;
+    line-height: 1.75;
+    margin: 0 0 1.2rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid #e8f5e9;
+}
+#org-popup-names-wrap {
+    background: #f3faf5;
+    border: 1px solid #c8e6c9;
+    border-radius: 12px;
+    padding: 1rem 1.1rem;
+}
+.org-popup-names-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #0f7c3a;
+    margin: 0 0 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+.org-popup-names-label::before {
+    content: '';
+    display: inline-block;
+    width: 3px; height: 12px;
+    background: #0f7c3a;
+    border-radius: 2px;
+}
+#org-popup-names {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+.org-popup-name-row {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.42rem 0.7rem;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #dff0e4;
+    transition: background 0.18s, border-color 0.18s, transform 0.18s;
+}
+.org-popup-name-row:hover {
+    background: linear-gradient(90deg, #f0faf3, #fff);
+    border-color: #81c784;
+    transform: translateX(3px);
+}
+.org-popup-name-num {
+    flex-shrink: 0;
+    width: 22px; height: 22px;
+    background: linear-gradient(135deg, #0f7c3a, #19a84a);
+    color: #fff;
+    font-size: 0.68rem;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+.org-popup-name-txt {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #1a3a24;
+    line-height: 1.3;
+}
+
+/* ── CHART ENTRY ANIMATION ─────────────────────────────── */
+.org-node-wrap.oc-anim {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.org-node-wrap.oc-anim.oc-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── GRADIENT BG ANIMATION ─────────────────────────────── */
+@keyframes bkGradShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ── RESPONSIVE ────────────────────────────────────────── */
+@media (max-width: 1199px) {
+    #org-chart-wrap { padding: 2rem 3rem 3.5rem; }
+    .org-level      { gap: 20px; }
+    .org-node       { width: 148px; }
+    .org-node.org-root { width: 164px; }
+}
+@media (max-width: 1023px) {
+    #org-chart-wrap { padding: 2rem 2rem 3rem; }
+    .org-level      { gap: 16px; }
+    .org-node       { width: 136px; }
+    .org-node.org-root { width: 152px; }
+}
+@media (max-width: 767px) {
+    #org-chart-wrap {
+        padding: 1.5rem 1.5rem 2.5rem;
+        /* on mobile always allow horizontal scroll */
+        justify-content: flex-start;
+    }
+    .org-level      { gap: 12px; }
+    .org-node       { width: 118px; padding: 0.65rem 0.75rem 0.75rem; }
+    .org-node.org-root { width: 132px; }
+    .org-node-title { font-size: 0.74rem; }
+    .org-node-names { font-size: 0.63rem; }
+    .org-node-icon  { font-size: 1.15rem; }
+}
+@media (max-width: 480px) {
+    #org-popup      { padding: 0.6rem; }
+    #org-popup-card { max-height: 90vh; border-radius: 16px; }
+    #org-popup-header { padding: 1rem 1.1rem; }
+    #org-popup-title  { font-size: 1rem; }
+    #org-popup-body   { padding: 1.1rem 1.1rem 1.3rem; }
+}
+
+/* ── REDUCED MOTION ────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    .team-grid .team-card,
+    .org-node-wrap,
+    .org-children,
+    #org-popup,
+    #org-popup-card { transition: none !important; animation: none !important; }
+    .team-grid .team-card { opacity: 1 !important; transform: none !important; }
+    .org-node-wrap  { opacity: 1 !important; transform: none !important; }
+    .org-section    { animation: none !important; }
+    #bk-particles   { display: none; }
+}

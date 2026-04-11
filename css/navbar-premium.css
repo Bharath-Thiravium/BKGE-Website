@@ -1,0 +1,984 @@
+/* ================================================================
+   BK GREEN ENERGY — PREMIUM NAVBAR  (navbar-premium.css)
+   Dark bar · Angled green logo panel · Centered nav · Right CTA
+   ================================================================ */
+
+/* ── 1. TOPBAR ─────────────────────────────────────────────── */
+.bkn-topbar {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    z-index: 1070;
+    background: #0b2f18;
+    height: 44px;
+    display: flex;
+    align-items: center;
+}
+
+.bkn-topbar-inner {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.bkn-topbar-left,
+.bkn-topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+}
+
+.bkn-topbar-left span,
+.bkn-topbar-right a {
+    color: rgba(255,255,255,0.82);
+    font-size: 0.78rem;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+    transition: color 0.2s;
+}
+
+.bkn-topbar-right a:hover { color: #90cf4d; }
+
+.bkn-topbar-left i,
+.bkn-topbar-right i {
+    color: #90cf4d;
+    margin-right: 0.35rem;
+    font-size: 0.72rem;
+}
+
+/* ── 2. NAVBAR WRAPPER ─────────────────────────────────────── */
+.bkn-nav {
+    position: fixed;
+    top: 0;             /* default: no topbar on inner pages */
+    left: 0;
+    width: 100%;
+    z-index: 1060;
+    background: #111314;
+    box-shadow: 0 2px 24px rgba(0,0,0,0.55);
+    transition:
+        top          0.32s cubic-bezier(0.4, 0, 0.2, 1),
+        background   0.38s ease,
+        box-shadow   0.38s ease,
+        backdrop-filter 0.38s ease;
+    transform: translateY(-100%);
+    opacity: 0;
+}
+
+/* home page only: topbar pushes nav down */
+body.bkn-has-topbar .bkn-nav { top: 44px; }
+
+/* JS adds this class after body.loaded */
+.bkn-nav.bkn-ready {
+    transform: translateY(0);
+    opacity: 1;
+    transition:
+        transform     0.52s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity       0.42s ease,
+        top           0.32s cubic-bezier(0.4, 0, 0.2, 1),
+        background    0.38s ease,
+        box-shadow    0.38s ease;
+}
+
+/* when topbar is hidden (scrolled past it) */
+.bkn-nav.topbar-hidden { top: 0 !important; }
+
+/* scrolled — glass effect + stronger shadow */
+.bkn-nav.scrolled {
+    background: rgba(13, 15, 16, 0.92);
+    backdrop-filter: blur(18px) saturate(1.6);
+    -webkit-backdrop-filter: blur(18px) saturate(1.6);
+    box-shadow:
+        0 4px 32px rgba(0,0,0,0.65),
+        0 1px 0 rgba(255,255,255,0.04) inset;
+}
+
+/* ── 3. INNER ROW ──────────────────────────────────────────── */
+.bkn-nav-inner {
+    display: grid;
+    grid-template-columns: auto 1fr auto;  /* LEFT | CENTER | RIGHT */
+    align-items: stretch;
+    height: 100px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+/* ── 4. LEFT — ANGLED GREEN LOGO PANEL ────────────────────── */
+.bkn-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: #1e7e34;
+    padding: 0 3rem 0 2rem;
+    text-decoration: none;
+    flex-shrink: 0;
+    position: relative;
+    clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 100%, 0 100%);
+    transition: background 0.28s ease, transform 0.28s ease;
+    min-width: 220px;
+}
+
+/* static gloss layer */
+.bkn-brand::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.09) 0%, transparent 55%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* one-shot shine sweep on load */
+.bkn-brand::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -80%;
+    width: 55%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255,255,255,0.13) 50%,
+        transparent 100%
+    );
+    transform: skewX(-18deg);
+    animation: bknBrandShine 1.1s cubic-bezier(0.4, 0, 0.2, 1) 0.55s both;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes bknBrandShine {
+    from { left: -80%; }
+    to   { left: 130%; }
+}
+
+/* keep brand text above pseudo-elements */
+.bkn-brand-logo,
+.bkn-brand-text { position: relative; z-index: 2; }
+
+.bkn-brand:hover {
+    background: #196b2c;
+    transform: translateX(3px);
+}
+
+.bkn-brand-logo {
+    height: 72px;
+    width: 100px;
+    object-fit: contain;
+    flex-shrink: 0;
+    /* transparent — no white box, depth via drop-shadow only */
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.45));
+    animation: bknLogoReveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both;
+}
+
+@keyframes bknLogoReveal {
+    from { opacity: 0; transform: scale(0.82) rotate(-6deg); }
+    to   { opacity: 1; transform: scale(1)   rotate(0deg);  }
+}
+
+.bkn-brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.bkn-brand-name {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #fff;
+    white-space: nowrap;
+    letter-spacing: 0.3px;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.35);
+}
+
+.bkn-brand-tagline {
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.72);
+    font-weight: 500;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* ── 5. CENTER — NAV LINKS ─────────────────────────────────── */
+.bkn-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;   /* true center within the 1fr column */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+}
+
+.bkn-menu li { display: flex; align-items: stretch; }
+
+/* stagger entrance — set by JS via --i custom property */
+.bkn-menu li {
+    opacity: 0;
+    transform: translateY(-8px);
+    transition:
+        opacity   0.38s ease calc(var(--i, 0) * 55ms),
+        transform 0.38s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--i, 0) * 55ms);
+}
+
+.bkn-nav.bkn-ready .bkn-menu li {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.bkn-menu li a {
+    display: flex;
+    align-items: center;
+    height: 70px;
+    padding: 0 1.15rem;
+    color: rgba(255,255,255,0.72);
+    font-size: 23px;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    position: relative;
+    transition: color 0.22s ease, letter-spacing 0.22s ease;
+}
+
+/* hover: slight letter-spacing expansion */
+.bkn-menu li a:hover { letter-spacing: 0.5px; }
+
+/* animated underline — expands from center */
+.bkn-menu li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    right: 50%;
+    height: 3px;
+    background: linear-gradient(90deg, #4caf50, #7ac142);
+    border-radius: 3px 3px 0 0;
+    transition: left 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                right 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* active dot indicator above the link */
+.bkn-menu li a.active::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #4caf50;
+    box-shadow: 0 0 6px rgba(76,175,80,0.8);
+    animation: bknDotPulse 2s ease-in-out infinite;
+}
+
+@keyframes bknDotPulse {
+    0%, 100% { opacity: 1;   transform: translateX(-50%) scale(1);   }
+    50%       { opacity: 0.5; transform: translateX(-50%) scale(1.5); }
+}
+
+.bkn-menu li a:hover,
+.bkn-menu li a.active { color: #fff; }
+
+.bkn-menu li a:hover::after,
+.bkn-menu li a.active::after {
+    left: 0.6rem;
+    right: 0.6rem;
+}
+
+/* ── 6. RIGHT — ICONS + CTA ────────────────────────────────── */
+.bkn-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0 1.75rem 0 1rem;
+    flex-shrink: 0;
+}
+
+/* icon buttons */
+.bkn-icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 7px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.72);
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition:
+        background   0.22s ease,
+        color        0.22s ease,
+        border-color 0.22s ease,
+        transform    0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+    flex-shrink: 0;
+}
+
+.bkn-icon-btn:hover {
+    background: rgba(255,255,255,0.13);
+    color: #fff;
+    border-color: rgba(255,255,255,0.22);
+    transform: scale(1.12) rotate(-5deg);
+}
+
+/* divider between icons and CTA */
+.bkn-actions-divider {
+    width: 1px;
+    height: 28px;
+    background: rgba(255,255,255,0.12);
+    margin: 0 0.35rem;
+    flex-shrink: 0;
+}
+
+/* CTA button */
+.bkn-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.52rem 1.3rem;
+    background: #1e7e34;
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border-radius: 6px;
+    text-decoration: none;
+    white-space: nowrap;
+    letter-spacing: 0.2px;
+    box-shadow: 0 3px 14px rgba(30,126,52,0.45);
+    position: relative;
+    overflow: hidden;
+    transition:
+        background  0.26s ease,
+        transform   0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+        box-shadow  0.26s ease;
+    flex-shrink: 0;
+}
+
+/* shimmer sweep on hover */
+.bkn-cta::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255,255,255,0.18) 50%,
+        transparent 100%
+    );
+    transform: skewX(-20deg);
+    transition: left 0.55s ease;
+    pointer-events: none;
+}
+
+.bkn-cta:hover::before { left: 140%; }
+
+.bkn-cta:hover {
+    background: #196b2c;
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 24px rgba(30,126,52,0.6);
+    color: #fff;
+}
+
+.bkn-cta:active { transform: translateY(0) scale(1); }
+
+/* ── 7. HAMBURGER (mobile only) ────────────────────────────── */
+.bkn-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 7px;
+    cursor: pointer;
+    padding: 8px 7px;
+    flex-shrink: 0;
+    transition: background 0.22s ease;
+}
+
+.bkn-hamburger:hover { background: rgba(255,255,255,0.12); }
+
+.bkn-hamburger span {
+    display: block;
+    height: 2px;
+    background: rgba(255,255,255,0.85);
+    border-radius: 2px;
+    transition: transform 0.28s ease, opacity 0.28s ease, width 0.28s ease;
+    transform-origin: center;
+}
+
+/* open state — animated X */
+.bkn-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.bkn-hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+.bkn-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── 8. MOBILE DRAWER ──────────────────────────────────────── */
+.bkn-drawer {
+    display: none;
+    flex-direction: column;
+    background: rgba(18, 22, 24, 0.97);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding: 0.75rem 1.25rem 1.4rem;
+    gap: 0.3rem;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                padding    0.4s ease;
+}
+
+.bkn-drawer.open {
+    display: flex;
+    max-height: 600px;
+    padding: 0.75rem 1.25rem 1.4rem;
+}
+
+/* stagger drawer links */
+.bkn-drawer a {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.9rem 1.1rem;
+    color: rgba(255,255,255,0.82);
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+    /* left accent bar — use box-shadow so padding stays fixed */
+    box-shadow: inset 3px 0 0 transparent;
+    transition:
+        background  0.22s ease,
+        color       0.22s ease,
+        box-shadow  0.22s ease;
+}
+
+.bkn-drawer a:hover,
+.bkn-drawer a.active {
+    background: rgba(30,126,52,0.18);
+    color: #fff;
+    box-shadow: inset 3px 0 0 #4caf50;
+}
+
+.bkn-drawer a i {
+    width: 1.1rem;
+    text-align: center;
+    flex-shrink: 0;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.9rem;
+    transition: color 0.22s ease;
+}
+
+.bkn-drawer a:hover i,
+.bkn-drawer a.active i { color: #4caf50; }
+
+.bkn-drawer-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.07);
+    margin: 0.5rem 0;
+}
+
+.bkn-drawer-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    padding: 0.95rem 1rem;
+    background: #1e7e34;
+    color: #fff !important;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.bkn-drawer-cta:hover { background: #196b2c !important; }
+
+/* ── 9. SEARCH OVERLAY ─────────────────────────────────────── */
+.bkn-search-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 1080;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.bkn-search-overlay.open { display: flex; }
+
+.bkn-search-box {
+    display: flex;
+    align-items: center;
+    background: #1a1e21;
+    border: 1.5px solid #1e7e34;
+    border-radius: 10px;
+    overflow: hidden;
+    width: min(580px, 92vw);
+    box-shadow: 0 24px 64px rgba(0,0,0,0.65);
+}
+
+.bkn-search-box input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 1.05rem 1.3rem;
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    font-family: inherit;
+}
+
+.bkn-search-box input::placeholder { color: #555; }
+
+.bkn-search-box button {
+    background: #1e7e34;
+    border: none;
+    padding: 1.05rem 1.3rem;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.2s ease;
+    flex-shrink: 0;
+}
+
+.bkn-search-box button:hover { background: #196b2c; }
+
+.bkn-search-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: #fff;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+}
+
+.bkn-search-close:hover { background: rgba(255,255,255,0.2); }
+
+/* ── 10. PAGE BODY OFFSET ──────────────────────────────────── */
+/*
+   topbar = 44px, navbar = 70px → total = 114px
+   On mobile (topbar hidden) → 70px
+*/
+/* Default (inner pages): navbar only = 70px
+   Home page (body.bkn-has-topbar): topbar 44px + navbar 70px = 114px */
+body {
+    padding-top: 70px;
+}
+
+body.bkn-has-topbar {
+    padding-top: 114px;
+}
+
+@media (max-width: 991px) {
+    body,
+    body.bkn-has-topbar { padding-top: 66px; }
+
+    .bkn-topbar { display: none; }
+    body.bkn-has-topbar .bkn-nav { top: 0; }
+}
+
+@media (max-width: 480px) {
+    body,
+    body.bkn-has-topbar { padding-top: 60px; }
+}
+
+/* Hero sections sit directly under the fixed navbar — no extra padding */
+@media (max-width: 991px) {
+    .solartec-hero {
+        /* navbar is 66px; hero fills remaining viewport */
+        min-height: calc(100vh - 66px);
+        min-height: calc(100svh - 66px);
+    }
+}
+
+@media (max-width: 480px) {
+    .solartec-hero {
+        min-height: calc(100vh - 60px);
+        min-height: calc(100svh - 60px);
+    }
+}
+
+/* hero sections that use their own padding-top */
+.solartec-hero { padding-top: 0 !important; }
+
+.page-banner,
+.hero-section,
+.hero-banner,
+.hero-intro {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* ── 11. RESPONSIVE ────────────────────────────────────────── */
+@media (max-width: 991px) {
+    .bkn-topbar    { display: none; }
+    .bkn-nav       { top: 0; }
+    .bkn-menu      { display: none; }
+    .bkn-cta       { display: none; }
+    .bkn-actions-divider { display: none; }
+    .bkn-icon-btn  { display: none; }
+    .bkn-hamburger { display: flex; }
+
+    /* navbar bar: 66px — enough room for logo + brand name */
+    .bkn-nav-inner {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        height: 66px;
+    }
+
+    /* compact brand panel */
+    .bkn-brand {
+        min-width: 0;
+        padding: 0 2.25rem 0 1.1rem;
+        clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 100%, 0 100%);
+        gap: 0.65rem;
+    }
+
+    .bkn-brand-tagline { display: none; }
+    .bkn-brand-logo    { height: 46px; width: 46px; }
+    .bkn-brand-name    { font-size: 1rem; font-weight: 800; }
+
+    /* push hamburger to far right with consistent padding */
+    .bkn-actions {
+        margin-left: auto;
+        padding: 0 1.1rem;
+        gap: 0.5rem;
+    }
+
+    /* slightly larger hamburger hit area */
+    .bkn-hamburger {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .bkn-nav-inner  { height: 75px; }
+    .bkn-brand-logo { height: 38px; width: 80px; }
+    .bkn-brand-name { font-size: 0.9rem; }
+    .bkn-brand      { padding: 0 1.8rem 0 0.9rem; }
+    .bkn-actions    { padding: 0 0.9rem; }
+}
+
+/* ── 12. OVERRIDE OLD BOOTSTRAP NAVBAR (safety net) ───────── */
+/* Ensure old .custom-navbar rules don't bleed in on pages
+   that still load base.css / common-navbar.css              */
+.bkn-nav *,
+.bkn-topbar * {
+    box-sizing: border-box;
+}
+
+/* ── 13. ACCESSIBILITY ─────────────────────────────────────── */
+.bkn-menu li a:focus-visible,
+.bkn-cta:focus-visible,
+.bkn-icon-btn:focus-visible,
+.bkn-hamburger:focus-visible {
+    outline: 2px solid #4caf50;
+    outline-offset: 2px;
+}
+
+.bkn-menu li a,
+.bkn-cta,
+.bkn-icon-btn,
+.bkn-hamburger,
+.bkn-drawer a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .bkn-nav,
+    .bkn-nav.bkn-ready,
+    .bkn-menu li,
+    .bkn-menu li a::after,
+    .bkn-menu li a::before,
+    .bkn-cta,
+    .bkn-cta::before,
+    .bkn-icon-btn,
+    .bkn-brand,
+    .bkn-hamburger span,
+    .bkn-drawer,
+    .bkn-drawer a {
+        transition: none !important;
+        animation: none !important;
+    }
+    /* still show everything */
+    .bkn-nav     { transform: none !important; opacity: 1 !important; }
+    .bkn-menu li { transform: none !important; opacity: 1 !important; }
+}
+
+/* ================================================================
+   SEARCH OVERLAY — smooth animation + hint text
+   ================================================================ */
+
+/* Use opacity/pointer-events instead of display:none for animation */
+.bkn-search-overlay {
+    display: flex !important;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.28s ease;
+}
+
+.bkn-search-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.bkn-search-box {
+    transform: translateY(20px) scale(0.97);
+    opacity: 0;
+    transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity  0.28s ease;
+}
+
+.bkn-search-overlay.open .bkn-search-box {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+.bkn-search-hint {
+    margin-top: 1rem;
+    color: rgba(255,255,255,0.42);
+    font-size: 0.82rem;
+    text-align: center;
+    letter-spacing: 0.2px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.3s ease 0.15s, transform 0.3s ease 0.15s;
+}
+
+.bkn-search-overlay.open .bkn-search-hint {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#bknSearchBtn.bkn-btn-active {
+    background: rgba(30,126,52,0.25);
+    color: #4caf50;
+    border-color: rgba(76,175,80,0.4);
+}
+
+/* ================================================================
+   QUICK LINKS PANEL
+   ================================================================ */
+
+.bkn-quicklinks-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 1074;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    opacity: 0;
+    transition: opacity 0.28s ease;
+}
+
+.bkn-quicklinks-overlay.open {
+    display: block;
+    opacity: 1;
+}
+
+.bkn-quicklinks-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(340px, 92vw);
+    height: 100vh;
+    height: 100dvh;
+    z-index: 1075;
+    background: #141719;
+    border-left: 1px solid rgba(255,255,255,0.08);
+    box-shadow: -12px 0 48px rgba(0,0,0,0.55);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    transform: translateX(100%);
+    transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bkn-quicklinks-panel.open {
+    transform: translateX(0);
+}
+
+.bkn-ql-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    flex-shrink: 0;
+}
+
+.bkn-ql-title {
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+}
+
+.bkn-ql-title i { color: #4caf50; }
+
+.bkn-ql-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.7);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.bkn-ql-close:hover {
+    background: rgba(255,255,255,0.14);
+    color: #fff;
+}
+
+.bkn-ql-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    padding: 1.25rem 1.5rem 2rem;
+}
+
+.bkn-ql-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 1.25rem 0.75rem;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    text-decoration: none;
+    color: rgba(255,255,255,0.82);
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+    transition: background 0.22s ease, border-color 0.22s ease,
+                color 0.22s ease,
+                transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.bkn-quicklinks-panel.open .bkn-ql-item {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    transition:
+        opacity      0.32s ease calc(var(--qi, 0) * 40ms),
+        transform    0.32s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--qi, 0) * 40ms),
+        background   0.22s ease,
+        border-color 0.22s ease,
+        color        0.22s ease;
+}
+
+.bkn-ql-item:hover {
+    background: rgba(30,126,52,0.18);
+    border-color: rgba(76,175,80,0.35);
+    color: #fff;
+    transform: translateY(-3px) scale(1.03);
+}
+
+.bkn-ql-item:active { transform: scale(0.97); }
+
+.bkn-ql-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.07);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: #4caf50;
+    transition: background 0.22s ease;
+}
+
+.bkn-ql-item:hover .bkn-ql-icon { background: rgba(76,175,80,0.2); }
+
+.bkn-ql-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    text-align: center;
+}
+
+.bkn-ql-item--cta {
+    background: rgba(30,126,52,0.15);
+    border-color: rgba(76,175,80,0.25);
+    color: #90cf4d;
+}
+
+.bkn-ql-item--cta .bkn-ql-icon {
+    background: rgba(76,175,80,0.2);
+    color: #90cf4d;
+}
+
+.bkn-ql-item--cta:hover {
+    background: rgba(30,126,52,0.30);
+    border-color: rgba(76,175,80,0.55);
+    color: #fff;
+}
+
+#bknGridBtn.bkn-btn-active {
+    background: rgba(30,126,52,0.25);
+    color: #4caf50;
+    border-color: rgba(76,175,80,0.4);
+}
+
+body.bkn-panel-open { overflow: hidden; }
+
+@media (max-width: 480px) {
+    .bkn-quicklinks-panel { width: 100vw; border-left: none; }
+    .bkn-ql-grid { gap: 0.6rem; padding: 1rem 1rem 1.5rem; }
+    .bkn-ql-item { padding: 1rem 0.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .bkn-search-overlay, .bkn-search-box, .bkn-search-hint,
+    .bkn-quicklinks-panel, .bkn-quicklinks-overlay, .bkn-ql-item {
+        transition: none !important;
+        animation: none !important;
+    }
+    .bkn-search-overlay   { opacity: 1; }
+    .bkn-quicklinks-panel { transform: none; }
+    .bkn-ql-item          { opacity: 1; transform: none; }
+}

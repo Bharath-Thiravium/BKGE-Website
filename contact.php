@@ -1,81 +1,14 @@
 <?php
-// Start session for CSRF token
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
-// Generate CSRF token if not exists
-if (empty($_SESSION['csrf_token'])) {
-    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-}
-
-// Form submission handler
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Verify CSRF token
-    if (empty($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
-        $errors = ["Security token validation failed. Please try again."];
-    } else {
-        $name = trim($_POST['name'] ?? '');
-        $email = trim($_POST['email'] ?? '');
-        $phone = trim($_POST['phone'] ?? '');
-        $message = trim($_POST['message'] ?? '');
-
-        $errors = [];
-
-        // Validate name
-        if (empty($name) || !preg_match("/^[A-Za-z ]{2,50}$/", $name)) {
-            $errors[] = "Invalid name";
-        }
-
-        // Validate email
-        if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $errors[] = "Invalid email";
-        }
-
-        // Validate phone (Indian format)
-        if (empty($phone) || !preg_match("/^[6-9][0-9]{9}$/", $phone)) {
-            $errors[] = "Invalid phone number";
-        }
-
-        // Validate message
-        if (empty($message) || strlen($message) < 5 || strlen($message) > 1000) {
-            $errors[] = "Message must be between 5-1000 characters";
-        }
-
-        // Send email if no errors
-        if (empty($errors)) {
-        $to = "info@bkgreenenergy.com";
-        $subject = "New Contact Request from " . htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
-
-        $body = "Name: " . htmlspecialchars($name, ENT_QUOTES, 'UTF-8') . "\n";
-        $body .= "Email: " . htmlspecialchars($email, ENT_QUOTES, 'UTF-8') . "\n";
-        $body .= "Phone: " . htmlspecialchars($phone, ENT_QUOTES, 'UTF-8') . "\n\n";
-        $body .= "Message:\n" . htmlspecialchars($message, ENT_QUOTES, 'UTF-8');
-
-        $headers = "From: noreply@bkgreenenergy.com\r\n";
-        $headers .= "Reply-To: " . filter_var($email, FILTER_SANITIZE_EMAIL) . "\r\n";
-        $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-        $headers .= "X-Mailer: PHP/" . phpversion();
-
-        if (@mail($to, $subject, $body, $headers)) {
-            $success = true;
-        } else {
-            $errors[] = "Failed to send message. Please try again.";
-        }
-        }
-    }
-}
+if (session_status() === PHP_SESSION_NONE) session_start();
+if (empty($_SESSION['csrf_token'])) $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes, maximum-scale=5">
-    <meta name="description"
-        content="Contact BK Green Energy - Get in touch for solar solutions, renewable energy consultations, and expert guidance on sustainable power systems.">
-    <meta name="keywords"
-        content="contact BK Green Energy, solar consultation, renewable energy contact, Madurai solar company">
+    <meta name="description" content="Contact BK Green Energy - Get in touch for solar EPC consultation, project enquiries and support.">
+    <meta name="keywords" content="contact BK Green Energy, solar consultation, renewable energy contact, Madurai">
     <meta name="author" content="BK Green Energy">
     <title>Contact Us - BK Green Energy</title>
     <link href="assets/images/Logo.png" rel="shortcut icon" type="image/x-icon">
@@ -84,269 +17,292 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/contact-page.css">
     <link rel="stylesheet" href="css/no-flash.css">
+    <link rel="stylesheet" href="css/bk-animations.css">
+    <link rel="stylesheet" href="css/navbar-premium.css">
 </head>
-
 <body class="contact-page">
-    <nav class="navbar navbar-expand-lg fixed-top navbar-light custom-navbar">
-        <div class="container">
-            <a href="index.php" class="brand-text">BK Green Energy</a>
-            <!-- Logo -->
-            <!-- <a class="navbar-brand" href="index.php">
-                <img src="assets/images/Logo.png" alt="BK Green Energy" height="50">
-            </a> -->
-
-            <!-- Mobile Toggle -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+<!-- ═══ PREMIUM NAVBAR ═══ -->
+<nav class="bkn-nav" id="bknNav" aria-label="Main navigation">
+    <div class="bkn-nav-inner">
+        <a href="index.php" class="bkn-brand">
+            <div class="bkn-brand-logo-wrap"><img src="assets/images/Logo.png" alt="BK Green Energy" class="bkn-brand-logo"></div>
+            <div class="bkn-brand-text">
+                <span class="bkn-brand-name">BK Green Energy</span>
+                <!-- <span class="bkn-brand-tagline">Renewable Energy Partner</span> -->
+            </div>
+        </a>
+        <ul class="bkn-menu">
+            <li><a href="index.php">Home</a></li>
+            <li><a href="about.php">About</a></li>
+            <li><a href="services.php">Services</a></li>
+            <li><a href="projects.php">Projects</a></li>
+            <li><a href="careers.php">Careers</a></li>
+            <li><a href="contact.php" class="active">Contact</a></li>
+        </ul>
+        <div class="bkn-actions">
+            <button class="bkn-icon-btn" id="bknSearchBtn" aria-label="Search"><i class="fas fa-search"></i></button>
+            <button class="bkn-icon-btn" id="bknGridBtn" aria-label="Quick links"><i class="fas fa-th"></i></button>
+            <div class="bkn-actions-divider"></div>
+            <a href="contact.php" class="bkn-cta"><i class="fas fa-bolt"></i> Get Quote</a>
+            <button class="bkn-hamburger" id="bknHamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span><span></span>
             </button>
-
-            <!-- Links -->
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php">Home</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.php">About</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="services.php">Services</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="projects.php">Projects</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="careers.php">Careers</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link btn-nav" href="contact.php">Contact</a>
-                    </li>
-
-                </ul>
-            </div>
-
         </div>
-    </nav>
+    </div>
+    <div class="bkn-drawer" id="bknDrawer">
+        <a href="index.php"><i class="fas fa-home"></i> Home</a>
+        <a href="about.php"><i class="fas fa-info-circle"></i> About</a>
+        <a href="services.php"><i class="fas fa-solar-panel"></i> Services</a>
+        <a href="projects.php"><i class="fas fa-project-diagram"></i> Projects</a>
+        <a href="careers.php"><i class="fas fa-briefcase"></i> Careers</a>
+        <a href="contact.php" class="active"><i class="fas fa-envelope"></i> Contact</a>
+        <div class="bkn-drawer-divider"></div>
+        <a href="contact.php" class="bkn-drawer-cta"><i class="fas fa-bolt"></i> Get Quote</a>
+    </div>
+</nav>
+    <div class="bkn-search-overlay" id="bknSearchOverlay" role="dialog" aria-modal="true" aria-label="Search">
+    <button class="bkn-search-close" id="bknSearchClose" aria-label="Close search"><i class="fas fa-times"></i></button>
+    <div class="bkn-search-box">
+        <input type="search" id="bknSearchInput" placeholder="Search BK Green Energy..." aria-label="Search" autocomplete="off">
+        <button type="button" aria-label="Submit search"><i class="fas fa-search"></i></button>
+    </div>
+    <p class="bkn-search-hint">Try: Solar EPC, Civil Works, Commissioning, Careers&hellip;</p>
+</div>
 
-    <!-- HERO INTRO SECTION -->
-    <!-- HERO INTRO SECTION -->
-    <section class="hero-intro">
-        <div class="hero-overlay"></div>
-        <div class="container">
-            <div class="hero-content-wrapper">
-                <div class="hero-logo-block fade-in-up">
-                    <img src="assets/images/Logo.png" alt="BK Green Energy Logo" class="hero-big-logo">
-                </div>
-                <div class="hero-content fade-in-up">
-                    <h1>Let's Power a Greener Future Together</h1>
-                    <p class="hero-tagline">💬 We're Here to Help</p>
-                    <p class="hero-body">Have questions about solar solutions? Planning to switch to renewable energy for your home or business? Our team is here to guide you every step of the way.</p>
-                    <p class="hero-bottom">Fill out the form below and we'll get back to you shortly.</p>
-                </div>
+<!-- Quick Links Panel -->
+<div class="bkn-quicklinks-overlay" id="bknQuicklinksOverlay" aria-hidden="true"></div>
+<div class="bkn-quicklinks-panel" id="bknQuicklinksPanel" role="dialog" aria-modal="true" aria-label="Quick links">
+    <div class="bkn-ql-header">
+        <span class="bkn-ql-title"><i class="fas fa-th"></i> Quick Links</span>
+        <button class="bkn-ql-close" id="bknQuicklinksClose" aria-label="Close quick links"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="bkn-ql-grid">
+        <a href="index.php" class="bkn-ql-item">
+            <span class="bkn-ql-icon"><i class="fas fa-home"></i></span>
+            <span class="bkn-ql-label">Home</span>
+        </a>
+        <a href="about.php" class="bkn-ql-item">
+            <span class="bkn-ql-icon"><i class="fas fa-info-circle"></i></span>
+            <span class="bkn-ql-label">About Us</span>
+        </a>
+        <a href="services.php" class="bkn-ql-item">
+            <span class="bkn-ql-icon"><i class="fas fa-solar-panel"></i></span>
+            <span class="bkn-ql-label">Services</span>
+        </a>
+        <a href="projects.php" class="bkn-ql-item">
+            <span class="bkn-ql-icon"><i class="fas fa-project-diagram"></i></span>
+            <span class="bkn-ql-label">Projects</span>
+        </a>
+        <a href="careers.php" class="bkn-ql-item">
+            <span class="bkn-ql-icon"><i class="fas fa-briefcase"></i></span>
+            <span class="bkn-ql-label">Careers</span>
+        </a>
+        <a href="contact.php" class="bkn-ql-item">
+            <span class="bkn-ql-icon"><i class="fas fa-envelope"></i></span>
+            <span class="bkn-ql-label">Contact</span>
+        </a>
+        <a href="tel:+917539944358" class="bkn-ql-item">
+            <span class="bkn-ql-icon"><i class="fas fa-phone-alt"></i></span>
+            <span class="bkn-ql-label">Call Us</span>
+        </a>
+        <a href="contact.php" class="bkn-ql-item bkn-ql-item--cta">
+            <span class="bkn-ql-icon"><i class="fas fa-bolt"></i></span>
+            <span class="bkn-ql-label">Get Quote</span>
+        </a>
+    </div>
+</div>
+</div>
+
+<!-- PAGE BANNER -->
+<section class="page-banner contact-banner">
+    <div class="banner-overlay"></div>
+    <div class="container banner-inner">
+        <div class="banner-text fade-in-up">
+            <h1>Contact Us</h1>
+            <p>Get In Touch With Our Team</p>
+            <nav aria-label="breadcrumb" class="banner-breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                    <li class="breadcrumb-item active">Contact</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT INFO CARDS -->
+<section class="info-cards-section section-pad">
+    <div class="container">
+        <div class="info-cards-grid">
+            <div class="info-card fade-up">
+                <div class="info-card-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <h3>Our Address</h3>
+                <p class="info-card-address">
+                    <span>Plot No. 81, Poriyalar Nagar,</span>
+                    <span>4th Street, Pillar No. 146 &amp; 147,</span>
+                    <span>Natham Flyover, Thiruppalai,</span>
+                    <span>Madurai &ndash; 625014,</span>
+                    <span>Tamil Nadu, India</span>
+                </p>
             </div>
-            <div class="scroll-indicator">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 4L12 20M12 20L6 14M12 20L18 14" stroke="white" stroke-width="2" fill="none" />
-                </svg>
+            <div class="info-card fade-up">
+                <div class="info-card-icon"><i class="fas fa-phone-alt"></i></div>
+                <h3>Phone</h3>
+                <p><a href="tel:+917539944358">+91 75399 44358</a></p>
+                <p><a href="tel:+04523587120">+0452 358 7120</a></p>
+            </div>
+            <div class="info-card fade-up">
+                <div class="info-card-icon"><i class="fas fa-envelope"></i></div>
+                <h3>Email</h3>
+                <p><a href="mailto:info@bkgreenenergy.com">info@bkgreenenergy.com</a></p>
+                <p><a href="mailto:Admin@bkgreenenergy.com">Admin@bkgreenenergy.com</a></p>
+            </div>
+            <div class="info-card fade-up">
+                <div class="info-card-icon"><i class="fas fa-clock"></i></div>
+                <h3>Working Hours</h3>
+                <p>Monday – Saturday<br>09:00 AM – 06:00 PM</p>
+                <p class="closed-tag">Sunday: Closed</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- CONTACT FORM SECTION -->
-    <section class="contact-form-section">
-        <div class="container">
-            <div class="section-header fade-up">
+<!-- FORM + MAP -->
+<section class="contact-main-section section-pad bg-light-green">
+    <div class="container">
+        <div class="contact-grid">
+
+            <!-- FORM -->
+            <div class="contact-form-wrap fade-left">
+                <span class="section-eyebrow"><i class="fas fa-paper-plane"></i> Send a Message</span>
                 <h2>Get a Free Consultation</h2>
-                <p>Tell us about your energy needs, and our experts will provide a customized solution designed to
-                    maximize savings and efficiency.</p>
-                <p>📩 Fill out the form below, and we'll get back to you shortly.</p>
+                <p>Share your project scope or energy requirement. Our team will review and respond within 24 hours.</p>
+
+                <div id="contactMsg" style="display:none;margin-bottom:16px;padding:12px 16px;border-radius:8px;font-weight:600;"></div>
+
+                <form id="contactForm" class="cform" novalidate>
+                    <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?? '' ?>">
+                    <input type="hidden" name="form_type" value="contact">
+                    <div class="cform-row">
+                        <div class="cform-group">
+                            <label for="ct-name">Full Name <span>*</span></label>
+                            <input type="text" id="ct-name" name="name" placeholder="Your full name"
+                                required pattern="[A-Za-z ]{2,50}" maxlength="50"
+                                value="<?= isset($_POST['name']) ? htmlspecialchars($_POST['name'], ENT_QUOTES, 'UTF-8') : '' ?>">
+                        </div>
+                        <div class="cform-group">
+                            <label for="ct-email">Email Address <span>*</span></label>
+                            <input type="email" id="ct-email" name="email" placeholder="your@email.com"
+                                required maxlength="100"
+                                value="<?= isset($_POST['email']) ? htmlspecialchars($_POST['email'], ENT_QUOTES, 'UTF-8') : '' ?>">
+                        </div>
+                    </div>
+                    <div class="cform-row">
+                        <div class="cform-group">
+                            <label for="ct-phone">Phone Number <span>*</span></label>
+                            <input type="tel" id="ct-phone" name="phone" placeholder="10-digit mobile"
+                                required pattern="[6-9]{1}[0-9]{9}" maxlength="10"
+                                value="<?= isset($_POST['phone']) ? htmlspecialchars($_POST['phone'], ENT_QUOTES, 'UTF-8') : '' ?>">
+                        </div>
+                        <div class="cform-group">
+                            <label for="ct-subject">Subject <span>*</span></label>
+                            <input type="text" id="ct-subject" name="subject" placeholder="How can we help?"
+                                required maxlength="100"
+                                value="<?= isset($_POST['subject']) ? htmlspecialchars($_POST['subject'], ENT_QUOTES, 'UTF-8') : '' ?>">
+                        </div>
+                    </div>
+                    <div class="cform-group">
+                        <label for="ct-message">Message <span>*</span></label>
+                        <textarea id="ct-message" name="message" rows="5"
+                            placeholder="Tell us about your project or energy requirements..." required maxlength="1000"><?= isset($_POST['message']) ? htmlspecialchars($_POST['message'], ENT_QUOTES, 'UTF-8') : '' ?></textarea>
+                    </div>
+                    <button type="submit" class="contact-submit-btn">
+                        <i class="fas fa-paper-plane" style="margin-right:0.45rem;"></i> Send Message
+                    </button>
+                </form>
             </div>
 
-            <div class="form-container">
-                <div class="form-wrapper fade-left">
-                    <?php if (isset($success)): ?>
-                        <div class="success-message">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="12" cy="12" r="10" fill="#0f7c3a" />
-                                <path d="M8 12L11 15L16 9" stroke="white" stroke-width="2" fill="none" />
-                            </svg>
-                            <p>Thank you! We'll contact you soon.</p>
-                        </div>
-                    <?php endif; ?>
-                    <?php if (!empty($errors)): ?>
-                        <div class="error-message" style="background: #f8d7da; color: #721c24; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #f5c6cb;">
-                            <?php foreach ($errors as $error): ?>
-                                <p style="margin: 5px 0;"><?php echo htmlspecialchars($error); ?></p>
-                            <?php endforeach; ?>
-                        </div>
-                    <?php endif; ?>
-
-                    <form method="POST" action="#contact-form" id="contact-form" class="contact-form">
-                        <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token'] ?? ''; ?>">
-                        <div class="form-group">
-                            <input type="text" name="name" id="name" required maxlength="50" pattern="[A-Za-z ]{2,50}"
-                                value="<?php echo isset($_POST['name']) ? htmlspecialchars($_POST['name'], ENT_QUOTES, 'UTF-8') : ''; ?>">
-                            <label for="name">Your Name</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" name="email" id="email" required maxlength="100"
-                                value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email'], ENT_QUOTES, 'UTF-8') : ''; ?>">
-                            <label for="email">Your Email</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" name="phone" id="phone" required pattern="[6-9]{1}[0-9]{9}"
-                                title="Enter valid 10-digit Indian phone number" maxlength="10"
-                                value="<?php echo isset($_POST['phone']) ? htmlspecialchars($_POST['phone'], ENT_QUOTES, 'UTF-8') : ''; ?>">
-
-                            <label for="phone">Your Phone</label>
-                        </div>
-                        <div class="form-group">
-                            <textarea name="message" id="message" rows="5" required
-                                maxlength="1000"><?php echo isset($_POST['message']) ? htmlspecialchars($_POST['message'], ENT_QUOTES, 'UTF-8') : ''; ?></textarea>
-                            <label for="message">Your Message</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
+            <!-- MAP -->
+            <div class="contact-map-wrap fade-right">
+                <span class="section-eyebrow"><i class="fas fa-map-marked-alt"></i> Find Us</span>
+                <h2>Our Location</h2>
+                <p>Visit us at our registered office in Madurai, Tamil Nadu.</p>
+                <div class="map-frame">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.427810408448!2d78.14334029999999!3d9.981475399999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00c7ea5f368929%3A0x5695eb00ff07d955!2sAthena%20solutions!5e0!3m2!1sen!2sin!4v1771221256399!5m2!1sen!2sin"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade" title="BK Green Energy location"></iframe>
                 </div>
-
-                <div class="form-illustration fade-right">
-                    <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="greenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#0f7c3a;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#19a84a;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <circle cx="250" cy="120" r="60" fill="#FFD700" class="sun-animate" />
-                        <rect x="150" y="220" width="200" height="150" fill="url(#greenGradient)" rx="10" />
-                        <rect x="170" y="240" width="50" height="60" fill="#fff" opacity="0.3" />
-                        <rect x="230" y="240" width="50" height="60" fill="#fff" opacity="0.3" />
-                        <rect x="290" y="240" width="50" height="60" fill="#fff" opacity="0.3" />
-                        <path d="M 250 370 L 250 420" stroke="#0f7c3a" stroke-width="4" />
-                        <circle cx="250" cy="430" r="30" fill="#0f7c3a" opacity="0.3" />
-                        <circle cx="100" cy="200" r="40" fill="#19a84a" opacity="0.2" class="float-shape" />
-                        <circle cx="400" cy="350" r="50" fill="#0f7c3a" opacity="0.15" class="float-shape-2" />
-                    </svg>
+                <div class="map-address-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <strong>BK Green Energy</strong>
+                        <span>Plot No. 81, Poriyalar Nagar, Natham Flyover, Thiruppalai, Madurai – 625014</span>
+                    </div>
                 </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- WHY REACH OUT -->
+<section class="why-contact-section section-pad">
+    <div class="container">
+        <div class="section-header fade-up">
+            <span class="section-eyebrow"><i class="fas fa-star"></i> Why Contact Us</span>
+            <h2>Why Reach Out to BK Green Energy?</h2>
+        </div>
+        <div class="why-contact-grid">
+            <div class="why-contact-card fade-up">
+                <div class="why-contact-icon"><i class="fas fa-shield-alt"></i></div>
+                <h4>Expert Solar Guidance</h4>
+                <p>Professional consultation from experienced renewable energy specialists with proven field expertise.</p>
+            </div>
+            <div class="why-contact-card fade-up">
+                <div class="why-contact-icon"><i class="fas fa-rupee-sign"></i></div>
+                <h4>Transparent Pricing</h4>
+                <p>Clear and honest pricing with no hidden costs. Contract-based execution with defined scope.</p>
+            </div>
+            <div class="why-contact-card fade-up">
+                <div class="why-contact-icon"><i class="fas fa-headset"></i></div>
+                <h4>Fast Response</h4>
+                <p>Dedicated coordination team that responds to all project enquiries within 24 business hours.</p>
+            </div>
+            <div class="why-contact-card fade-up">
+                <div class="why-contact-icon"><i class="fas fa-leaf"></i></div>
+                <h4>Eco-Friendly Execution</h4>
+                <p>Safety-first, environment-conscious site management on every solar project we deliver.</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- OFFICE DETAILS SECTION -->
-    <section class="office-section">
-        <div class="container">
-            <h2 class="fade-up">Our Office</h2>
-            <div class="office-grid">
-                <div class="office-card fade-up">
-                    <div class="icon-wrapper">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
-                                fill="#0f7c3a" />
-                        </svg>
-                    </div>
-                    <h3>Location</h3>
-                    <p>BK Green Energy</p>
-                    <p>Plot No: 81, Poriyalar Nagar 4th Street,</p>
-                    <p>Pillar No: 146 & 147, Natham Flyover,</p>
-                    <p>Thiruppalai, Madurai, Tamil Nadu  625014</p>
-                </div>
-
-                <div class="office-card fade-up">
-                    <div class="icon-wrapper">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
-                                fill="#0f7c3a" />
-                        </svg>
-                    </div>
-                    <h3>Email</h3>
-                    <p>info@bkgreenenergy.com</p>
-                    <p>Admin@bkgreenenergy.com</p>
-                    <!-- <p>info@bkgreenenergy.com</p> -->
-                </div>
-
-                <div class="office-card fade-up">
-                    <div class="icon-wrapper">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"
-                                fill="#0f7c3a" />
-                        </svg>
-                    </div>
-                    <h3>Phone</h3>
-                    <p>+91-75399 44358</p>
-                    <p>+0452 358 7120</p>
-                    
-                </div>
-            </div>
-
-            <div class="map-container fade-up">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.427810408448!2d78.14334029999999!3d9.981475399999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00c7ea5f368929%3A0x5695eb00ff07d955!2sAthena%20solutions!5e0!3m2!1sen!2sin!4v1771221256399!5m2!1sen!2sin"
-                    width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+<!-- CTA -->
+<section class="cta-section">
+    <div class="cta-overlay"></div>
+    <div class="container cta-inner fade-up">
+        <div class="cta-text">
+            <span class="section-eyebrow light"><i class="fas fa-bolt"></i> Let's Connect</span>
+            <h2>Let's Build a Greener Future Together</h2>
+            <p>Partner with BK Green Energy for reliable, safe and timely solar project execution across South India.</p>
         </div>
-    </section>
-
-    <!-- WHY REACH OUT SECTION -->
-    <section class="why-section">
-        <div class="container">
-            <h2 class="fade-up">Why Reach Out to Us?</h2>
-            <div class="why-grid">
-                <div class="why-card fade-up">
-                    <div class="why-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V7.89l7-3.11v8.2z"
-                                fill="#0f7c3a" />
-                        </svg>
-                    </div>
-                    <h3>Expert Solar Guidance</h3>
-                    <p>Professional consultation from experienced renewable energy specialists</p>
-                </div>
-
-                <div class="why-card fade-up">
-                    <div class="why-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
-                                fill="#0f7c3a" />
-                        </svg>
-                    </div>
-                    <h3>Transparent Pricing</h3>
-                    <p>Clear and honest pricing with no hidden costs or surprises</p>
-                </div>
-
-                <div class="why-card fade-up">
-                    <div class="why-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"
-                                fill="#0f7c3a" />
-                        </svg>
-                    </div>
-                    <h3>Reliable Support</h3>
-                    <p>Dedicated customer support throughout your solar journey</p>
-                </div>
-            </div>
+        <div class="cta-actions">
+            <a href="#contact-form" class="btn-cta-white">Contact Now <i class="fas fa-arrow-right"></i></a>
+            <a href="projects.php" class="btn-cta-outline">View Projects</a>
         </div>
-    </section>
+    </div>
+</section>
 
-    <?php include 'includes/footer.php'; ?>
+<?php include 'includes/footer.php'; ?>
 
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/no-flash.js"></script>
-    <script src="js/animate.js"></script>
-    <script src="js/contact.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/bkn-navbar.js"></script>
+<script src="js/no-flash.js"></script>
+<script src="js/animate.js"></script>
+    <script src="js/bk-animations.js"></script>
+<script src="js/contact.js"></script>
+<script src="js/forms.js"></script>
 
 </body>
-
 </html>

@@ -1,173 +1,75 @@
-// ===============================
-// BK GREEN ENERGY - SERVICES PAGE
-// ===============================
+// BK Green Energy — services.js
+(function () {
+    'use strict';
 
-const observer = new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-        if(entry.isIntersecting){
-            entry.target.classList.add("visible");
-            if(entry.target.classList.contains("stat-card")){
-                const num = entry.target.querySelector(".stat-number");
-                if(num && !num.classList.contains("counted")){
-                    animateCounter(num);
-                    num.classList.add("counted");
-                }
-            }
-        }
-    });
-},{threshold:0.15,rootMargin:"0px 0px -50px 0px"});
+    // Staggered animation for service cards
+    function initCardStagger() {
+        var grid = document.querySelector('.svc-grid');
+        if (!grid || !('IntersectionObserver' in window)) return;
 
-document.addEventListener("DOMContentLoaded",()=>{
-    document.querySelectorAll(".fade-up, .fade-in-up").forEach(el=>observer.observe(el));
-    document.querySelectorAll(".stat-card").forEach(el=>observer.observe(el));
-
-    const navbar=document.querySelector(".custom-navbar");
-    if(navbar){
-        window.addEventListener("scroll",()=>{
-            navbar.classList.toggle("navbar-scrolled", window.scrollY>60);
-        });
-    }
-
-    const arrow=document.querySelector(".scroll-arrow");
-    if(arrow){
-        arrow.addEventListener("click",()=>{
-            document.querySelector(".project-gallery")?.scrollIntoView({behavior:"smooth"});
-        });
-    }
-
-    initProjectFilter();
-    initGalleryFilter();
-    initThumbnailGallery();
-    initMobileAccordion();
-});
-
-// ---------- PROJECT FILTER WITH GALLERY ----------
-function initProjectFilter(){
-    const filterBtns=document.querySelectorAll(".stats-section .filter-btn");
-    const projectSection=document.querySelector(".completed-projects-section");
-    const projectCards=document.querySelectorAll(".project-gallery-card");
-
-    if(!filterBtns.length || !projectSection) return;
-
-    filterBtns.forEach(btn=>{
-        btn.addEventListener("click",()=>{
-            const filter=btn.dataset.filter;
-
-            filterBtns.forEach(b=>b.classList.remove("active"));
-            btn.classList.add("active");
-
-            projectSection.style.display="block";
-
-            projectCards.forEach(card=>{
-                card.classList.remove("show");
-                card.style.display="none";
-            });
-
-            setTimeout(()=>{
-                projectCards.forEach(card=>{
-                    const cat=card.dataset.cat;
-                    if(filter==="all" || cat===filter){
-                        card.style.display="block";
-                        setTimeout(()=>card.classList.add("show"),10);
-                    }
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) return;
+                Array.prototype.forEach.call(entry.target.children, function (card, i) {
+                    setTimeout(function () {
+                        card.classList.add('visible');
+                    }, i * 120);
                 });
-            },50);
-
-            setTimeout(()=>{
-                projectSection.scrollIntoView({behavior:"smooth",block:"start"});
-            },100);
-        });
-    });
-}
-
-// ---------- THUMBNAIL GALLERY ----------
-function initThumbnailGallery(){
-    const cards=document.querySelectorAll(".project-gallery-card");
-    
-    cards.forEach(card=>{
-        const mainImg=card.querySelector(".main-img");
-        const thumbnails=card.querySelectorAll(".thumbnail");
-        
-        if(!mainImg || !thumbnails.length) return;
-        
-        // Set first thumbnail as active
-        thumbnails[0]?.classList.add("active");
-        
-        thumbnails.forEach(thumb=>{
-            thumb.addEventListener("click",()=>{
-                const fullSrc=thumb.dataset.full || thumb.src;
-                
-                // Update main image
-                mainImg.src=fullSrc;
-                
-                // Update active thumbnail
-                thumbnails.forEach(t=>t.classList.remove("active"));
-                thumb.classList.add("active");
+                io.unobserve(entry.target);
             });
-        });
-    });
-}
+        }, { threshold: 0.08 });
 
-// ---------- GALLERY FILTER ----------
-function initGalleryFilter(){
-    const filterBtns=document.querySelectorAll(".project-gallery .filter-btn");
-    const galleryCards=document.querySelectorAll(".project-gallery .project-card");
-
-    if(!filterBtns.length) return;
-
-    filterBtns.forEach(btn=>{
-        btn.addEventListener("click",()=>{
-            const filter=btn.dataset.filter;
-
-            filterBtns.forEach(b=>b.classList.remove("active"));
-            btn.classList.add("active");
-
-            galleryCards.forEach(card=>{
-                const cat=card.dataset.category;
-                if(filter==="all" || cat===filter){
-                    card.style.display="block";
-                    setTimeout(()=>{
-                        card.style.opacity="1";
-                        card.style.transform="scale(1)";
-                    },10);
-                }else{
-                    card.style.opacity="0";
-                    card.style.transform="scale(0.95)";
-                    setTimeout(()=>card.style.display="none",300);
-                }
-            });
-        });
-    });
-}
-
-function animateCounter(el){
-    const target=parseInt(el.dataset.target);
-    const duration=1800;
-    const startTime=performance.now();
-
-    function update(now){
-        const progress=Math.min((now-startTime)/duration,1);
-        el.textContent=Math.floor(progress*target);
-        if(progress<1){
-            requestAnimationFrame(update);
-        }else{
-            el.textContent=target;
-        }
+        io.observe(grid);
     }
-    requestAnimationFrame(update);
-}
 
-function initMobileAccordion(){
-    const panels=document.querySelectorAll(".content-panel");
-    if(!panels.length) return;
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initCardStagger);
+    } else {
+        initCardStagger();
+    }
+})();
 
-    panels.forEach(panel=>{
-        panel.addEventListener("click",()=>{
-            if(window.innerWidth>991) return;
-            panels.forEach(p=>{
-                if(p!==panel) p.classList.remove("active");
-            });
-            panel.classList.toggle("active");
+// Stat counters
+(function () {
+    var els = document.querySelectorAll('.svc-stat-num');
+    if (!els.length || !('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            var el = entry.target;
+            var target = parseInt(el.getAttribute('data-target'), 10) || 0;
+            var start = 0;
+            var step = Math.max(1, Math.ceil(target / (1600 / 16)));
+            var timer = setInterval(function () {
+                start += step;
+                if (start >= target) { start = target; clearInterval(timer); }
+                el.textContent = start;
+            }, 16);
+            io.unobserve(el);
         });
-    });
-}
+    }, { threshold: 0.4 });
+    els.forEach(function (el) { io.observe(el); });
+})();
+
+// Service dashboard tab switching
+(function () {
+    function initServiceDash() {
+        var tabs = document.querySelectorAll('.proj-dashboard .dash-tab');
+        if (!tabs.length) return;
+        tabs.forEach(function (tab) {
+            tab.addEventListener('click', function () {
+                var key = tab.getAttribute('data-dash');
+                tabs.forEach(function (t) { t.classList.remove('active'); });
+                tab.classList.add('active');
+                document.querySelectorAll('.proj-dashboard .dash-panel').forEach(function (p) { p.classList.remove('active'); });
+                var panel = document.querySelector('.proj-dashboard .dash-panel[data-panel="' + key + '"]');
+                if (panel) panel.classList.add('active');
+            });
+        });
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initServiceDash);
+    } else {
+        initServiceDash();
+    }
+})();

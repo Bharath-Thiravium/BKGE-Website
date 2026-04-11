@@ -7,3 +7,10 @@ body {
 body.loaded {
     opacity: 1;
 }
+
+/* Scroll-to-top fix
+   Disable smooth scrolling until .loaded is set so the forced
+   window.scrollTo(0,0) is instant and not animated back to top. */
+html:not(:has(body.loaded)) {
+    scroll-behavior: auto !important;
+}

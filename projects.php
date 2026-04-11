@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes, maximum-scale=5">
-    <meta name="description"
-        content="BK Green Energy Services - Comprehensive renewable energy solutions including solar power, customized projects, installation, and energy consultancy.">
-    <meta name="keywords"
-        content="solar services, renewable energy services, solar installation, energy consultancy, solar maintenance, Madurai">
+    <meta name="description" content="BK Green Energy Projects - Explore our completed solar EPC projects across Tamil Nadu, Karnataka, Maharashtra and Andhra Pradesh.">
+    <meta name="keywords" content="solar projects, EPC projects, BK Green Energy, Hinduja, ITC, Torrent, GHCL, BIAL, ReNew Power">
     <meta name="author" content="BK Green Energy">
     <title>Our Projects - BK Green Energy</title>
     <link href="assets/images/Logo.png" rel="shortcut icon" type="image/x-icon">
@@ -16,435 +13,528 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/projects-page.css">
     <link rel="stylesheet" href="css/no-flash.css">
-
+    <link rel="stylesheet" href="css/bk-animations.css">
+    <link rel="stylesheet" href="css/navbar-premium.css">
 </head>
-
-<body>
-     <nav class="navbar navbar-expand-lg fixed-top navbar-light custom-navbar">
-        <div class="container">
-          <a href="index.php" class="brand-text">BK Green Energy</a> 
-
-            <!-- Logo -->
-            <!-- <a class="navbar-brand" href="index.php">
-                <img src="assets/images/Logo.png" alt="BK Green Energy" height="50">
-            </a> -->
-
-            <!-- Mobile Toggle -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+<body class="projects-page">
+<!-- ═══ PREMIUM NAVBAR ═══ -->
+<nav class="bkn-nav" id="bknNav" aria-label="Main navigation">
+    <div class="bkn-nav-inner">
+        <a href="index.php" class="bkn-brand">
+            <div class="bkn-brand-logo-wrap"><img src="assets/images/Logo.png" alt="BK Green Energy" class="bkn-brand-logo"></div>
+            <div class="bkn-brand-text">
+                <span class="bkn-brand-name">BK Green Energy</span>
+                <!-- <span class="bkn-brand-tagline">Renewable Energy Partner</span> -->
+            </div>
+        </a>
+        <ul class="bkn-menu">
+            <li><a href="index.php">Home</a></li>
+            <li><a href="about.php">About</a></li>
+            <li><a href="services.php">Services</a></li>
+            <li><a href="projects.php" class="active">Projects</a></li>
+            <li><a href="careers.php">Careers</a></li>
+            <li><a href="contact.php">Contact</a></li>
+        </ul>
+        <div class="bkn-actions">
+            <button class="bkn-icon-btn" id="bknSearchBtn" aria-label="Search"><i class="fas fa-search"></i></button>
+            <button class="bkn-icon-btn" id="bknGridBtn" aria-label="Quick links"><i class="fas fa-th"></i></button>
+            <div class="bkn-actions-divider"></div>
+            <a href="contact.php" class="bkn-cta"><i class="fas fa-bolt"></i> Get Quote</a>
+            <button class="bkn-hamburger" id="bknHamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span><span></span>
             </button>
-
-            <!-- Nav Links -->
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.php">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="services.php">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="projects.php">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="careers.php">Careers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn-nav" href="contact.php">Contact</a>
-                    </li>
-                </ul>
-            </div>
-
         </div>
-    </nav>
+    </div>
+    <div class="bkn-drawer" id="bknDrawer">
+        <a href="index.php"><i class="fas fa-home"></i> Home</a>
+        <a href="about.php"><i class="fas fa-info-circle"></i> About</a>
+        <a href="services.php"><i class="fas fa-solar-panel"></i> Services</a>
+        <a href="projects.php" class="active"><i class="fas fa-project-diagram"></i> Projects</a>
+        <a href="careers.php"><i class="fas fa-briefcase"></i> Careers</a>
+        <a href="contact.php"><i class="fas fa-envelope"></i> Contact</a>
+        <div class="bkn-drawer-divider"></div>
+        <a href="contact.php" class="bkn-drawer-cta"><i class="fas fa-bolt"></i> Get Quote</a>
+    </div>
+</nav>
+    <div class="bkn-search-overlay" id="bknSearchOverlay" role="dialog" aria-modal="true" aria-label="Search">
+    <button class="bkn-search-close" id="bknSearchClose" aria-label="Close search"><i class="fas fa-times"></i></button>
+    <div class="bkn-search-box">
+        <input type="search" id="bknSearchInput" placeholder="Search BK Green Energy..." aria-label="Search" autocomplete="off">
+        <button type="button" aria-label="Submit search"><i class="fas fa-search"></i></button>
+    </div>
+    <p class="bkn-search-hint">Try: Solar EPC, Civil Works, Commissioning, Careers&hellip;</p>
+</div>
 
-    <!-- HERO SECTION -->
-    <section class="hero-section">
-        <div class="hero-overlay"></div>
-        <div class="container">
-            <div class="hero-content-wrapper">
-                <div class="hero-logo-block fade-in-up">
-                    <img src="assets/images/Logo.png" alt="BK Green Energy Logo" class="hero-big-logo">
-                </div>
-                <div class="hero-content fade-in-up">
-                    <h1>Our Projects</h1>
-                    <p class="hero-tagline">🌱 Delivering Solar Excellence Across India</p>
-                    <p class="hero-body">Innovative renewable solutions delivered across homes, industries, and communities throughout Tamil Nadu, Karnataka, Maharashtra, and Andhra Pradesh.</p>
-                    <p class="hero-bottom">Explore our completed EPC projects below.</p>
-                </div>
-            </div>
-            <div class="scroll-indicator">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 4L12 20M12 20L6 14M12 20L18 14" stroke="white" stroke-width="2" fill="none" />
-                </svg>
-            </div>
+<!-- Quick Links Panel -->
+<div class="bkn-quicklinks-overlay" id="bknQuicklinksOverlay" aria-hidden="true"></div>
+<div class="bkn-quicklinks-panel" id="bknQuicklinksPanel" role="dialog" aria-modal="true" aria-label="Quick links">
+    <div class="bkn-ql-header">
+        <span class="bkn-ql-title"><i class="fas fa-th"></i> Quick Links</span>
+        <button class="bkn-ql-close" id="bknQuicklinksClose" aria-label="Close quick links"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="bkn-ql-grid">
+        <a href="index.php" class="bkn-ql-item">
+            <span class="bkn-ql-icon"><i class="fas fa-home"></i></span>
+            <span class="bkn-ql-label">Home</span>
+        </a>
+        <a href="about.php" class="bkn-ql-item">
+            <span class="bkn-ql-icon"><i class="fas fa-info-circle"></i></span>
+            <span class="bkn-ql-label">About Us</span>
+        </a>
+        <a href="services.php" class="bkn-ql-item">
+            <span class="bkn-ql-icon"><i class="fas fa-solar-panel"></i></span>
+            <span class="bkn-ql-label">Services</span>
+        </a>
+        <a href="projects.php" class="bkn-ql-item">
+            <span class="bkn-ql-icon"><i class="fas fa-project-diagram"></i></span>
+            <span class="bkn-ql-label">Projects</span>
+        </a>
+        <a href="careers.php" class="bkn-ql-item">
+            <span class="bkn-ql-icon"><i class="fas fa-briefcase"></i></span>
+            <span class="bkn-ql-label">Careers</span>
+        </a>
+        <a href="contact.php" class="bkn-ql-item">
+            <span class="bkn-ql-icon"><i class="fas fa-envelope"></i></span>
+            <span class="bkn-ql-label">Contact</span>
+        </a>
+        <a href="tel:+917539944358" class="bkn-ql-item">
+            <span class="bkn-ql-icon"><i class="fas fa-phone-alt"></i></span>
+            <span class="bkn-ql-label">Call Us</span>
+        </a>
+        <a href="contact.php" class="bkn-ql-item bkn-ql-item--cta">
+            <span class="bkn-ql-icon"><i class="fas fa-bolt"></i></span>
+            <span class="bkn-ql-label">Get Quote</span>
+        </a>
+    </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE BANNER
+════════════════════════════════════════════════ -->
+<section class="page-banner proj-banner">
+    <div class="banner-overlay"></div>
+    <div class="container banner-inner">
+        <div class="banner-text fade-in-up">
+            <h1>Our Projects</h1>
+            <p>Delivering Solar Excellence Across India</p>
+            <nav aria-label="breadcrumb" class="banner-breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                    <li class="breadcrumb-item active">Projects</li>
+                </ol>
+            </nav>
         </div>
-    </section>
+    </div>
+</section>
 
-
-    <!-- INTERACTIVE SERVICE SHOWCASE -->
-    <section class="service-showcase">
-        <div class="container">
-            <div class="showcase-layout">
-                <div class="service-tabs fade-left">
-                    <div class="tab-item active" data-service="solar">
-                        <div class="tab-icon">
-                            <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="25" cy="15" r="8" fill="#0f7c3a" />
-                                <rect x="10" y="25" width="30" height="20" fill="#0f7c3a" rx="2" />
-                                <line x1="15" y1="30" x2="20" y2="35" stroke="#fff" stroke-width="2" />
-                                <line x1="30" y1="30" x2="35" y2="35" stroke="#fff" stroke-width="2" />
-                            </svg>
-                        </div>
-                        <span>Solar Power Solutions</span>
-                    </div>
-
-                    <div class="tab-item" data-service="customized">
-                        <div class="tab-icon">
-                            <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="10" y="15" width="30" height="25" fill="none" stroke="#0f7c3a" stroke-width="2"
-                                    rx="2" />
-                                <path d="M 25 20 L 30 28 L 20 28 Z" fill="#0f7c3a" />
-                                <line x1="15" y1="33" x2="35" y2="33" stroke="#0f7c3a" stroke-width="2" />
-                            </svg>
-                        </div>
-                        <span>Customized Energy Projects</span>
-                    </div>
-
-                    <div class="tab-item" data-service="installation">
-                        <div class="tab-icon">
-                            <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M 25 10 L 30 20 L 40 20 L 32 27 L 35 37 L 25 30 L 15 37 L 18 27 L 10 20 L 20 20 Z"
-                                    fill="#0f7c3a" />
-                                <circle cx="25" cy="25" r="15" fill="none" stroke="#0f7c3a" stroke-width="2" />
-                            </svg>
-                        </div>
-                        <span>Installation & Maintenance</span>
-                    </div>
-
-                    <div class="tab-item" data-service="consultancy">
-                        <div class="tab-icon">
-                            <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="25" cy="25" r="15" fill="none" stroke="#0f7c3a" stroke-width="2" />
-                                <path d="M 25 15 L 25 25 L 32 32" stroke="#0f7c3a" stroke-width="2" fill="none" />
-                                <circle cx="25" cy="25" r="2" fill="#0f7c3a" />
-                            </svg>
-                        </div>
-                        <span>Energy Consultancy</span>
-                    </div>
-                </div>
-
-                <div class="service-content fade-right">
-                    <div class="content-panel active" data-content="solar">
-                        <div class="content-image">
-                            <img src="assets/images/WhatsApp Image 2026-02-13 at 11.20.37 AM(1).jpg"
-                                alt="Solar Power Solutions" height="400">
-                        </div>
-                        <h2>Solar Power Solutions</h2>
-                        <p>We design and install high-performance solar systems for residential, commercial, and
-                            industrial applications.</p>
-                    </div>
-
-                    <div class="content-panel" data-content="customized">
-                        <div class="content-image">
-                            <img src="assets/images/WhatsApp Image 2026-02-13 at 11.20.43 AM(1).jpg"
-                                alt="Solar Power Solutions" height="350">
-                        </div>
-                        <h2>Customized Energy Projects</h2>
-                        <p>Tailor-made energy systems designed to maximize savings and efficiency based on your specific
-                            requirements.</p>
-                    </div>
-
-                    <div class="content-panel" data-content="installation">
-                        <div class="content-image">
-                            <img src="assets/images/WhatsApp Image 2026-02-13 at 11.20.42 AM.jpeg"
-                                alt="Solar Power Solutions" height="350">
-                        </div>
-                        <h2>Installation & Maintenance</h2>
-                        <p>Professional installation and ongoing maintenance services to ensure optimal system
-                            performance.</p>
-                    </div>
-
-                    <div class="content-panel" data-content="consultancy">
-                        <div class="content-image">
-                            <img src="assets/images/WhatsApp Image 2026-02-13 at 11.20.40 AM.jpg"
-                                alt="Solar Power Solutions" height="350">
-                        </div>
-                        <h2>Energy Consultancy</h2>
-                        <p>Expert guidance on planning, feasibility, cost analysis, and energy optimization strategies.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>    
-    <!-- OUR IMPACT SO FAR -->
-    <!-- PROJECT IMPACT STATS -->
-   <?php
-// Project data with image galleries
-$solar_projects = [
-    [
-        'title' => 'Hinduja Solar Power Project (75 MW)',
-        'loc' => 'Veppankulam & Devakottai, TamilNadu',
-        'cat' => 'utility',
-        'images' => [
-            'assets/images/projects/hinduja/1.jpg',
-            'assets/images/projects/hinduja/2.jpg',
-            'assets/images/projects/hinduja/3.jpg',
-            'assets/images/projects/hinduja/4.jpg',
-            'assets/images/projects/hinduja/5.jpg'
-        ]
-    ],
-    [
-        'title' => 'ITC Solar Power Project (25 MW)',
-        'loc' => 'Eluvanampatti & Vadhalakundu, TamilNadu',
-        'cat' => 'utility',
-        'images' => [
-            'assets/images/projects/itc/6.jpg',
-            'assets/images/projects/itc/7.jpg',
-            'assets/images/projects/itc/8.jpg',
-            'assets/images/projects/itc/9.jpg',
-            'assets/images/projects/itc/10.jpg'
-        ]
-    ],
-    [
-        'title' => 'Thiagarajar Mills Solar (10 MW)',
-        'loc' => 'Ottapidaram, Thoothukudi, TamilNadu',
-        'cat' => 'commercial',
-        'images' => [
-            'assets/images/projects/thiagarajar/11.jpg',
-            'assets/images/projects/thiagarajar/12.jpg',
-            'assets/images/projects/thiagarajar/13.jpg',
-            'assets/images/projects/thiagarajar/14.jpg',
-            'assets/images/projects/thiagarajar/15.jpg'
-        ]
-    ],
-    [
-        'title' => 'Capacity (10 MW)',
-        'loc' => 'Aviyur, Madurai, TamilNadu',
-        'cat' => 'industrial',
-        'images' => [
-            'assets/images/projects/capacity/16.jpg',
-            'assets/images/projects/capacity/17.jpg',
-            'assets/images/projects/capacity/18.jpg',
-            'assets/images/projects/capacity/19.jpg',
-            'assets/images/projects/capacity/20.jpg'
-        ]
-    ],
-    [
-        'title' => 'Shree MTK / Stareco / Pantech (10 MW)',
-        'loc' => 'Aviyur, Madurai, TamilNadu',
-        'cat' => 'industrial',
-        'images' => [
-           'assets/images/projects/mtk/21.jpg',
-            'assets/images/projects/mtk/22.jpg',
-            'assets/images/projects/mtk/23.jpg',
-            'assets/images/projects/mtk/24.jpg',
-            'assets/images/projects/mtk/25.jpg'
-        ]
-    ],
-    [
-        'title' => 'Torrent Urja 14 (15 MW)',
-        'loc' => 'Ottapidaram, Thoothukudi, TamilNadu',
-        'cat' => 'utility',
-        'images' => [
-            'assets/images/projects/torrent14/26.jpg',
-            'assets/images/projects/torrent14/27.jpg',
-            'assets/images/projects/torrent14/28.jpg',
-            'assets/images/projects/torrent14/29.jpg',
-            'assets/images/projects/torrent14/30.jpg'
-        ]
-    ],
-    [
-        'title' => 'Torrent Urja 17 (8.5 MW)',
-        'loc' => 'Ottapidaram, Thoothukudi, TamilNadu',
-        'cat' => 'utility',
-        'images' => [
-            'assets/images/projects/torrent17/31.jpg',
-            'assets/images/projects/torrent17/32.jpg',
-            'assets/images/projects/torrent17/33.jpg',
-            'assets/images/projects/torrent17/34.jpg',
-            'assets/images/projects/torrent17/35.jpg'
-        ]
-    ],
-    [
-        'title' => 'GHCL Phase 1',
-        'loc' => 'Musiri, Tiruchirappalli, TamilNadu',
-        'cat' => 'industrial',
-        'images' => [
-            'assets/images/projects/ghcl1/36.jpg',
-            'assets/images/projects/ghcl1/37.jpg',
-            'assets/images/projects/ghcl1/38.jpg',
-            'assets/images/projects/ghcl1/39.jpg',
-            'assets/images/projects/ghcl1/40.jpg'
-        ]
-    ],
-    [
-        'title' => 'GHCL Phase 2',
-        'loc' => 'Ottapidaram, Thoothukudi, TamilNadu',
-        'cat' => 'industrial',
-        'images' => [
-            'assets/images/projects/ghcl2/41.jpg',
-            'assets/images/projects/ghcl2/42.jpg',
-            'assets/images/projects/ghcl2/43.jpg',
-            'assets/images/projects/ghcl2/44.jpg',
-            'assets/images/projects/ghcl2/45.jpg'
-        ]
-    ],
-    [
-        'title' => 'ReNew Power Solar Project',
-        'loc' => 'Manwath, Maharashtra',
-        'cat' => 'utility',
-        'images' => [
-            'assets/images/projects/renew/46.jpg',
-            'assets/images/projects/renew/47.jpg',
-            'assets/images/projects/renew/48.jpg',
-            'assets/images/projects/renew/49.jpg',
-            'assets/images/projects/renew/50.jpg'
-        ]
-    ],
-    [
-        'title' => 'Bangalore International Airport (BIAL)',
-        'loc' => 'Bangalore, Karnataka',
-        'cat' => 'commercial',
-        'images' => [
-            'assets/images/projects/bial/51.jpg',
-            'assets/images/projects/bial/52.jpg',
-            'assets/images/projects/bial/53.jpg',
-            'assets/images/projects/bial/54.jpg',
-            'assets/images/projects/bial/55.jpg'
-        ]
-    ]
-];
-?>
-
-<section class="stats-section">
+<!-- ═══════════════════════════════════════════════
+     STATS STRIP
+════════════════════════════════════════════════ -->
+<section class="proj-stats-strip">
     <div class="container">
-        <h2 class="fade-up">Our Impact So Far</h2>
-        <div class="stats-grid">
-            <div class="stat-card fade-up" data-filter="all">
-                <div class="stat-number" data-target="11">0</div>
-                <div class="stat-label">Projects Completed</div>
+        <div class="proj-stats-grid">
+            <div class="proj-stat fade-up">
+                <i class="fas fa-solar-panel"></i>
+                <div>
+                    <strong class="proj-stat-num" data-target="120">0</strong><span>MW+</span>
+                    <p>Execution Delivered</p>
+                </div>
             </div>
-            <div class="stat-card fade-up" data-filter="commercial">
-                <div class="stat-number" data-target="2">0</div>
-                <div class="stat-label">Commercial Solutions</div>
+            <div class="proj-stat fade-up">
+                <i class="fas fa-project-diagram"></i>
+                <div>
+                    <strong class="proj-stat-num" data-target="11">0</strong><span></span>
+                    <p>Projects Completed</p>
+                </div>
             </div>
-            <div class="stat-card fade-up" data-filter="industrial">
-                <div class="stat-number" data-target="4">0</div>
-                <div class="stat-label">Industrial Deployments</div>
+            <div class="proj-stat fade-up">
+                <i class="fas fa-map-marked-alt"></i>
+                <div>
+                    <strong class="proj-stat-num" data-target="4">0</strong><span></span>
+                    <p>States Covered</p>
+                </div>
             </div>
-            <div class="stat-card fade-up" data-filter="utility">
-                <div class="stat-number" data-target="5">0</div>
-                <div class="stat-label">Hybrid / Utility</div>
+            <div class="proj-stat fade-up">
+                <i class="fas fa-users"></i>
+                <div>
+                    <strong class="proj-stat-num" data-target="41">0</strong><span>+</span>
+                    <p>Team Members</p>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- COMPLETED PROJECTS - EPC SECTION -->
-<section class="completed-projects-section" style="display:none;">
+<!-- DASHBOARD: sidebar + preview panel -->
+<section class="proj-dashboard section-pad bg-light-green">
     <div class="container">
-        <h2 class="section-title">Our Completed Projects</h2>
-        <div class="projects-gallery-grid">
-            <?php foreach($solar_projects as $index => $p): ?>
-            <div class="project-gallery-card" data-cat="<?php echo $p['cat']; ?>">
-                <div class="project-gallery-images">
-                    <div class="main-image">
-                        <img src="<?php echo $p['images'][0]; ?>" alt="<?php echo $p['title']; ?>" class="main-img">
-                    </div>
-                    <div class="thumbnail-strip">
-                        <?php foreach($p['images'] as $img): ?>
-                        <img src="<?php echo $img; ?>" alt="Thumbnail" class="thumbnail" data-full="<?php echo $img; ?>">
-                        <?php endforeach; ?>
-                    </div>
-                </div>
-                <div class="project-gallery-info">
-                    <h4><?php echo $p['title']; ?></h4>
-                    <p><i class="fas fa-map-marker-alt"></i> <?php echo $p['loc']; ?></p>
-                </div>
+        <div class="dash-layout">
+            <aside class="dash-sidebar">
+                <div class="dash-sidebar-label">Select a Project</div>
+                <div class="dash-tab active" data-dash="hinduja"><div class="dash-tab-icon"><i class="fas fa-solar-panel"></i></div><div class="dash-tab-info"><strong>Hinduja Solar Power</strong><span>75 MW &middot; Utility</span></div><i class="fas fa-chevron-right dash-tab-arrow"></i></div>
+                <div class="dash-tab" data-dash="itc"><div class="dash-tab-icon"><i class="fas fa-bolt"></i></div><div class="dash-tab-info"><strong>ITC Solar Power</strong><span>25 MW &middot; Utility</span></div><i class="fas fa-chevron-right dash-tab-arrow"></i></div>
+                <div class="dash-tab" data-dash="thiagarajar"><div class="dash-tab-icon"><i class="fas fa-industry"></i></div><div class="dash-tab-info"><strong>Thiagarajar Mills</strong><span>10 MW &middot; Commercial</span></div><i class="fas fa-chevron-right dash-tab-arrow"></i></div>
+                <div class="dash-tab" data-dash="torrent14"><div class="dash-tab-icon"><i class="fas fa-plug"></i></div><div class="dash-tab-info"><strong>Torrent Urja 14</strong><span>15 MW &middot; Utility</span></div><i class="fas fa-chevron-right dash-tab-arrow"></i></div>
+                <div class="dash-tab" data-dash="torrent17"><div class="dash-tab-icon"><i class="fas fa-plug"></i></div><div class="dash-tab-info"><strong>Torrent Urja 17</strong><span>8.5 MW &middot; Utility</span></div><i class="fas fa-chevron-right dash-tab-arrow"></i></div>
+                <div class="dash-tab" data-dash="renew"><div class="dash-tab-icon"><i class="fas fa-sun"></i></div><div class="dash-tab-info"><strong>ReNew Power</strong><span>Utility &middot; Maharashtra</span></div><i class="fas fa-chevron-right dash-tab-arrow"></i></div>
+                <div class="dash-tab" data-dash="bial"><div class="dash-tab-icon"><i class="fas fa-plane"></i></div><div class="dash-tab-info"><strong>BIAL Airport</strong><span>Commercial &middot; Karnataka</span></div><i class="fas fa-chevron-right dash-tab-arrow"></i></div>
+                <div class="dash-tab" data-dash="ghcl1"><div class="dash-tab-icon"><i class="fas fa-cogs"></i></div><div class="dash-tab-info"><strong>GHCL Phase 1</strong><span>Industrial &middot; Trichy</span></div><i class="fas fa-chevron-right dash-tab-arrow"></i></div>
+                <div class="dash-tab" data-dash="ghcl2"><div class="dash-tab-icon"><i class="fas fa-cogs"></i></div><div class="dash-tab-info"><strong>GHCL Phase 2</strong><span>Industrial &middot; Thoothukudi</span></div><i class="fas fa-chevron-right dash-tab-arrow"></i></div>
+                <div class="dash-tab" data-dash="capacity"><div class="dash-tab-icon"><i class="fas fa-tools"></i></div><div class="dash-tab-info"><strong>Capacity Project</strong><span>10 MW &middot; Industrial</span></div><i class="fas fa-chevron-right dash-tab-arrow"></i></div>
+                <div class="dash-tab" data-dash="mtk"><div class="dash-tab-icon"><i class="fas fa-tools"></i></div><div class="dash-tab-info"><strong>Shree MTK / Stareco</strong><span>10 MW &middot; Industrial</span></div><i class="fas fa-chevron-right dash-tab-arrow"></i></div>
+            </aside>
+            <div class="dash-preview">
+                <div class="dash-panel active" data-panel="hinduja"><div class="dash-panel-img-wrap"><img src="assets/images/projects/hinduja/1.jpg" alt="Hinduja"><span class="dash-panel-cat utility">Utility Scale</span></div><div class="dash-panel-body"><div class="dash-panel-meta"><span><i class="fas fa-map-marker-alt"></i> Veppankulam &amp; Devakottai, Tamil Nadu</span><span><i class="fas fa-bolt"></i> 75 MW</span></div><h3>Hinduja Solar Power Project</h3><p>BK Green Energy delivered comprehensive EPC execution support for this 75 MW utility-scale solar project, covering civil foundations, mechanical erection, DC/AC electrical works, earthing and commissioning across two sites in Tamil Nadu.</p><div class="dash-panel-actions"><a href="contact.php" class="dash-enquire-btn"><i class="fas fa-paper-plane"></i> Enquire Now</a></div></div></div>
+                <div class="dash-panel" data-panel="itc"><div class="dash-panel-img-wrap"><img src="assets/images/projects/itc/6.jpg" alt="ITC"><span class="dash-panel-cat utility">Utility Scale</span></div><div class="dash-panel-body"><div class="dash-panel-meta"><span><i class="fas fa-map-marker-alt"></i> Eluvanampatti &amp; Vadhalakundu, Tamil Nadu</span><span><i class="fas fa-bolt"></i> 25 MW</span></div><h3>ITC Solar Power Project</h3><p>Executed civil, mechanical and electrical works for ITC's 25 MW solar project across two locations in Tamil Nadu, ensuring quality installation and timely commissioning readiness.</p><div class="dash-panel-actions"><a href="contact.php" class="dash-enquire-btn"><i class="fas fa-paper-plane"></i> Enquire Now</a></div></div></div>
+                <div class="dash-panel" data-panel="thiagarajar"><div class="dash-panel-img-wrap"><img src="assets/images/projects/thiagarajar/11.jpg" alt="Thiagarajar"><span class="dash-panel-cat commercial">Commercial</span></div><div class="dash-panel-body"><div class="dash-panel-meta"><span><i class="fas fa-map-marker-alt"></i> Ottapidaram, Thoothukudi, Tamil Nadu</span><span><i class="fas fa-bolt"></i> 10 MW</span></div><h3>Thiagarajar Mills Solar</h3><p>Delivered full EPC execution support for Thiagarajar Mills' 10 MW commercial solar installation, including MMS erection, module mounting, DC/AC cabling and commissioning.</p><div class="dash-panel-actions"><a href="contact.php" class="dash-enquire-btn"><i class="fas fa-paper-plane"></i> Enquire Now</a></div></div></div>
+                <div class="dash-panel" data-panel="torrent14"><div class="dash-panel-img-wrap"><img src="assets/images/projects/torrent14/26.jpg" alt="Torrent 14"><span class="dash-panel-cat utility">Utility Scale</span></div><div class="dash-panel-body"><div class="dash-panel-meta"><span><i class="fas fa-map-marker-alt"></i> Ottapidaram, Thoothukudi, Tamil Nadu</span><span><i class="fas fa-bolt"></i> 15 MW</span></div><h3>Torrent Urja 14</h3><p>Provided complete on-site execution support for Torrent Urja's 15 MW solar project, covering all civil, mechanical, electrical and SCADA integration works.</p><div class="dash-panel-actions"><a href="contact.php" class="dash-enquire-btn"><i class="fas fa-paper-plane"></i> Enquire Now</a></div></div></div>
+                <div class="dash-panel" data-panel="torrent17"><div class="dash-panel-img-wrap"><img src="assets/images/projects/torrent17/31.jpg" alt="Torrent 17"><span class="dash-panel-cat utility">Utility Scale</span></div><div class="dash-panel-body"><div class="dash-panel-meta"><span><i class="fas fa-map-marker-alt"></i> Ottapidaram, Thoothukudi, Tamil Nadu</span><span><i class="fas fa-bolt"></i> 8.5 MW</span></div><h3>Torrent Urja 17</h3><p>Executed EPC support for Torrent Urja's 8.5 MW solar project with full civil, mechanical, electrical and commissioning scope delivered on schedule.</p><div class="dash-panel-actions"><a href="contact.php" class="dash-enquire-btn"><i class="fas fa-paper-plane"></i> Enquire Now</a></div></div></div>
+                <div class="dash-panel" data-panel="renew"><div class="dash-panel-img-wrap"><img src="assets/images/projects/renew/46.jpg" alt="ReNew"><span class="dash-panel-cat utility">Utility Scale</span></div><div class="dash-panel-body"><div class="dash-panel-meta"><span><i class="fas fa-map-marker-alt"></i> Manwath, Maharashtra</span><span><i class="fas fa-bolt"></i> Utility Scale</span></div><h3>ReNew Power Solar Project</h3><p>Delivered solar EPC execution support for ReNew Power's utility-scale project in Maharashtra, marking BK Green Energy's expansion into western India.</p><div class="dash-panel-actions"><a href="contact.php" class="dash-enquire-btn"><i class="fas fa-paper-plane"></i> Enquire Now</a></div></div></div>
+                <div class="dash-panel" data-panel="bial"><div class="dash-panel-img-wrap"><img src="assets/images/projects/bial/51.jpg" alt="BIAL"><span class="dash-panel-cat commercial">Commercial</span></div><div class="dash-panel-body"><div class="dash-panel-meta"><span><i class="fas fa-map-marker-alt"></i> Bangalore, Karnataka</span><span><i class="fas fa-bolt"></i> Commercial</span></div><h3>Bangalore International Airport (BIAL)</h3><p>Executed solar installation works at Bangalore International Airport — a landmark commercial project demonstrating BK Green Energy's capability in high-profile infrastructure environments.</p><div class="dash-panel-actions"><a href="contact.php" class="dash-enquire-btn"><i class="fas fa-paper-plane"></i> Enquire Now</a></div></div></div>
+                <div class="dash-panel" data-panel="ghcl1"><div class="dash-panel-img-wrap"><img src="assets/images/projects/ghcl1/36.jpg" alt="GHCL1"><span class="dash-panel-cat industrial">Industrial</span></div><div class="dash-panel-body"><div class="dash-panel-meta"><span><i class="fas fa-map-marker-alt"></i> Musiri, Tiruchirappalli, Tamil Nadu</span><span><i class="fas fa-bolt"></i> Industrial</span></div><h3>GHCL Phase 1</h3><p>Delivered Phase 1 EPC execution for GHCL's industrial solar project in Tiruchirappalli, covering complete civil, mechanical and electrical installation works.</p><div class="dash-panel-actions"><a href="contact.php" class="dash-enquire-btn"><i class="fas fa-paper-plane"></i> Enquire Now</a></div></div></div>
+                <div class="dash-panel" data-panel="ghcl2"><div class="dash-panel-img-wrap"><img src="assets/images/projects/ghcl2/41.jpg" alt="GHCL2"><span class="dash-panel-cat industrial">Industrial</span></div><div class="dash-panel-body"><div class="dash-panel-meta"><span><i class="fas fa-map-marker-alt"></i> Ottapidaram, Thoothukudi, Tamil Nadu</span><span><i class="fas fa-bolt"></i> Industrial</span></div><h3>GHCL Phase 2</h3><p>Continued EPC execution support for GHCL's Phase 2 solar project in Thoothukudi, maintaining the same quality standards and delivery discipline as Phase 1.</p><div class="dash-panel-actions"><a href="contact.php" class="dash-enquire-btn"><i class="fas fa-paper-plane"></i> Enquire Now</a></div></div></div>
+                <div class="dash-panel" data-panel="capacity"><div class="dash-panel-img-wrap"><img src="assets/images/projects/capacity/16.jpg" alt="Capacity"><span class="dash-panel-cat industrial">Industrial</span></div><div class="dash-panel-body"><div class="dash-panel-meta"><span><i class="fas fa-map-marker-alt"></i> Aviyur, Madurai, Tamil Nadu</span><span><i class="fas fa-bolt"></i> 10 MW</span></div><h3>Capacity Solar Project</h3><p>Executed 10 MW industrial solar project in Aviyur, Madurai with full civil, mechanical and electrical scope including SCADA integration and commissioning support.</p><div class="dash-panel-actions"><a href="contact.php" class="dash-enquire-btn"><i class="fas fa-paper-plane"></i> Enquire Now</a></div></div></div>
+                <div class="dash-panel" data-panel="mtk"><div class="dash-panel-img-wrap"><img src="assets/images/projects/mtk/21.jpg" alt="MTK"><span class="dash-panel-cat industrial">Industrial</span></div><div class="dash-panel-body"><div class="dash-panel-meta"><span><i class="fas fa-map-marker-alt"></i> Aviyur, Madurai, Tamil Nadu</span><span><i class="fas fa-bolt"></i> 10 MW</span></div><h3>Shree MTK / Stareco / Pantech</h3><p>Delivered 10 MW industrial solar EPC execution for Shree MTK, Stareco and Pantech in Aviyur, Madurai — covering all civil, mechanical, electrical and commissioning works.</p><div class="dash-panel-actions"><a href="contact.php" class="dash-enquire-btn"><i class="fas fa-paper-plane"></i> Enquire Now</a></div></div></div>
             </div>
-            <?php endforeach; ?>
         </div>
     </div>
 </section>
-    
-    <!-- FEATURED PROJECTS THAT INSPIRE -->
-    <!-- <section class="featured-projects-section" id="featuredSection" style="display: none;">
-        <div class="container">
-            <h2>Featured Projects That Inspire</h2>
-            <div class="filter-buttons">
-                <button class="project-filter-btn active" data-category="all">All Projects</button>
-                <button class="project-filter-btn" data-category="commercial">Commercial Projects</button>
-                <button class="project-filter-btn" data-category="industrial">Industrial Projects</button>
-                <button class="project-filter-btn" data-category="utility">Hybrid / Utility Projects</button>
-            </div> -->
-      
 
-    <!-- PROCESS FLOW -->
-    <section class="process-section">
-        <div class="container">
-            <h2 class="fade-up">How We Deliver Excellence</h2>
-            <div class="process-timeline">
-                <div class="process-step fade-up">
-                    <div class="step-number">1</div>
-                    <h3>Consultation</h3>
-                    <p>Understanding your energy needs and goals</p>
+<!-- PROJECT FILTER + GRID -->
+<section class="proj-grid-section section-pad">
+    <div class="container">
+        <div class="section-header fade-up">
+            <span class="section-eyebrow"><i class="fas fa-th-large"></i> Portfolio</span>
+            <h2>Our Completed EPC Projects</h2>
+            <p>A showcase of solar power projects where BK Green Energy delivered trusted execution support across South India.</p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="proj-filters fade-up">
+            <button class="proj-filter-btn active" data-filter="all">All Projects</button>
+            <button class="proj-filter-btn" data-filter="utility">Utility Scale</button>
+            <button class="proj-filter-btn" data-filter="commercial">Commercial</button>
+            <button class="proj-filter-btn" data-filter="industrial">Industrial</button>
+        </div>
+
+        <!-- Project Cards Grid -->
+        <div class="proj-grid" id="projGrid">
+
+            <div class="proj-card fade-up" data-cat="utility">
+                <div class="proj-img-wrap">
+                    <img src="assets/images/projects/hinduja/1.jpg" alt="Hinduja Solar Power Project">
+                    <div class="proj-overlay">
+                        <span class="proj-cat-tag">Utility Scale</span>
+                        <h3>Hinduja Solar Power Project</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Veppankulam &amp; Devakottai, Tamil Nadu</p>
+                        <a href="#proj-hinduja" class="proj-view-btn" data-project="hinduja">View Gallery <i class="fas fa-images"></i></a>
+                    </div>
                 </div>
-
-                <div class="process-line"></div>
-
-                <div class="process-step fade-up">
-                    <div class="step-number">2</div>
-                    <h3>Design & Planning</h3>
-                    <p>Creating customized solar solutions</p>
-                </div>
-
-                <div class="process-line"></div>
-
-                <div class="process-step fade-up">
-                    <div class="step-number">3</div>
-                    <h3>Installation</h3>
-                    <p>Professional setup and commissioning</p>
-                </div>
-
-                <div class="process-line"></div>
-
-                <div class="process-step fade-up">
-                    <div class="step-number">4</div>
-                    <h3>Ongoing Support</h3>
-                    <p>Maintenance and performance monitoring</p>
+                <div class="proj-card-footer">
+                    <div class="proj-meta">
+                        <span class="proj-badge utility">Utility Scale</span>
+                        <span class="proj-mw">75 MW</span>
+                    </div>
+                    <h4>Hinduja Solar Power Project</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Veppankulam &amp; Devakottai, Tamil Nadu</p>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- CALL TO ACTION -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content fade-up">
-                <h2>Start Your Solar Project Today</h2>
-                <p>Tell us about your energy goals, and we'll create a tailored solar solution for you.</p>
-                <a href="contact.php" class="cta-btn">Get a Free Project Quote</a>
+            <div class="proj-card fade-up" data-cat="utility">
+                <div class="proj-img-wrap">
+                    <img src="assets/images/projects/itc/6.jpg" alt="ITC Solar Power Project">
+                    <div class="proj-overlay">
+                        <span class="proj-cat-tag">Utility Scale</span>
+                        <h3>ITC Solar Power Project</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Eluvanampatti &amp; Vadhalakundu, Tamil Nadu</p>
+                        <a href="#proj-itc" class="proj-view-btn" data-project="itc">View Gallery <i class="fas fa-images"></i></a>
+                    </div>
+                </div>
+                <div class="proj-card-footer">
+                    <div class="proj-meta">
+                        <span class="proj-badge utility">Utility Scale</span>
+                        <span class="proj-mw">25 MW</span>
+                    </div>
+                    <h4>ITC Solar Power Project</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Eluvanampatti &amp; Vadhalakundu, Tamil Nadu</p>
+                </div>
+            </div>
+
+            <div class="proj-card fade-up" data-cat="commercial">
+                <div class="proj-img-wrap">
+                    <img src="assets/images/projects/thiagarajar/11.jpg" alt="Thiagarajar Mills Solar">
+                    <div class="proj-overlay">
+                        <span class="proj-cat-tag">Commercial</span>
+                        <h3>Thiagarajar Mills Solar</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Ottapidaram, Thoothukudi, Tamil Nadu</p>
+                        <a href="#proj-thiagarajar" class="proj-view-btn" data-project="thiagarajar">View Gallery <i class="fas fa-images"></i></a>
+                    </div>
+                </div>
+                <div class="proj-card-footer">
+                    <div class="proj-meta">
+                        <span class="proj-badge commercial">Commercial</span>
+                        <span class="proj-mw">10 MW</span>
+                    </div>
+                    <h4>Thiagarajar Mills Solar</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Ottapidaram, Thoothukudi, Tamil Nadu</p>
+                </div>
+            </div>
+
+            <div class="proj-card fade-up" data-cat="industrial">
+                <div class="proj-img-wrap">
+                    <img src="assets/images/projects/capacity/16.jpg" alt="Capacity Solar Project">
+                    <div class="proj-overlay">
+                        <span class="proj-cat-tag">Industrial</span>
+                        <h3>Capacity Solar Project</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Aviyur, Madurai, Tamil Nadu</p>
+                        <a href="#proj-capacity" class="proj-view-btn" data-project="capacity">View Gallery <i class="fas fa-images"></i></a>
+                    </div>
+                </div>
+                <div class="proj-card-footer">
+                    <div class="proj-meta">
+                        <span class="proj-badge industrial">Industrial</span>
+                        <span class="proj-mw">10 MW</span>
+                    </div>
+                    <h4>Capacity Solar Project</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Aviyur, Madurai, Tamil Nadu</p>
+                </div>
+            </div>
+
+            <div class="proj-card fade-up" data-cat="industrial">
+                <div class="proj-img-wrap">
+                    <img src="assets/images/projects/mtk/21.jpg" alt="Shree MTK / Stareco / Pantech">
+                    <div class="proj-overlay">
+                        <span class="proj-cat-tag">Industrial</span>
+                        <h3>Shree MTK / Stareco / Pantech</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Aviyur, Madurai, Tamil Nadu</p>
+                        <a href="#proj-mtk" class="proj-view-btn" data-project="mtk">View Gallery <i class="fas fa-images"></i></a>
+                    </div>
+                </div>
+                <div class="proj-card-footer">
+                    <div class="proj-meta">
+                        <span class="proj-badge industrial">Industrial</span>
+                        <span class="proj-mw">10 MW</span>
+                    </div>
+                    <h4>Shree MTK / Stareco / Pantech</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Aviyur, Madurai, Tamil Nadu</p>
+                </div>
+            </div>
+
+            <div class="proj-card fade-up" data-cat="utility">
+                <div class="proj-img-wrap">
+                    <img src="assets/images/projects/torrent14/26.jpg" alt="Torrent Urja 14">
+                    <div class="proj-overlay">
+                        <span class="proj-cat-tag">Utility Scale</span>
+                        <h3>Torrent Urja 14</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Ottapidaram, Thoothukudi, Tamil Nadu</p>
+                        <a href="#proj-torrent14" class="proj-view-btn" data-project="torrent14">View Gallery <i class="fas fa-images"></i></a>
+                    </div>
+                </div>
+                <div class="proj-card-footer">
+                    <div class="proj-meta">
+                        <span class="proj-badge utility">Utility Scale</span>
+                        <span class="proj-mw">15 MW</span>
+                    </div>
+                    <h4>Torrent Urja 14</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Ottapidaram, Thoothukudi, Tamil Nadu</p>
+                </div>
+            </div>
+
+            <div class="proj-card fade-up" data-cat="utility">
+                <div class="proj-img-wrap">
+                    <img src="assets/images/projects/torrent17/31.jpg" alt="Torrent Urja 17">
+                    <div class="proj-overlay">
+                        <span class="proj-cat-tag">Utility Scale</span>
+                        <h3>Torrent Urja 17</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Ottapidaram, Thoothukudi, Tamil Nadu</p>
+                        <a href="#proj-torrent17" class="proj-view-btn" data-project="torrent17">View Gallery <i class="fas fa-images"></i></a>
+                    </div>
+                </div>
+                <div class="proj-card-footer">
+                    <div class="proj-meta">
+                        <span class="proj-badge utility">Utility Scale</span>
+                        <span class="proj-mw">8.5 MW</span>
+                    </div>
+                    <h4>Torrent Urja 17</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Ottapidaram, Thoothukudi, Tamil Nadu</p>
+                </div>
+            </div>
+
+            <div class="proj-card fade-up" data-cat="industrial">
+                <div class="proj-img-wrap">
+                    <img src="assets/images/projects/ghcl1/36.jpg" alt="GHCL Phase 1">
+                    <div class="proj-overlay">
+                        <span class="proj-cat-tag">Industrial</span>
+                        <h3>GHCL Phase 1</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Musiri, Tiruchirappalli, Tamil Nadu</p>
+                        <a href="#proj-ghcl1" class="proj-view-btn" data-project="ghcl1">View Gallery <i class="fas fa-images"></i></a>
+                    </div>
+                </div>
+                <div class="proj-card-footer">
+                    <div class="proj-meta">
+                        <span class="proj-badge industrial">Industrial</span>
+                        <span class="proj-mw">—</span>
+                    </div>
+                    <h4>GHCL Phase 1</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Musiri, Tiruchirappalli, Tamil Nadu</p>
+                </div>
+            </div>
+
+            <div class="proj-card fade-up" data-cat="industrial">
+                <div class="proj-img-wrap">
+                    <img src="assets/images/projects/ghcl2/41.jpg" alt="GHCL Phase 2">
+                    <div class="proj-overlay">
+                        <span class="proj-cat-tag">Industrial</span>
+                        <h3>GHCL Phase 2</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Ottapidaram, Thoothukudi, Tamil Nadu</p>
+                        <a href="#proj-ghcl2" class="proj-view-btn" data-project="ghcl2">View Gallery <i class="fas fa-images"></i></a>
+                    </div>
+                </div>
+                <div class="proj-card-footer">
+                    <div class="proj-meta">
+                        <span class="proj-badge industrial">Industrial</span>
+                        <span class="proj-mw">—</span>
+                    </div>
+                    <h4>GHCL Phase 2</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Ottapidaram, Thoothukudi, Tamil Nadu</p>
+                </div>
+            </div>
+
+            <div class="proj-card fade-up" data-cat="utility">
+                <div class="proj-img-wrap">
+                    <img src="assets/images/projects/renew/46.jpg" alt="ReNew Power Solar Project">
+                    <div class="proj-overlay">
+                        <span class="proj-cat-tag">Utility Scale</span>
+                        <h3>ReNew Power Solar Project</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Manwath, Maharashtra</p>
+                        <a href="#proj-renew" class="proj-view-btn" data-project="renew">View Gallery <i class="fas fa-images"></i></a>
+                    </div>
+                </div>
+                <div class="proj-card-footer">
+                    <div class="proj-meta">
+                        <span class="proj-badge utility">Utility Scale</span>
+                        <span class="proj-mw">—</span>
+                    </div>
+                    <h4>ReNew Power Solar Project</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Manwath, Maharashtra</p>
+                </div>
+            </div>
+
+            <div class="proj-card fade-up" data-cat="commercial">
+                <div class="proj-img-wrap">
+                    <img src="assets/images/projects/bial/51.jpg" alt="Bangalore International Airport">
+                    <div class="proj-overlay">
+                        <span class="proj-cat-tag">Commercial</span>
+                        <h3>Bangalore International Airport</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Bangalore, Karnataka</p>
+                        <a href="#proj-bial" class="proj-view-btn" data-project="bial">View Gallery <i class="fas fa-images"></i></a>
+                    </div>
+                </div>
+                <div class="proj-card-footer">
+                    <div class="proj-meta">
+                        <span class="proj-badge commercial">Commercial</span>
+                        <span class="proj-mw">—</span>
+                    </div>
+                    <h4>Bangalore International Airport (BIAL)</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Bangalore, Karnataka</p>
+                </div>
+            </div>
+
+        </div><!-- /proj-grid -->
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     LIGHTBOX / GALLERY MODAL
+════════════════════════════════════════════════ -->
+<div class="proj-lightbox" id="projLightbox" role="dialog" aria-modal="true" aria-label="Project gallery">
+    <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+    <div class="lightbox-box">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close gallery"><i class="fas fa-times"></i></button>
+        <div class="lightbox-header">
+            <h3 id="lightboxTitle">Project Gallery</h3>
+            <p id="lightboxLocation"></p>
+        </div>
+        <div class="lightbox-main">
+            <button class="lightbox-nav prev" id="lightboxPrev" aria-label="Previous image"><i class="fas fa-chevron-left"></i></button>
+            <div class="lightbox-img-wrap">
+                <img id="lightboxImg" src="" alt="Project image">
+            </div>
+            <button class="lightbox-nav next" id="lightboxNext" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="lightbox-thumbs" id="lightboxThumbs"></div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PROCESS SECTION
+════════════════════════════════════════════════ -->
+<section class="process-section section-pad bg-light-green">
+    <div class="container">
+        <div class="section-header fade-up">
+            <span class="section-eyebrow"><i class="fas fa-route"></i> How We Work</span>
+            <h2>How We Deliver Excellence</h2>
+            <p>A structured, disciplined approach that ensures quality delivery from first contact to final commissioning.</p>
+        </div>
+        <div class="process-grid">
+            <div class="process-card fade-up">
+                <div class="process-num">01</div>
+                <div class="process-icon"><i class="fas fa-comments"></i></div>
+                <h4>Consultation</h4>
+                <p>Understanding your project scope, site conditions and execution requirements.</p>
+            </div>
+            <div class="process-connector"></div>
+            <div class="process-card fade-up">
+                <div class="process-num">02</div>
+                <div class="process-icon"><i class="fas fa-drafting-compass"></i></div>
+                <h4>Design &amp; Planning</h4>
+                <p>Preparing execution plans, resource allocation and site-specific schedules.</p>
+            </div>
+            <div class="process-connector"></div>
+            <div class="process-card fade-up">
+                <div class="process-num">03</div>
+                <div class="process-icon"><i class="fas fa-tools"></i></div>
+                <h4>Installation</h4>
+                <p>Professional on-site execution of civil, mechanical and electrical works.</p>
+            </div>
+            <div class="process-connector"></div>
+            <div class="process-card fade-up">
+                <div class="process-num">04</div>
+                <div class="process-icon"><i class="fas fa-check-double"></i></div>
+                <h4>Commissioning</h4>
+                <p>Testing, SCADA integration and final commissioning readiness handover.</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <?php include 'includes/footer.php'; ?>
+<!-- ═══════════════════════════════════════════════
+     CTA SECTION
+════════════════════════════════════════════════ -->
+<section class="cta-section">
+    <div class="cta-overlay"></div>
+    <div class="container cta-inner fade-up">
+        <div class="cta-text">
+            <span class="section-eyebrow light"><i class="fas fa-bolt"></i> Start Today</span>
+            <h2>Start Your Solar Project Today</h2>
+            <p>Tell us about your energy goals and we'll create a tailored execution plan for your site.</p>
+        </div>
+        <div class="cta-actions">
+            <a href="contact.php" class="btn-cta-white">Get Free Consultation <i class="fas fa-arrow-right"></i></a>
+            <a href="services.php" class="btn-cta-outline">Our Services</a>
+        </div>
+    </div>
+</section>
 
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/no-flash.js"></script>
-    <script src="js/animate.js"></script>
-    <script src="js/stat-counter.js"></script>
-    <script src="js/projects.js"></script>
-    <script src="js/projects-gallery.js"></script>
-    
+<?php include 'includes/footer.php'; ?>
 
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/bkn-navbar.js"></script>
+<script src="js/no-flash.js"></script>
+<script src="js/animate.js"></script>
+    <script src="js/bk-animations.js"></script>
+<script src="js/projects.js"></script>
 
 </body>
-
 </html>
